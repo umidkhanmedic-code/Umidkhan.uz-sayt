@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>umidkhan.uz — Özbekistondagi birinçi Sunʼiy İntellekt OAV portali</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200">
+
+  <!-- YUQORI AXBOROT PANELI -->
+  <div class="bg-slate-900 text-slate-300 text-xs py-2 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 text-emerald-400 font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          AI Muharrir 24/7 faol
+        </span>
+        <span class="hidden sm:inline text-slate-600">|</span>
+        <span id="current-date" class="hidden sm:inline"></span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://t.me/umidkhan_uz" target="_blank" class="hover:text-white transition flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-sky-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.121.099.155.232.171.326.016.094.036.308.02.475z"/></svg>
+          @umidkhan_uz
+        </a>
+        <button onclick="toggleDarkMode()" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+          🌓 Mavzu
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASOSIY SARLAVHA VA MENYU -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex items-center justify-between">
+        <a href="#" onclick="filterCategory('Barchasi')" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-extrabold text-xl shadow-md shadow-blue-600/20">
+            U
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">umidkhan<span class="text-blue-600">.uz</span></span>
+              <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-800">AI OAV</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Özbekistondagi birinçi sunʼiy intellekt axborot agentligi</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- QIDIRUV -->
+      <div class="relative w-full md:w-72">
+        <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Xabarlar böyiça qidiriş..." 
+          class="w-full pl-9 pr-4 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- RUKNLAR (KATEGORIYALAR) -->
+    <nav class="max-w-7xl mx-auto px-4 overflow-x-auto">
+      <ul id="category-nav" class="flex items-center gap-1 py-2 text-sm font-semibold whitespace-nowrap">
+        <li><button onclick="filterCategory('Barchasi')" data-cat="Barchasi" class="cat-btn active px-3.5 py-1.5 rounded-lg bg-blue-600 text-white transition">Barça xabarlar</button></li>
+        <li><button onclick="filterCategory('Özbekiston')" data-cat="Özbekiston" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Özbekiston</button></li>
+        <li><button onclick="filterCategory('Jahon')" data-cat="Jahon" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Jahon</button></li>
+        <li><button onclick="filterCategory('İqtisodiyot')" data-cat="İqtisodiyot" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">İqtisodiyot</button></li>
+        <li><button onclick="filterCategory('Jamiyat')" data-cat="Jamiyat" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Jamiyat</button></li>
+        <li><button onclick="filterCategory('Texnologiya')" data-cat="Texnologiya" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Texnologiya</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ASOSIY KONTENT -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    
+    <!-- ASOSIY YANGILIK (HERO) -->
+    <section id="hero-section" class="mb-10"></section>
+
+    <!-- SO'NGGI XABARLAR SARLAVHASI -->
+    <div class="flex items-center justify-between mb-6 border-b border-slate-200 dark:border-slate-800 pb-3">
+      <h2 id="section-title" class="text-xl font-bold flex items-center gap-2">
+        <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+        Sönggi xabarlar
+      </h2>
+      <span id="news-count" class="text-xs font-medium text-slate-500"></span>
+    </div>
+
+    <!-- XABARLAR TARMOG'I -->
+    <section id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></section>
+
+  </main>
+
+  <!-- MAQOLA O'QISH OYNASI (MODAL) -->
+  <div id="article-modal" class="fixed inset-0 z-50 hidden bg-slate-900/75 backdrop-blur-sm overflow-y-auto p-4">
+    <div class="max-w-3xl mx-auto my-8 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div class="p-6 sm:p-8">
+        <div class="flex items-center justify-between gap-4 mb-4">
+          <span id="modal-category" class="px-3 py-1 text-xs font-bold uppercase rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"></span>
+          <button onclick="closeModal()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
+            ✕ Yopiş
+          </button>
+        </div>
+        <h1 id="modal-title" class="text-2xl sm:text-3xl font-extrabold leading-tight mb-4"></h1>
+        <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400 pb-6 mb-6 border-b border-slate-200 dark:border-slate-800">
+          <span id="modal-date"></span>
+          <span>•</span>
+          <span class="text-emerald-600 dark:text-emerald-400 font-semibold">🤖 AI Muharrir tomonidan tayyorlandi</span>
+        </div>
+        <div id="modal-body" class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-4 text-base"></div>
+        <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
+          <a id="modal-source" href="#" target="_blank" class="text-sm font-semibold text-blue-600 hover:underline">Asl manbani köriş →</a>
+          <a href="https://t.me/umidkhan_uz" target="_blank" class="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold transition">
+            Telegram kanalga ötiş
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FUTER (OAV MA'LUMOTLARI) -->
+  <footer class="bg-slate-900 text-slate-400 mt-16 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div class="text-2xl font-extrabold text-white mb-3">umidkhan<span class="text-blue-500">.uz</span></div>
+        <p class="text-sm leading-relaxed">
+          Özbekistonda sunʼiy intellekt texnologiyalari asosida faoliyat yurituvçi birinçi avtomatlaşgan axborot-tahliliy OAV portali. Barşa xabarlar AI algoritmlari yordamida saralanadi va qayta işlanadi.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-white font-bold mb-3">Ruknlar</h3>
+        <ul class="space-y-2 text-sm">
+          <li><button onclick="filterCategory('Özbekiston')" class="hover:text-white">Özbekiston</button></li>
+          <li><button onclick="filterCategory('Jahon')" class="hover:text-white">Jahon</button></li>
+          <li><button onclick="filterCategory('İqtisodiyot')" class="hover:text-white">İqtisodiyot</button></li>
+          <li><button onclick="filterCategory('Jamiyat')" class="hover:text-white">Jamiyat</button></li>
+          <li><button onclick="filterCategory('Texnologiya')" class="hover:text-white">Texnologiya</button></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-white font-bold mb-3">Tahririyat va Aloqa</h3>
+        <p class="text-sm mb-3">Rasmiy Telegram kanal: <a href="https://t.me/umidkhan_uz" target="_blank" class="text-sky-400 hover:underline">@umidkhan_uz</a></p>
+        <p class="text-xs text-slate-500">© 2026 umidkhan.uz. Barşa huquqlar himoyalangan. Materiallardan foydalanilganda manba körsatilişi şart.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // === GOOGLE APPS SCRIPT API URL (2-bosqichda şunga ulaymiz) ===
+    var API_URL = ''; 
+
+    // === NAMUNA YANGILIKLAR (API ulangunça körinib turadi) ===
+    var ALL_NEWS = [
+      {
+        id: 1,
+        category: 'Texnologiya',
+        title: 'Özbekistonda sunʼiy intellekt asosida işlovçi birinçi avtonom OAV — umidkhan.uz işga tuşdi',
+        summary: 'Yangi media platforma xabarlarni yığıb oliş, faktlarni tekşiriş va yangi özbek lotin alifbosida öquvçilarga tezkor yetkazişni töliq AI yordamida amalga oşiradi.',
+        content: 'Özbekiston media makonida yangi texnologik bosqiç boşlandi. umidkhan.uz axborot portali zamonaviy sunʼiy intellekt algoritmlari asosida 24/7 rejimida faoliyat yuritadi.\n\nTizim xalqaro va mahalliy rasmiy manbalardan kelib tuşayotgan maʼlumotlarni soniyalar içida tahlil qiladi, muhimlik darajasiga köra saralaydi va özbek tilining yangi isloh qilingan alifbosida tushunarli şaklda taqdim etadi.',
+        date: '15.11.2026, 19:00',
+        source: 'https://t.me/umidkhan_uz',
+        featured: true
+      },
+      {
+        id: 2,
+        category: 'İqtisodiyot',
+        title: 'Raqamli iqtisodiyot va IT xizmatlar eksporti hajmi yangi rekord darajaga yetdi',
+        summary: 'Joriy yil yakunlariga köra mamlakatimizda dasturiy mahsulotlar va masofaviy xizmatlar eksporti ötgan yilga nisbatan sezilarli ösişni qayd etdi.',
+        content: 'Özbekistonda IT-park rezidentlari tomonidan körsatilayotgan xizmatlar geografiyasi kengayib bormoqda. Xususan, AQŞ, Yevropa İttifoqi va Yaqin Şarq bozorlariga yönaltirilgan raqamli yeçimlar uluşi ortgan.\n\nMutaxassislarning fikriça, sunʼiy intellekt va avtomatlaştiş sohasidagi startaplarga berilayotgan soliq imtiyozlari bu ösişning asosiy omili bölmoqda.',
+        date: '15.11.2026, 17:45',
+        source: 'https://t.me/umidkhan_uz',
+        featured: false
+      },
+      {
+        id: 3,
+        category: 'Özbekiston',
+        title: 'Andijon va Fargʻona vodiysida yangi transport-logistika loyihalari amalga oşiriladi',
+        summary: 'Hududlararo yölovçi va yuk taşiş tizimini raqamlaştiş hamda zamonaviy avtobus yöналиşlarini kengaytiş böyiça yangi dastur tasdiqlandi.',
+        content: 'Fargʻona vodiysi viloyatlari örtasidagi transport aloqalarini yaxşilaş maqsadida yangi elektron tölov tizimlari va aqlli bekatlar joriy etilmoqda.\n\nLoyiha doirasida şaharlararo qatnovlar jadvali real vaqt rejimida mobil ilovalar orqali kuzatib borilişi taʼminlanadi.',
+        date: '15.11.2026, 16:20',
+        source: 'https://t.me/umidkhan_uz',
+        featured: false
+      },
+      {
+        id: 4,
+        category: 'Jahon',
+        title: 'Jahon energetika bozorida qayta tiklanuvçi manbalar uluşi tarixiy maksimumga yaqinlaşdi',
+        summary: 'Xalqaro energetika agentligi hisobotiga köra, quyosh va şamol elektr stansiyalariga kiritilayotgan investitsiyalar hajmi keskin oşgan.',
+        content: 'Global miqyosda yashil energetikaga ötiş jarayoni tezlashmoqda. Yangi avlod batareyalari va aqlli elektr tarmoqlari texnologiyalari energiya samaradorligini 30 foizgacha oşiriş imkonini bermoqda.',
+        date: '15.11.2026, 14:10',
+        source: 'https://t.me/umidkhan_uz',
+        featured: false
+      },
+      {
+        id: 5,
+        category: 'Jamiyat',
+        title: 'Zamonaviy taʼlim va raqamli savodxonlik: yoshlar uçun bepul onlayn platformalar soni ortmoqda',
+        summary: 'Hududlardagi yoshlarning zamonaviy kasblarni egallaşi uçun sunʼiy intellekt va dasturlaş böyiça öquv kurslari kengaytirilmoqda.',
+        content: 'Taʼlim tizimiga raqamli texnologiyalarni joriy etiş orqali çeкка hududlardagi yoshlar ham xalqaro darajadagi bilimlarni masofadan turib egallaş imkoniyatiga ega bölmoqda.',
+        date: '15.11.2026, 12:30',
+        source: 'https://t.me/umidkhan_uz',
+        featured: false
+      }
+    ];
+
+    var currentCategory = 'Barchasi';
+
+    function init() {
+      document.getElementById('current-date').textContent = new Date().toLocaleDateString('uz-UZ', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      });
+
+      if (API_URL) {
+        fetch(API_URL)
+          .then(res => res.json())
+          .then(data => {
+            if (Array.isArray(data) && data.length > 0) {
+              ALL_NEWS = data;
+              renderNews();
+            }
+          })
+          .catch(err => console.error('API xatosi:', err));
+      }
+      renderNews();
+    }
+
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.className = 'cat-btn active px-3.5 py-1.5 rounded-lg bg-blue-600 text-white transition';
+        } else {
+          btn.className = 'cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition';
+        }
+      });
+      document.getElementById('section-title').innerHTML = '<span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>' + (cat === 'Barchasi' ? 'Sönggi xabarlar' : cat + ' xabarlari');
+      renderNews();
+    }
+
+    function handleSearch() {
+      renderNews();
+    }
+
+    function renderNews() {
+      var query = document.getElementById('search-input').value.toLowerCase().trim();
+      var filtered = ALL_NEWS.filter(item => {
+        var matchCat = currentCategory === 'Barchasi' || item.category === currentCategory;
+        var matchQuery = !query || item.title.toLowerCase().includes(query) || item.summary.toLowerCase().includes(query);
+        return matchCat && matchQuery;
+      });
+
+      document.getElementById('news-count').textContent = filtered.length + ' ta xabar';
+
+      // Hero (Asosiy yangilik)
+      var heroContainer = document.getElementById('hero-section');
+      if (currentCategory === 'Barchasi' && !query && filtered.length > 0) {
+        var hero = filtered[0];
+        heroContainer.innerHTML = `
+          <div onclick="openArticle(${hero.id})" class="cursor-pointer group bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span class="px-3 py-1 text-xs font-bold uppercase rounded-full bg-blue-600 text-white">Asosiy mavzu</span>
+              <span class="px-3 py-1 text-xs font-semibold rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">${hero.category}</span>
+              <span class="text-xs text-slate-400">${hero.date}</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white group-hover:text-blue-600 transition leading-tight mb-4">
+              ${hero.title}
+            </h1>
+            <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-4xl leading-relaxed mb-6">
+              ${hero.summary}
+            </p>
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-blue-600">
+              Batafsil öqiş <span>→</span>
+            </span>
+          </div>
+        `;
+        filtered = filtered.slice(1);
+      } else {
+        heroContainer.innerHTML = '';
+      }
+
+      // Qolgan xabarlar kartochkalari
+      var grid = document.getElementById('news-grid');
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="col-span-full text-center py-12 text-slate-500">Uşbu bölimda hozirça xabarlar topilmadi.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <article onclick="openArticle(${item.id})" class="cursor-pointer group bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-2.5 py-0.5 text-xs font-bold rounded-md bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">${item.category}</span>
+              <span class="text-xs text-slate-400">${item.date}</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition leading-snug mb-3">
+              ${item.title}
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
+              ${item.summary}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-emerald-600 dark:text-emerald-400 font-medium">🤖 AI Muharrir</span>
+            <span class="font-semibold text-blue-600 group-hover:translate-x-1 transition-transform">Öqiş →</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function openArticle(id) {
+      var item = ALL_NEWS.find(n => n.id === id);
+      if (!item) return;
+      document.getElementById('modal-category').textContent = item.category;
+      document.getElementById('modal-title').textContent = item.title;
+      document.getElementById('modal-date').textContent = item.date;
+      document.getElementById('modal-body').innerHTML = item.content.split('\n\n').map(p => `<p>${p}</p>`).join('');
+      document.getElementById('modal-source').href = item.source || '#';
+      document.getElementById('article-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('article-modal').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    init();
+  </script>
+</body>
+</html>
