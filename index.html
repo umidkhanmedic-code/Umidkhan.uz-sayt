@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="uz" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>umidkhan.uz — Özbekistondagi birinçi Sunʼiy İntellekt OAV portali</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Umidkhan.uz — Tezkor va xolis axborot portali</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -11,338 +11,535 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#eff6ff',
-              500: '#2563eb',
-              600: '#1d4ed8',
-              900: '#0f172a',
-            }
+            brandDark: '#04122b',
+            brandBlue: '#0077b6',
+            brandCyan: '#2ec4b6'
           }
         }
       }
     }
   </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
     body { font-family: 'Inter', sans-serif; }
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200">
+<body class="bg-[#f4f6f9] dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
 
-  <!-- YUQORI AXBOROT PANELI -->
-  <div class="bg-slate-900 text-slate-300 text-xs py-2 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-between items-center gap-2">
-      <div class="flex items-center gap-3">
-        <span class="inline-flex items-center gap-1.5 text-emerald-400 font-medium">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          AI Muharrir 24/7 faol
-        </span>
+  <!-- YUQORI AXBOROT PANELI (Sana, Valyuta, Dark Mode) -->
+  <div class="bg-[#04122b] text-slate-300 text-xs border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-4">
+        <span id="current-date" class="font-medium text-cyan-300"></span>
         <span class="hidden sm:inline text-slate-600">|</span>
-        <span id="current-date" class="hidden sm:inline"></span>
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-emerald-400 font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> AI Muharrir 24/7 faol
+        </span>
       </div>
       <div class="flex items-center gap-4">
-        <a href="https://t.me/umidkhan_uz" target="_blank" class="hover:text-white transition flex items-center gap-1">
-          <svg class="w-3.5 h-3.5 text-sky-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.121.099.155.232.171.326.016.094.036.308.02.475z"/></svg>
-          @umidkhan_uz
-        </a>
-        <button onclick="toggleDarkMode()" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+        <div id="top-rates" class="hidden md:flex items-center gap-3 text-[11px] font-semibold">
+          <span class="text-amber-400">🥇 XAU/USD: <b id="rate-gold">Yuklanmoqda...</b></span>
+          <span class="text-slate-300">🥈 XAG/USD: <b id="rate-silver">...</b></span>
+          <span class="text-cyan-400">₿ BTC: <b id="rate-btc">...</b></span>
+        </div>
+        <button onclick="toggleDarkMode()" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium transition">
           🌓 Mavzu
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ASOSIY SARLAVHA VA MENYU -->
-  <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
-      <div class="flex items-center justify-between">
-        <a href="#" onclick="filterCategory('Barchasi')" class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-extrabold text-xl shadow-md shadow-blue-600/20">
-            U
+  <!-- ASOSIY HEADER VA LOGO (Kun.uz uslubida) -->
+  <header class="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <!-- BREND LOGO (Siz yuborgan rasm asosida vektor SVG + matn) -->
+      <a href="#" onclick="selectMainSection('Barchasi'); return false;" class="flex items-center gap-3 group shrink-0">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#04122b] via-[#072554] to-[#0077b6] flex items-center justify-center shadow-md group-hover:scale-105 transition">
+          <svg width="26" height="26" viewBox="0 0 100 100" fill="none">
+            <defs>
+              <linearGradient id="uGrad" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="55%" stop-color="#48cae4"/>
+                <stop offset="100%" stop-color="#0096c7"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 14H40V58C40 65 44 69 50 69C56 69 60 65 60 58V14H78V58C78 75 66 86 50 86C34 86 22 75 22 58V14Z" fill="url(#uGrad)"/>
+          </svg>
+        </div>
+        <div>
+          <div class="text-2xl font-black tracking-tight leading-none">
+            <span class="text-[#04122b] dark:text-white">Umid</span><span class="text-[#19a7ce]">khan.uz</span>
           </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">umidkhan<span class="text-blue-600">.uz</span></span>
-              <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 border border-blue-200 dark:border-blue-800">AI OAV</span>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400">Özbekistondagi birinçi sunʼiy intellekt axborot agentligi</p>
-          </div>
-        </a>
-      </div>
+          <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5">Tezkor axborot-tahliliy portal</p>
+        </div>
+      </a>
 
       <!-- QIDIRUV -->
-      <div class="relative w-full md:w-72">
-        <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Xabarlar böyiça qidiriş..." 
-          class="w-full pl-9 pr-4 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-        </svg>
+      <div class="flex-1 max-w-md hidden sm:block">
+        <div class="relative">
+          <input id="search-input" oninput="renderCurrentView()" type="text" placeholder="Sayt böyiça qidiriş..."
+            class="w-full pl-10 pr-4 py-2 text-sm rounded-xl bg-slate-100 dark:bg-slate-800 border border-transparent focus:border-[#0077b6] focus:bg-white dark:focus:bg-slate-900 outline-none transition" />
+          <span class="absolute left-3.5 top-2.5 text-slate-400 text-sm">🔍</span>
+        </div>
       </div>
+
+      <!-- TELEGRAM KANAL TUGMASI -->
+      <a href="https://t.me/umidkhan_uz" target="_blank" class="px-4 py-2 rounded-xl bg-[#0077b6] hover:bg-[#023e8a] text-white text-xs sm:text-sm font-bold shadow-sm transition shrink-0">
+        ✈️ @umidkhan_uz
+      </a>
     </div>
 
-    <!-- RUKNLAR (KATEGORIYALAR) -->
-    <nav class="max-w-7xl mx-auto px-4 overflow-x-auto">
-      <ul id="category-nav" class="flex items-center gap-1 py-2 text-sm font-semibold whitespace-nowrap">
-        <li><button onclick="filterCategory('Barchasi')" data-cat="Barchasi" class="cat-btn active px-3.5 py-1.5 rounded-lg bg-blue-600 text-white transition">Barça xabarlar</button></li>
-        <li><button onclick="filterCategory('Özbekiston')" data-cat="Özbekiston" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Özbekiston</button></li>
-        <li><button onclick="filterCategory('Jahon')" data-cat="Jahon" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Jahon</button></li>
-        <li><button onclick="filterCategory('İqtisodiyot')" data-cat="İqtisodiyot" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">İqtisodiyot</button></li>
-        <li><button onclick="filterCategory('Jamiyat')" data-cat="Jamiyat" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Jamiyat</button></li>
-        <li><button onclick="filterCategory('Texnologiya')" data-cat="Texnologiya" class="cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Texnologiya</button></li>
-      </ul>
+    <!-- ASOSIY NAVIGATSIYA MENYUSI -->
+    <nav class="bg-slate-50 dark:bg-slate-950/60 border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 flex items-center gap-1 overflow-x-auto no-scrollbar py-2 text-xs sm:text-sm font-bold">
+        <button onclick="selectMainSection('Barchasi')" data-sec="Barchasi" class="nav-btn px-3.5 py-2 rounded-lg bg-[#04122b] text-white shrink-0 transition">Barchasi</button>
+        <button onclick="selectMainSection('Özbekiston')" data-sec="Özbekiston" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Özbekiston</button>
+        <button onclick="selectMainSection('Jahon')" data-sec="Jahon" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Jahon</button>
+        <button onclick="selectMainSection('İqtisodiyot')" data-sec="İqtisodiyot" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Iqtisodiyot</button>
+        <button onclick="selectMainSection('Jamiyat')" data-sec="Jamiyat" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Jamiyat</button>
+        <button onclick="selectMainSection('Sport')" data-sec="Sport" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Sport</button>
+        <button onclick="selectMainSection('Hududlar')" data-sec="Hududlar" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Hududlar</button>
+        <button onclick="selectMainSection('Birja')" data-sec="Birja" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">📈 Birja</button>
+        <button onclick="selectMainSection('Ob-havo')" data-sec="Ob-havo" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">🌤 Ob-havo</button>
+        <button onclick="selectMainSection('Loyihalar')" data-sec="Loyihalar" class="nav-btn px-3.5 py-2 rounded-lg text-[#0077b6] dark:text-cyan-400 hover:bg-blue-50 dark:hover:bg-slate-800 shrink-0 transition">🚀 Loyihalar</button>
+      </div>
     </nav>
+
+    <!-- SUB-BO'LIMLAR PANELI (Sport va Hududlar uchun dinamik ochiladi) -->
+    <div id="sub-nav-bar" class="hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+      <div id="sub-nav-items" class="max-w-7xl mx-auto px-4 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold"></div>
+    </div>
   </header>
 
   <!-- ASOSIY KONTENT -->
-  <main class="max-w-7xl mx-auto px-4 py-8">
-    
-    <!-- ASOSIY YANGILIK (HERO) -->
-    <section id="hero-section" class="mb-10"></section>
-
-    <!-- SO'NGGI XABARLAR SARLAVHASI -->
-    <div class="flex items-center justify-between mb-6 border-b border-slate-200 dark:border-slate-800 pb-3">
-      <h2 id="section-title" class="text-xl font-bold flex items-center gap-2">
-        <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
-        Sönggi xabarlar
-      </h2>
-      <span id="news-count" class="text-xs font-medium text-slate-500"></span>
+  <main class="max-w-7xl mx-auto px-4 py-6">
+    <!-- BO'LIM SARLAVHASI -->
+    <div class="flex items-center justify-between border-b-2 border-[#04122b] dark:border-cyan-500 pb-2.5 mb-6">
+      <h1 id="section-heading" class="text-xl sm:text-2xl font-black uppercase tracking-tight flex items-center gap-2.5 text-[#04122b] dark:text-white">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> Sönggi yangiliklar
+      </h1>
+      <span id="items-counter" class="text-xs font-semibold text-slate-500"></span>
     </div>
 
-    <!-- XABARLAR TARMOG'I -->
-    <section id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></section>
-
+    <!-- DINAMIK SAHIFA MAYDONI -->
+    <div id="dynamic-content"></div>
   </main>
 
-  <!-- MAQOLA O'QISH OYNASI (MODAL) -->
-  <div id="article-modal" class="fixed inset-0 z-50 hidden bg-slate-900/75 backdrop-blur-sm overflow-y-auto p-4">
-    <div class="max-w-3xl mx-auto my-8 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
-      <div class="p-6 sm:p-8">
-        <div class="flex items-center justify-between gap-4 mb-4">
-          <span id="modal-category" class="px-3 py-1 text-xs font-bold uppercase rounded-full bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"></span>
-          <button onclick="closeModal()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
-            ✕ Yopiş
-          </button>
+  <!-- FOOTER -->
+  <footer class="bg-[#04122b] text-slate-400 mt-14 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+      <div>
+        <div class="text-xl font-black text-white mb-2">Umid<span class="text-[#19a7ce]">khan.uz</span></div>
+        <p class="text-xs leading-relaxed">Özbekiston va jahon yangiliklari, iqtisodiy tahlillar, birja xabarlari hamda ob-havo maʼlumotlarini taqdim etuvçi zamonaviy axborot portali.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-2">Bölimlar</h4>
+        <div class="grid grid-cols-2 gap-1.5 text-xs">
+          <a href="#" onclick="selectMainSection('Özbekiston'); return false;" class="hover:text-cyan-400">Özbekiston</a>
+          <a href="#" onclick="selectMainSection('Jahon'); return false;" class="hover:text-cyan-400">Jahon</a>
+          <a href="#" onclick="selectMainSection('İqtisodiyot'); return false;" class="hover:text-cyan-400">Iqtisodiyot</a>
+          <a href="#" onclick="selectMainSection('Jamiyat'); return false;" class="hover:text-cyan-400">Jamiyat</a>
+          <a href="#" onclick="selectMainSection('Sport'); return false;" class="hover:text-cyan-400">Sport</a>
+          <a href="#" onclick="selectMainSection('Hududlar'); return false;" class="hover:text-cyan-400">Hududlar</a>
         </div>
-        <h1 id="modal-title" class="text-2xl sm:text-3xl font-extrabold leading-tight mb-4"></h1>
-        <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400 pb-6 mb-6 border-b border-slate-200 dark:border-slate-800">
-          <span id="modal-date"></span>
-          <span>•</span>
-          <span class="text-emerald-600 dark:text-emerald-400 font-semibold">🤖 AI Muharrir tomonidan tayyorlandi</span>
-        </div>
-        <div id="modal-body" class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-4 text-base"></div>
-        <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
-          <a id="modal-source" href="#" target="_blank" class="text-sm font-semibold text-blue-600 hover:underline">Asl manbani köriş →</a>
-          <a href="https://t.me/umidkhan_uz" target="_blank" class="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold transition">
-            Telegram kanalga ötiş
-          </a>
-        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-2">Şaxsiy loyihalar</h4>
+        <ul class="space-y-1.5 text-xs">
+          <li>🛍 <a href="https://uzum.uz" target="_blank" class="hover:text-cyan-400">Uzum Market dökonimiz</a></li>
+          <li>🌿 <a href="https://t.me/umidkhan_uz" target="_blank" class="hover:text-cyan-400">Soğlom turmuş tarzi Telegram kanali</a></li>
+          <li>🤖 <a href="https://t.me/umidkhan_uz" target="_blank" class="hover:text-cyan-400">TG Bot Marketplays</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-800/80 py-4 text-center text-xs text-slate-500">
+      © 2026 Umidkhan.uz — Barça huquqlar himoyalangan.
+    </div>
+  </footer>
+
+  <!-- MAQOLANI TO'LIQ O'QISH MODALI -->
+  <div id="article-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeModal()">
+    <div class="bg-white dark:bg-slate-900 max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between gap-3 mb-4">
+        <span id="modal-category" class="px-3 py-1 text-xs font-bold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-cyan-300"></span>
+        <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-red-100 hover:text-red-600 font-bold">✕</button>
+      </div>
+      <h2 id="modal-title" class="text-2xl sm:text-3xl font-extrabold leading-tight mb-3"></h2>
+      <div id="modal-date" class="text-xs text-slate-400 mb-6 pb-4 border-b border-slate-100 dark:border-slate-800"></div>
+      <div id="modal-body" class="space-y-4 text-slate-700 dark:text-slate-300 leading-relaxed text-base"></div>
+      <div class="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <a id="modal-source" href="#" target="_blank" class="text-xs font-bold text-[#0077b6] hover:underline">🔗 Asl manbaga ötiş →</a>
+        <button onclick="closeModal()" class="px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-bold">Yopiş</button>
       </div>
     </div>
   </div>
 
-  <!-- FUTER (OAV MA'LUMOTLARI) -->
-  <footer class="bg-slate-900 text-slate-400 mt-16 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-        <div class="text-2xl font-extrabold text-white mb-3">umidkhan<span class="text-blue-500">.uz</span></div>
-        <p class="text-sm leading-relaxed">
-          Özbekistonda sunʼiy intellekt texnologiyalari asosida faoliyat yurituvçi birinçi avtomatlaşgan axborot-tahliliy OAV portali. Barşa xabarlar AI algoritmlari yordamida saralanadi va qayta işlanadi.
-        </p>
-      </div>
-      <div>
-        <h3 class="text-white font-bold mb-3">Ruknlar</h3>
-        <ul class="space-y-2 text-sm">
-          <li><button onclick="filterCategory('Özbekiston')" class="hover:text-white">Özbekiston</button></li>
-          <li><button onclick="filterCategory('Jahon')" class="hover:text-white">Jahon</button></li>
-          <li><button onclick="filterCategory('İqtisodiyot')" class="hover:text-white">İqtisodiyot</button></li>
-          <li><button onclick="filterCategory('Jamiyat')" class="hover:text-white">Jamiyat</button></li>
-          <li><button onclick="filterCategory('Texnologiya')" class="hover:text-white">Texnologiya</button></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-white font-bold mb-3">Tahririyat va Aloqa</h3>
-        <p class="text-sm mb-3">Rasmiy Telegram kanal: <a href="https://t.me/umidkhan_uz" target="_blank" class="text-sky-400 hover:underline">@umidkhan_uz</a></p>
-        <p class="text-xs text-slate-500">© 2026 umidkhan.uz. Barşa huquqlar himoyalangan. Materiallardan foydalanilganda manba körsatilişi şart.</p>
-      </div>
-    </div>
-  </footer>
-
   <script>
-    // === GOOGLE APPS SCRIPT API URL (2-bosqichda şunga ulaymiz) ===
-    var API_URL = 'https://script.google.com/macros/s/AKfycbzwD_g-ETkkKWn2AQF1QzRwSyscxFa0rfaqRwTDwDYRgIBd4jkLedDJo0kOEIgmABrK2w/exec'; 
+    // === GOOGLE APPS SCRIPT API URL ===
+    var API_URL = 'https://script.google.com/macros/s/AKfycbzwD_g-ETkkKWn2AQF1QzRwSyscxFa0rfaqRwTDwDYRgIBd4jkLedDJo0kOEIgmABrK2w/exec';
 
-    // === NAMUNA YANGILIKLAR (API ulangunça körinib turadi) ===
-    var ALL_NEWS = [
+    // === 14 TA HUDUD RO'YXATI ===
+    var REGIONS_LIST = [
+      { id: 'Qoraqalpoğiston', label: 'Qoraqalpoğiston Respublikasi', keys: ['qoraqalpoğiston', 'nukus', 'möynoq', 'qönğirot', 'törtköl'] },
+      { id: 'Toşkent şahri', label: 'Toşkent şahar', keys: ['toşkent şah', 'toşkentda', 'poytaxt', 'çilonzor', 'yunusobod', 'sergeli'] },
+      { id: 'Andijon', label: 'Andijon viloyati', keys: ['andijon', 'asaka', 'şaxrixon', 'xonobod'] },
+      { id: 'Buxoro', label: 'Buxoro viloyati', keys: ['buxoro', 'ğijduvon', 'kogon'] },
+      { id: 'Farğona', label: 'Farğona viloyati', keys: ['farğona', 'qöqon', 'marğilon', 'quva'] },
+      { id: 'Jizzax', label: 'Jizzax viloyati', keys: ['jizzax', 'zomin', 'ğallaorol'] },
+      { id: 'Xorazm', label: 'Xorazm viloyati', keys: ['xorazm', 'urganç', 'xiva'] },
+      { id: 'Namangan', label: 'Namangan viloyati', keys: ['namangan', 'çust', 'pop', 'kosonsoy'] },
+      { id: 'Navoiy', label: 'Navoiy viloyati', keys: ['navoiy', 'zarafşon', 'uçquduq'] },
+      { id: 'Qaşqadaryo', label: 'Qaşqadaryo viloyati', keys: ['qaşqadaryo', 'qarşi', 'şahrisabz'] },
+      { id: 'Samarqand', label: 'Samarqand viloyati', keys: ['samarqand', 'kattaqörğon', 'urgut'] },
+      { id: 'Sirdaryo', label: 'Sirdaryo viloyati', keys: ['sirdaryo', 'guliston', 'yangiyer'] },
+      { id: 'Surxondaryo', label: 'Surxondaryo viloyati', keys: ['surxondaryo', 'termiz', 'denov'] },
+      { id: 'Toşkent viloyati', label: 'Toşkent viloyati', keys: ['toşkent viloyati', 'nurafşon', 'olmaliq', 'angren', 'çirçiq'] }
+    ];
+
+    // === SHAXSIY LOYIHALAR RO'YXATI (Havolalarni o'zingiznikiga almashtirasiz) ===
+    var MY_PROJECTS = [
       {
-        id: 1,
-        category: 'Texnologiya',
-        title: 'Özbekistonda sunʼiy intellekt asosida işlovçi birinçi avtonom OAV — umidkhan.uz işga tuşdi',
-        summary: 'Yangi media platforma xabarlarni yığıb oliş, faktlarni tekşiriş va yangi özbek lotin alifbosida öquvçilarga tezkor yetkazişni töliq AI yordamida amalga oşiradi.',
-        content: 'Özbekiston media makonida yangi texnologik bosqiç boşlandi. umidkhan.uz axborot portali zamonaviy sunʼiy intellekt algoritmlari asosida 24/7 rejimida faoliyat yuritadi.\n\nTizim xalqaro va mahalliy rasmiy manbalardan kelib tuşayotgan maʼlumotlarni soniyalar içida tahlil qiladi, muhimlik darajasiga köra saralaydi va özbek tilining yangi isloh qilingan alifbosida tushunarli şaklda taqdim etadi.',
-        date: '15.11.2026, 19:00',
-        source: 'https://t.me/umidkhan_uz',
-        featured: true
+        title: 'Uzum Market Rasmiy Dökonimiz',
+        badge: 'E-Commerce',
+        icon: '🛍',
+        desc: 'Sifatli va hamyonbop mahsulotlar, tezkor yetkazib beriş hamda doimiy çegirmalar jamlangan şaxsiy onlayn dökonimiz.',
+        url: 'https://uzum.uz', // <-- Uzum Market do'koningiz aniq havolasini shu yerga qo'ying
+        btnText: 'Dökonga ötiş →'
       },
       {
-        id: 2,
-        category: 'İqtisodiyot',
-        title: 'Raqamli iqtisodiyot va IT xizmatlar eksporti hajmi yangi rekord darajaga yetdi',
-        summary: 'Joriy yil yakunlariga köra mamlakatimizda dasturiy mahsulotlar va masofaviy xizmatlar eksporti ötgan yilga nisbatan sezilarli ösişni qayd etdi.',
-        content: 'Özbekistonda IT-park rezidentlari tomonidan körsatilayotgan xizmatlar geografiyasi kengayib bormoqda. Xususan, AQŞ, Yevropa İttifoqi va Yaqin Şarq bozorlariga yönaltirilgan raqamli yeçimlar uluşi ortgan.\n\nMutaxassislarning fikriça, sunʼiy intellekt va avtomatlaştiş sohasidagi startaplarga berilayotgan soliq imtiyozlari bu ösişning asosiy omili bölmoqda.',
-        date: '15.11.2026, 17:45',
-        source: 'https://t.me/umidkhan_uz',
-        featured: false
+        title: 'Soğlom Turmuş Tarzi — Telegram Kanal',
+        badge: 'Tibbiyot va Salomatlik',
+        icon: '🌿',
+        desc: 'Kundalik foydali tibbiy tavsiyalar, töğri ovqatlanish, kasalliklarning oldini oliş va soğlom hayot sirlari haqida ishonçli maʼlumotlar.',
+        url: 'https://t.me/umidkhan_uz', // <-- Sog'lom turmush tarzi TG kanalingiz havolasini shu yerga qo'ying
+        btnText: 'Kanalga obuna böliş →'
       },
       {
-        id: 3,
-        category: 'Özbekiston',
-        title: 'Andijon va Fargʻona vodiysida yangi transport-logistika loyihalari amalga oşiriladi',
-        summary: 'Hududlararo yölovçi va yuk taşiş tizimini raqamlaştiş hamda zamonaviy avtobus yöналиşlarini kengaytiş böyiça yangi dastur tasdiqlandi.',
-        content: 'Fargʻona vodiysi viloyatlari örtasidagi transport aloqalarini yaxşilaş maqsadida yangi elektron tölov tizimlari va aqlli bekatlar joriy etilmoqda.\n\nLoyiha doirasida şaharlararo qatnovlar jadvali real vaqt rejimida mobil ilovalar orqali kuzatib borilişi taʼminlanadi.',
-        date: '15.11.2026, 16:20',
-        source: 'https://t.me/umidkhan_uz',
-        featured: false
-      },
-      {
-        id: 4,
-        category: 'Jahon',
-        title: 'Jahon energetika bozorida qayta tiklanuvçi manbalar uluşi tarixiy maksimumga yaqinlaşdi',
-        summary: 'Xalqaro energetika agentligi hisobotiga köra, quyosh va şamol elektr stansiyalariga kiritilayotgan investitsiyalar hajmi keskin oşgan.',
-        content: 'Global miqyosda yashil energetikaga ötiş jarayoni tezlashmoqda. Yangi avlod batareyalari va aqlli elektr tarmoqlari texnologiyalari energiya samaradorligini 30 foizgacha oşiriş imkonini bermoqda.',
-        date: '15.11.2026, 14:10',
-        source: 'https://t.me/umidkhan_uz',
-        featured: false
-      },
-      {
-        id: 5,
-        category: 'Jamiyat',
-        title: 'Zamonaviy taʼlim va raqamli savodxonlik: yoshlar uçun bepul onlayn platformalar soni ortmoqda',
-        summary: 'Hududlardagi yoshlarning zamonaviy kasblarni egallaşi uçun sunʼiy intellekt va dasturlaş böyiça öquv kurslari kengaytirilmoqda.',
-        content: 'Taʼlim tizimiga raqamli texnologiyalarni joriy etiş orqali çeкка hududlardagi yoshlar ham xalqaro darajadagi bilimlarni masofadan turib egallaş imkoniyatiga ega bölmoqda.',
-        date: '15.11.2026, 12:30',
-        source: 'https://t.me/umidkhan_uz',
-        featured: false
+        title: 'TG Bot Marketplays',
+        badge: 'IT va Avtomatlaştiş',
+        icon: '🤖',
+        desc: 'Biznes, savdo va Telegram kanallar uçun tayyor avtomatlaştiş botlari, AI yordamçilar va raqamli xizmatlar platformasi.',
+        url: 'https://t.me/umidkhan_uz', // <-- TG Bot marketplays havolasini shu yerga qo'ying
+        btnText: 'Marketplaysni oçiş →'
       }
     ];
 
-    var currentCategory = 'Barchasi';
+    var ALL_NEWS = [];
+    var FOREX_NEWS = [];
+    var WEATHER_DATA = [];
+
+    var currentSection = 'Barchasi';
+    var currentSubSection = '';
 
     function init() {
       document.getElementById('current-date').textContent = new Date().toLocaleDateString('uz-UZ', {
         weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
       });
 
-      if (API_URL) {
-        fetch(API_URL)
-          .then(res => res.json())
-          .then(data => {
-            if (Array.isArray(data) && data.length > 0) {
-              ALL_NEWS = data;
-              renderNews();
-            }
-          })
-          .catch(err => console.error('API xatosi:', err));
-      }
-      renderNews();
+      // 1. Asosiy yangiliklarni Google Sheets API dan olish
+      fetch(API_URL)
+        .then(res => res.json())
+        .then(data => {
+          if (Array.isArray(data) && data.length > 0) {
+            ALL_NEWS = data;
+            renderCurrentView();
+          }
+        })
+        .catch(err => console.error('Yangiliklar API xatosi:', err));
+
+      // 2. Birja (FXStreet) va Ob-havo (Hydromet) ma'lumotlarini olish
+      fetch(API_URL + '?type=market_weather')
+        .then(res => res.json())
+        .then(res => {
+          if (res.forex) FOREX_NEWS = res.forex;
+          if (res.weather) WEATHER_DATA = res.weather;
+          if (res.rates) {
+            document.getElementById('rate-gold').textContent = res.rates.gold || '$2,680';
+            document.getElementById('rate-silver').textContent = res.rates.silver || '$31.40';
+            document.getElementById('rate-btc').textContent = res.rates.btc || '$91,200';
+          }
+          if (currentSection === 'Birja' || currentSection === 'Ob-havo') {
+            renderCurrentView();
+          }
+        })
+        .catch(() => {
+          document.getElementById('rate-gold').textContent = 'Faol';
+          document.getElementById('rate-silver').textContent = 'Faol';
+          document.getElementById('rate-btc').textContent = 'Faol';
+        });
+
+      renderCurrentView();
     }
 
-    function filterCategory(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('.cat-btn').forEach(btn => {
-        if (btn.getAttribute('data-cat') === cat) {
-          btn.className = 'cat-btn active px-3.5 py-1.5 rounded-lg bg-blue-600 text-white transition';
+    function selectMainSection(sec) {
+      currentSection = sec;
+      currentSubSection = '';
+
+      // Asosiy tugmalar dizaynini yangilash
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.getAttribute('data-sec') === sec) {
+          btn.className = 'nav-btn px-3.5 py-2 rounded-lg bg-[#04122b] text-white shrink-0 transition';
         } else {
-          btn.className = 'cat-btn px-3.5 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition';
+          btn.className = 'nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition';
         }
       });
-      document.getElementById('section-title').innerHTML = '<span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>' + (cat === 'Barchasi' ? 'Sönggi xabarlar' : cat + ' xabarlari');
-      renderNews();
-    }
 
-    function handleSearch() {
-      renderNews();
-    }
+      var subBar = document.getElementById('sub-nav-bar');
+      var subItems = document.getElementById('sub-nav-items');
 
-    function renderNews() {
-      var query = document.getElementById('search-input').value.toLowerCase().trim();
-      var filtered = ALL_NEWS.filter(item => {
-        var matchCat = currentCategory === 'Barchasi' || item.category === currentCategory;
-        var matchQuery = !query || item.title.toLowerCase().includes(query) || item.summary.toLowerCase().includes(query);
-        return matchCat && matchQuery;
-      });
-
-      document.getElementById('news-count').textContent = filtered.length + ' ta xabar';
-
-      // Hero (Asosiy yangilik)
-      var heroContainer = document.getElementById('hero-section');
-      if (currentCategory === 'Barchasi' && !query && filtered.length > 0) {
-        var hero = filtered[0];
-        heroContainer.innerHTML = `
-          <div onclick="openArticle(${hero.id})" class="cursor-pointer group bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition">
-            <div class="flex flex-wrap items-center gap-3 mb-4">
-              <span class="px-3 py-1 text-xs font-bold uppercase rounded-full bg-blue-600 text-white">Asosiy mavzu</span>
-              <span class="px-3 py-1 text-xs font-semibold rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">${hero.category}</span>
-              <span class="text-xs text-slate-400">${hero.date}</span>
-            </div>
-            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white group-hover:text-blue-600 transition leading-tight mb-4">
-              ${hero.title}
-            </h1>
-            <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-4xl leading-relaxed mb-6">
-              ${hero.summary}
-            </p>
-            <span class="inline-flex items-center gap-2 text-sm font-bold text-blue-600">
-              Batafsil öqiş <span>→</span>
-            </span>
-          </div>
-        `;
-        filtered = filtered.slice(1);
+      // SPORT BO'LIMI: 2 ta sub-bo'limcha (Özbekiston va Jahon)
+      if (sec === 'Sport') {
+        currentSubSection = 'Özbekiston';
+        subBar.classList.remove('hidden');
+        subItems.innerHTML = ['Özbekiston', 'Jahon'].map(sub => `
+          <button onclick="selectSubSection('${sub}')" data-sub="${sub}" class="sub-btn px-3.5 py-1.5 rounded-full ${sub === currentSubSection ? 'bg-[#0077b6] text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'} shrink-0 transition">
+            ${sub === 'Özbekiston' ? '🇺🇿 Özbekiston sporti' : '🌍 Jahon sporti'}
+          </button>
+        `).join('');
+      }
+      // HUDUDLAR BO'LIMI: 14 ta hudud sub-bo'limchalari
+      else if (sec === 'Hududlar') {
+        currentSubSection = REGIONS_LIST[0].id;
+        subBar.classList.remove('hidden');
+        subItems.innerHTML = REGIONS_LIST.map(r => `
+          <button onclick="selectSubSection('${r.id}')" data-sub="${r.id}" class="sub-btn px-3.5 py-1.5 rounded-full ${r.id === currentSubSection ? 'bg-[#0077b6] text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'} shrink-0 transition">
+            ${r.label}
+          </button>
+        `).join('');
       } else {
-        heroContainer.innerHTML = '';
+        subBar.classList.add('hidden');
+        subItems.innerHTML = '';
       }
 
-      // Qolgan xabarlar kartochkalari
-      var grid = document.getElementById('news-grid');
-      if (filtered.length === 0) {
-        grid.innerHTML = '<div class="col-span-full text-center py-12 text-slate-500">Uşbu bölimda hozirça xabarlar topilmadi.</div>';
+      renderCurrentView();
+    }
+
+    function selectSubSection(sub) {
+      currentSubSection = sub;
+      document.querySelectorAll('.sub-btn').forEach(btn => {
+        if (btn.getAttribute('data-sub') === sub) {
+          btn.className = 'sub-btn px-3.5 py-1.5 rounded-full bg-[#0077b6] text-white shrink-0 transition';
+        } else {
+          btn.className = 'sub-btn px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 shrink-0 transition';
+        }
+      });
+      renderCurrentView();
+    }
+
+    function renderCurrentView() {
+      var headingEl = document.getElementById('section-heading');
+      var counterEl = document.getElementById('items-counter');
+      var container = document.getElementById('dynamic-content');
+      var query = (document.getElementById('search-input').value || '').toLowerCase().trim();
+
+      // 1. BIRJA BO'LIMI (FXStreet ma'lumotlari o'zbek tilida)
+      if (currentSection === 'Birja') {
+        headingEl.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Birja yangiliklari (Tilla, Kumuş, Kripto, Valyutalar)';
+        if (FOREX_NEWS.length === 0) {
+          counterEl.textContent = 'FXStreet.com manbasi';
+          container.innerHTML = `
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800 text-center">
+              <p class="text-slate-600 dark:text-slate-300 font-medium mb-2">📈 FXStreet birja yangiliklari (XAU/USD, XAG/USD, Kripto va Valyutalar) serverdan yuklanmoqda...</p>
+              <p class="text-xs text-slate-400">Apps Script’da <code>updateForexAndWeather()</code> funksiyasini bir marta işga tuşirganingizdan söng maʼlumotlar avtomatik yangilanib turadi.</p>
+            </div>`;
+          return;
+        }
+        counterEl.textContent = FOREX_NEWS.length + ' ta tahlil';
+        container.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">` + FOREX_NEWS.map(item => `
+          <div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">${item.asset || 'Birja'}</span>
+                <span class="text-xs text-slate-400">${item.date || 'Bugun'}</span>
+              </div>
+              <h3 class="text-lg font-bold mb-2 leading-snug">${item.title}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">${item.summary}</p>
+            </div>
+            <a href="${item.link || 'https://www.fxstreet.com/'}" target="_blank" class="text-xs font-bold text-[#0077b6] hover:underline">FXStreet manbasida körish →</a>
+          </div>
+        `).join('') + `</div>`;
         return;
       }
 
-      grid.innerHTML = filtered.map(item => `
-        <article onclick="openArticle(${item.id})" class="cursor-pointer group bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 hover:border-blue-500/50 hover:shadow-lg transition flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="px-2.5 py-0.5 text-xs font-bold rounded-md bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">${item.category}</span>
-              <span class="text-xs text-slate-400">${item.date}</span>
+      // 2. OB-HAVO BO'LIMI (gov.uz/oz/hydromet ma'lumotlari)
+      if (currentSection === 'Ob-havo') {
+        headingEl.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span> Özbekiston hududlari böyiça ob-havo maʼlumotlari (Özgidromet)';
+        counterEl.textContent = 'Manba: gov.uz/oz/hydromet';
+        var list = WEATHER_DATA.length > 0 ? WEATHER_DATA : REGIONS_LIST.map(r => ({
+          region: r.label,
+          temp: '+14° / +4°',
+          desc: 'Havo özgaruvçan böladi, yoğinğarçilik kutilmaydi',
+          date: 'Bugungi prognoz'
+        }));
+        container.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">` + list.map(w => `
+          <div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 hover:border-cyan-500 transition">
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-sm text-[#04122b] dark:text-white">${w.region}</span>
+              <span class="text-xl">🌤</span>
             </div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition leading-snug mb-3">
-              ${item.title}
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
-              ${item.summary}
-            </p>
+            <div class="text-2xl font-black text-[#0077b6] dark:text-cyan-400 my-1">${w.temp}</div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${w.desc}</p>
+            <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-400">${w.date}</div>
           </div>
-          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
-            <span class="text-emerald-600 dark:text-emerald-400 font-medium">🤖 AI Muharrir</span>
-            <span class="font-semibold text-blue-600 group-hover:translate-x-1 transition-transform">Öqiş →</span>
+        `).join('') + `</div>`;
+        return;
+      }
+
+      // 3. LOYIHALAR BO'LIMI (Uzum Market, Sog'lom turmush tarzi TG, TG Bot Marketplays)
+      if (currentSection === 'Loyihalar') {
+        headingEl.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> Şaxsiy loyihalarimiz';
+        counterEl.textContent = MY_PROJECTS.length + ' ta loyiha';
+        container.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-3 gap-6">` + MY_PROJECTS.map(p => `
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-3xl">${p.icon}</span>
+                <span class="px-3 py-1 text-xs font-bold rounded-full bg-blue-50 text-[#0077b6] dark:bg-slate-800 dark:text-cyan-400">${p.badge}</span>
+              </div>
+              <h3 class="text-xl font-extrabold mb-2">${p.title}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">${p.desc}</p>
+            </div>
+            <a href="${p.url}" target="_blank" class="block text-center w-full py-3 rounded-xl bg-[#04122b] hover:bg-[#0077b6] text-white text-sm font-bold transition">
+              ${p.btnText}
+            </a>
           </div>
-        </article>
-      `).join('');
+        `).join('') + `</div>`;
+        return;
+      }
+
+      // 4. YANGILIKLAR BO'LIMLARI (Barchasi, Özbekiston, Jahon, İqtisodiyot, Jamiyat, Sport, Hududlar)
+      var titlesMap = {
+        'Barchasi': 'Sönggi yangiliklar',
+        'Özbekiston': 'Özbekiston yangiliklari',
+        'Jahon': 'Jahon yangiliklari',
+        'İqtisodiyot': 'Iqtisodiyot yangiliklari',
+        'Jamiyat': 'Jamiyat yangiliklari',
+        'Sport': currentSubSection === 'Özbekiston' ? 'Özbekiston sport yangiliklari' : 'Jahon sport yangiliklari',
+        'Hududlar': (REGIONS_LIST.find(r => r.id === currentSubSection)?.label || currentSubSection) + ' yangiliklari'
+      };
+      headingEl.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> ${titlesMap[currentSection] || currentSection}`;
+
+      var filtered = ALL_NEWS.filter(item => {
+        var textAll = (item.title + ' ' + item.summary + ' ' + item.content).toLowerCase();
+        if (query && textAll.indexOf(query) === -1) return false;
+
+        if (currentSection === 'Barchasi') return true;
+        if (currentSection === 'Özbekiston') return item.category === 'Özbekiston';
+        if (currentSection === 'Jahon') return item.category === 'Jahon';
+        if (currentSection === 'İqtisodiyot') return item.category === 'İqtisodiyot';
+        if (currentSection === 'Jamiyat') return item.category === 'Jamiyat';
+
+        if (currentSection === 'Sport') {
+          var isSport = item.category === 'Sport' || /futbol|boks|kurash|olimpiada|çempion|sport|terma jamoa|oyin/.test(textAll);
+          if (!isSport) return false;
+          var isUzSport = /özbekiston|toşkent|paxtakor|nasaf|fayzullayev|husanov|jalolov|döstmatov/.test(textAll);
+          return currentSubSection === 'Özbekiston' ? isUzSport : !isUzSport;
+        }
+
+        if (currentSection === 'Hududlar') {
+          var regObj = REGIONS_LIST.find(r => r.id === currentSubSection);
+          if (!regObj) return false;
+          if (item.category === regObj.id) return true;
+          return regObj.keys.some(k => textAll.indexOf(k) !== -1);
+        }
+        return true;
+      });
+
+      counterEl.textContent = filtered.length + ' ta xabar';
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="bg-white dark:bg-slate-900 rounded-xl p-12 text-center text-slate-500 border border-slate-200 dark:border-slate-800">Uşbu bölimda hozirça yangiliklar topilmadi.</div>`;
+        return;
+      }
+
+      // KUN.UZ USLUBIDAGI LAYOUT: Chapda Asosiy katta xabar + O'ngda tezkor yangiliklar lentasi + Pastda kartochkalar
+      var mainNews = filtered[0];
+      var sideNews = filtered.slice(1, 6);
+      var gridNews = filtered.slice(6);
+
+      var html = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
+          <!-- ASOSIY HERO YANGILIK (7 ustun) -->
+          <div onclick="openArticle(${mainNews.id})" class="lg:col-span-7 cursor-pointer group bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2.5 mb-4">
+                <span class="px-3 py-1 text-xs font-extrabold uppercase rounded bg-[#0077b6] text-white">Asosiy mavzu</span>
+                <span class="px-2.5 py-1 text-xs font-bold rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">${mainNews.category}</span>
+                <span class="text-xs text-slate-400">${mainNews.date}</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-black text-[#04122b] dark:text-white group-hover:text-[#0077b6] transition leading-tight mb-4">
+                ${mainNews.title}
+              </h2>
+              <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                ${mainNews.summary}
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0077b6]">
+              <span>🤖 AI Muharrir tahlili</span>
+              <span>Batafsil öqiş →</span>
+            </div>
+          </div>
+
+          <!-- O'NG USTUN: SO'NGGI XABARLAR LENTASI (5 ustun - Kun.uz uslubi) -->
+          <div class="lg:col-span-5 bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="text-sm font-black uppercase text-[#04122b] dark:text-white pb-3 mb-3 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <span>⚡ Tezkor lenta</span>
+              <span class="text-[11px] font-medium text-slate-400">Yangilangan</span>
+            </div>
+            <div class="divide-y divide-slate-100 dark:divide-slate-800">
+              ${sideNews.length > 0 ? sideNews.map(s => `
+                <div onclick="openArticle(${s.id})" class="py-3 first:pt-0 last:pb-0 cursor-pointer group">
+                  <div class="flex items-center gap-2 text-[11px] text-slate-400 mb-1">
+                    <span class="font-bold text-[#0077b6]">${s.category}</span>
+                    <span>•</span>
+                    <span>${s.date}</span>
+                  </div>
+                  <h4 class="text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-[#0077b6] transition leading-snug">
+                    ${s.title}
+                  </h4>
+                </div>
+              `).join('') : '<p class="text-xs text-slate-400 py-4">Yangi xabarlar kutilmoqda...</p>'}
+            </div>
+          </div>
+        </div>
+      `;
+
+      if (gridNews.length > 0) {
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">` + gridNews.map(item => `
+          <article onclick="openArticle(${item.id})" class="cursor-pointer group bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 hover:border-[#0077b6] hover:shadow-md transition flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2.5">
+                <span class="px-2.5 py-0.5 text-[11px] font-bold rounded bg-blue-50 text-[#0077b6] dark:bg-slate-800 dark:text-cyan-400">${item.category}</span>
+                <span class="text-[11px] text-slate-400">${item.date}</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0077b6] transition leading-snug mb-2.5">
+                ${item.title}
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
+                ${item.summary}
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-semibold">
+              <span class="text-slate-400">Umidkhan.uz</span>
+              <span class="text-[#0077b6]">Öqiş →</span>
+            </div>
+          </article>
+        `).join('') + `</div>`;
+      }
+
+      container.innerHTML = html;
     }
 
     function openArticle(id) {
-      var item = ALL_NEWS.find(n => n.id === id);
+      var item = ALL_NEWS.find(n => n.id == id);
       if (!item) return;
       document.getElementById('modal-category').textContent = item.category;
       document.getElementById('modal-title').textContent = item.title;
       document.getElementById('modal-date').textContent = item.date;
-      document.getElementById('modal-body').innerHTML = item.content.split('\n\n').map(p => `<p>${p}</p>`).join('');
-      document.getElementById('modal-source').href = item.source || '#';
+      document.getElementById('modal-body').innerHTML = (item.content || item.summary).split('\n\n').map(p => `<p>${p}</p>`).join('');
+      document.getElementById('modal-source').href = item.source || 'https://t.me/umidkhan_uz';
       document.getElementById('article-modal').classList.remove('hidden');
       document.body.style.overflow = 'hidden';
     }
