@@ -845,13 +845,18 @@
       }
     }
 
-    // === RASM YUQORI O'NG BURCHAGIDA UMIDKHAN.UZ LOGOSI BILAN KO'RSATISH ===
-    function renderWatermarkedImage(imgUrl, heightClass, showCount) {
-      if (!imgUrl) return '';
+    // === RASM YOKI VIDEO YUQORI O'NG BURCHAGIDA UMIDKHAN.UZ LOGOSI BILAN KO'RSATISH ===
+    function renderWatermarkedImage(mediaUrl, heightClass, showCount) {
+      if (!mediaUrl) return '';
+      var isVideo = /\.mp4(\?|$)/i.test(mediaUrl) || (mediaUrl.indexOf('telesco.pe/file') !== -1 && mediaUrl.indexOf('.mp4') !== -1);
+      var mediaTag = isVideo
+        ? `<video src="${mediaUrl}" controls playsinline preload="metadata" class="w-full h-full object-cover bg-black"></video>`
+        : `<img src="${mediaUrl}" alt="Umidkhan.uz" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-300" onerror="this.parentElement.style.display='none'" />`;
+
       return `
-        <div class="relative overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 ${heightClass || 'w-full'}">
-          <img src="${imgUrl}" alt="Umidkhan.uz" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-300" onerror="this.parentElement.style.display='none'" />
-          <div class="absolute top-2.5 right-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#04122b]/85 backdrop-blur-sm border border-cyan-400/30 shadow-md pointer-events-none">
+        <div class="relative overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 ${heightClass || 'w-full'}" ${isVideo ? 'onclick="event.stopPropagation()"' : ''}>
+          ${mediaTag}
+          <div class="absolute top-2.5 right-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#04122b]/85 backdrop-blur-sm border border-cyan-400/30 shadow-md pointer-events-none z-10">
             <svg width="14" height="14" viewBox="0 0 100 100" fill="none">
               <path d="M22 14H40V58C40 65 44 69 50 69C56 69 60 65 60 58V14H78V58C78 75 66 86 50 86C34 86 22 75 22 58V14Z" fill="#48cae4"/>
             </svg>
