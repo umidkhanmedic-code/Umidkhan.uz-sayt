@@ -24,28 +24,42 @@
     body { font-family: 'Inter', sans-serif; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes cbuMarquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .cbu-ticker-track {
+      display: inline-flex;
+      white-space: nowrap;
+      animation: cbuMarquee 45s linear infinite;
+    }
+    .cbu-ticker-wrap:hover .cbu-ticker-track {
+      animation-play-state: paused;
+    }
   </style>
 </head>
 <body class="bg-[#f4f6f9] dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
 
-  <!-- YUQORI AXBOROT PANELI (Sana, Valyuta, Tillar, Dark Mode) -->
+  <!-- YUQORI AXBOROT PANELI (Sana, CBU Valyuta kurslari, Tillar, Dark Mode) -->
   <div class="bg-[#04122b] text-slate-300 text-xs border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center gap-3 sm:gap-4">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-2 sm:gap-3">
+      <div class="flex items-center gap-3 shrink-0">
         <span id="current-date" class="font-medium text-cyan-300"></span>
         <span class="hidden sm:inline text-slate-600">|</span>
-        <span class="hidden sm:inline-flex items-center gap-1.5 text-emerald-400 font-medium">
+        <span class="hidden md:inline-flex items-center gap-1.5 text-emerald-400 font-medium">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span id="ai-badge-text">AI Muharrir 24/7 faol</span>
         </span>
       </div>
-      <div class="flex items-center gap-2 sm:gap-3">
-        <div id="top-rates" class="hidden lg:flex items-center gap-3 text-[11px] font-semibold">
-          <span class="text-amber-400">🥇 XAU/USD: <b id="rate-gold">Yuklanmoqda...</b></span>
-          <span class="text-slate-300">🥈 XAG/USD: <b id="rate-silver">...</b></span>
-          <span class="text-cyan-400">₿ BTC: <b id="rate-btc">...</b></span>
-        </div>
 
+      <!-- CBU.UZ VALYUTA KURSLARI (O'NGDAN CHAPGA YURUVCHI MATN) -->
+      <div class="cbu-ticker-wrap flex-1 min-w-0 overflow-hidden mx-1 sm:mx-2 bg-slate-900/70 border border-slate-800/90 rounded-lg py-1 px-2">
+        <div id="cbu-ticker-track" class="cbu-ticker-track text-[11px] font-semibold text-slate-200">
+          <span class="px-4 text-cyan-300">Markaziy bank valyuta kurslari yuklanmoqda...</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 shrink-0">
         <!-- TILLAR REJIMI (O'zbekcha lotin, O'zbekcha kirill, Qoraqalpoqcha, Ruscha, Inglizcha) -->
         <div class="flex items-center bg-slate-900/90 border border-slate-700 rounded-lg p-0.5 text-[11px] font-bold">
           <button onclick="setLanguage('uz')" data-lang="uz" class="lang-btn px-2 py-1 rounded bg-[#0077b6] text-white transition">UZ</button>
@@ -200,6 +214,8 @@
       uz: {
         days: ['Yakşanba', 'Duşanba', 'Seşanba', 'Çorşanba', 'Payşanba', 'Juma', 'Şanba'],
         aiActive: 'AI Muharrir 24/7 faol',
+        cbuTitle: 'MB kurslari:',
+        som: 'söm',
         theme: '🌓 Mavzu',
         subtitle: 'Tezkor axborot-tahliliy portal',
         searchPlaceholder: 'Sayt böyiça qidiriş...',
@@ -268,6 +284,8 @@
       uz_cyrl: {
         days: ['Якшанба', 'Душанба', 'Сешанба', 'Чоршанба', 'Пайшанба', 'Жума', 'Шанба'],
         aiActive: 'AI Муҳаррир 24/7 фаол',
+        cbuTitle: 'МБ курслари:',
+        som: 'сўм',
         theme: '🌓 Мавзу',
         subtitle: 'Тезкор ахборот-таҳлилий портал',
         searchPlaceholder: 'Сайт бўйича қидириш...',
@@ -336,6 +354,8 @@
       kaa: {
         days: ['Ekshembi', 'Dúyshembi', 'Siyshembi', 'Sárshembi', 'Piyshembi', 'Juma', 'Shembi'],
         aiActive: 'AI Redaktor 24/7 belsendi',
+        cbuTitle: 'OB kursları:',
+        som: 'som',
         theme: '🌓 Tema',
         subtitle: 'Jedel málimleme-tallaw portalı',
         searchPlaceholder: 'Sayt boyınsha izlew...',
@@ -404,6 +424,8 @@
       ru: {
         days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
         aiActive: 'ИИ-редактор активен 24/7',
+        cbuTitle: 'Курсы ЦБ:',
+        som: 'сум',
         theme: '🌓 Тема',
         subtitle: 'Оперативный информационно-аналитический портал',
         searchPlaceholder: 'Поиск по сайту...',
@@ -472,6 +494,8 @@
       en: {
         days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         aiActive: 'AI Editor 24/7 Live',
+        cbuTitle: 'CBU Rates:',
+        som: 'UZS',
         theme: '🌓 Theme',
         subtitle: 'Breaking News & Analytical Portal',
         searchPlaceholder: 'Search across the site...',
@@ -564,7 +588,7 @@
         badge: 'E-Commerce',
         icon: '🛍',
         desc: 'UMIDKHAN ONLINE BOZOR - Sifatli va hamyonbop mahsulotlar, tezkor yetkazib beriş hamda doimiy çegirmalar jamlangan şaxsiy onlayn dökonimiz.',
-        url: 'https://uzum.uz/uz/shop/umidkhanonlinebozor', // <-- Uzum Market do'koningiz aniq havolasini shu yerga qo'ying
+        url: 'https://uzum.uz/uz/shop/umidkhanonlinebozor',
         btnText: 'Dökonga ötiş →',
         uz_cyrl: { title: 'Uzum Market Расмий Дўконимиз', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR - Сифатли ва ҳамёнбоп маҳсулотлар, тезкор етказиб бериш ҳамда доимий чегирмалар жамланган шахсий онлайн дўконимиз.', btnText: 'Дўконга ўтиш →' },
         kaa: { title: 'Uzum Market Rásmiy Dúkanımız', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR - Sapalı hám qolaylı bahadaǵı ónimler, jedel jetkerip beriw hám turaqlı shegirmeler jıynalǵan jeke onlayn dúkanımız.', btnText: 'Dúkanǵa ótiw →' },
@@ -576,7 +600,7 @@
         badge: 'Tibbiyot va Salomatlik',
         icon: '🌿',
         desc: 'Kundalik foydali tibbiy tavsiyalar, töğri ovqatlanish, kasalliklarning oldini oliş va soğlom hayot sirlari haqida ishonçli maʼlumotlar.',
-        url: 'https://t.me/soglomturmushtarzi_rasmiy', // <-- Sog'lom turmush tarzi TG kanalingiz havolasini shu yerga qo'ying
+        url: 'https://t.me/soglomturmushtarzi_rasmiy',
         btnText: 'Kanalga obuna böliş →',
         uz_cyrl: { title: 'Соғлом Турмуш Тарзи — Telegram Канал', badge: 'Тиббиёт ва Саломатлик', desc: 'Кундалик фойдали тиббий тавсиялар, тўғри овқатланиш, касалликларнинг олдини олиш ва соғлом ҳаёт сирлари ҳақида ишончли маълумотлар.', btnText: 'Каналга обуна бўлиш →' },
         kaa: { title: 'Salamat Turmıs Tárizı — Telegram Kanal', badge: 'Medicina hám Salawatlıq', desc: 'Kúndelikli paydalı medicinalıq másláhátler, durıs awqatlanıw, keselliklerdiń aldın alıw hám salamat ómir sırları haqqında isenimli maǵlıwmatlar.', btnText: 'Kanalǵa jazılıw →' },
@@ -588,7 +612,7 @@
         badge: 'IT va Avtomatlaştiş',
         icon: '🤖',
         desc: 'UMIDKHAN ONLINE BOZOR - Sifatli va hamyonbop mahsulotlar, tezkor yetkazib beriş hamda doimiy çegirmalar jamlangan şaxsiy onlayn dökonimiz.',
-        url: 'https://t.me/Umidkhan_online_bozorBot', // <-- TG Bot marketplays havolasini shu yerga qo'ying
+        url: 'https://t.me/Umidkhan_online_bozorBot',
         btnText: 'Marketplaysni oçiş →',
         uz_cyrl: { title: 'UMIDKHAN ONLINE BOZOR - Бот Маркетплейс', badge: 'IT ва Автоматлаштиш', desc: 'UMIDKHAN ONLINE BOZOR - Сифатли ва ҳамёнбоп маҳсулотлар, тезкор етказиб бериш ҳамда доимий чегирмалар жамланган шахсий онлайн дўконимиз.', btnText: 'Маркетплейсни очиш →' },
         kaa: { title: 'UMIDKHAN ONLINE BOZOR - Bot Marketpleys', badge: 'IT hám Avtomatlastırıw', desc: 'UMIDKHAN ONLINE BOZOR - Sapalı hám qolaylı bahadaǵı ónimler, jedel jetkerip beriw hám turaqlı shegirmeler jıynalǵan jeke onlayn dúkanımız.', btnText: 'Marketpleysti ashıw →' },
@@ -598,20 +622,70 @@
     ];
 
     var ALL_NEWS = [];
-    var FOREX_NEWS = [];
-    var WEATHER_DATA = [];
+    var CBU_RATES_LIST = [];
 
     var currentLang = localStorage.getItem('umidkhan_lang') || 'uz';
     var currentSection = 'Barchasi';
     var currentSubSection = '';
     var TRANSLATION_CACHE = {};
 
+    // === CBU.UZ VALYUTA KURSLARINI YUKLASH VA YURUVCHI MATNGA CHIQARISH ===
+    function loadCbuRates() {
+      fetch('https://cbu.uz/uz/arkhiv-kursov-valyut/json/')
+        .then(res => res.json())
+        .then(data => {
+          if (Array.isArray(data) && data.length > 0) {
+            var priority = ['USD', 'EUR', 'RUB', 'GBP', 'CNY', 'JPY', 'CHF', 'KRW', 'KZT', 'TRY', 'AED', 'SAR'];
+            var sorted = [];
+            priority.forEach(code => {
+              var found = data.find(x => x.Ccy === code);
+              if (found) sorted.push(found);
+            });
+            data.forEach(item => {
+              if (priority.indexOf(item.Ccy) === -1 && sorted.length < 20) sorted.push(item);
+            });
+            CBU_RATES_LIST = sorted;
+            renderCbuTicker();
+          }
+        })
+        .catch(() => {
+          document.getElementById('cbu-ticker-track').innerHTML =
+            '<a href="https://cbu.uz/uz/" target="_blank" class="px-4 text-cyan-300 hover:underline">cbu.uz — O‘zbekiston Respublikasi Markaziy banki rasmiy valyuta kurslari</a>';
+        });
+    }
+
+    function renderCbuTicker() {
+      var track = document.getElementById('cbu-ticker-track');
+      if (!track || CBU_RATES_LIST.length === 0) return;
+      var t = I18N[currentLang] || I18N.uz;
+      var flags = {
+        USD: '🇺🇸', EUR: '🇪🇺', RUB: '🇷🇺', GBP: '🇬🇧', CNY: '🇨🇳', JPY: '🇯🇵',
+        CHF: '🇨🇭', KRW: '🇰🇷', KZT: '🇰🇿', TRY: '🇹🇷', AED: '🇦🇪', SAR: '🇸🇦'
+      };
+      var itemsHtml = CBU_RATES_LIST.map(r => {
+        var diff = parseFloat(r.Diff || '0');
+        var diffColor = diff > 0 ? 'text-emerald-400' : (diff < 0 ? 'text-rose-400' : 'text-slate-400');
+        var arrow = diff > 0 ? '▲' : (diff < 0 ? '▼' : '•');
+        var diffStr = diff !== 0 ? ` <span class="${diffColor}">(${arrow} ${Math.abs(diff).toFixed(2)})</span>` : '';
+        var nominal = (r.Nominal && r.Nominal !== '1') ? `${r.Nominal} ` : '';
+        var flag = flags[r.Ccy] || '💱';
+        return `<span class="inline-flex items-center gap-1 px-3 border-r border-slate-800">
+          <span>${flag}</span>
+          <span class="text-cyan-300 font-bold">${nominal}${r.Ccy}:</span>
+          <span class="text-white font-extrabold">${r.Rate} ${t.som}</span>
+          ${diffStr}
+        </span>`;
+      }).join('');
+
+      var prefix = `<a href="https://cbu.uz/uz/" target="_blank" class="inline-flex items-center gap-1 px-3 text-amber-400 font-extrabold hover:underline">🏦 ${t.cbuTitle}</a>`;
+      track.innerHTML = prefix + itemsHtml + prefix + itemsHtml;
+    }
+
     // === O'ZBEK LOTIN ALIFBOSIDAN KIRILLCHAGA 100% IMLO QOIDALARI ASOSIDA O'GIRISH ===
     function latinToUzbekCyrillic(text) {
       if (!text) return '';
       var s = String(text);
 
-      // 1. Yangi lotin harflarini (ö, ğ, ş, ç) va eski ko'rinishlarini birlashtiramiz
       s = s
         .replace(/Ö/g, 'Ў').replace(/ö/g, 'ў')
         .replace(/Ğ/g, 'Ғ').replace(/ğ/g, 'ғ')
@@ -620,7 +694,6 @@
         .replace(/[oO][ʻ'‘’`ʼ]/g, function(m) { return m[0] === 'O' ? 'Ў' : 'ў'; })
         .replace(/[gG][ʻ'‘’`ʼ]/g, function(m) { return m[0] === 'G' ? 'Ғ' : 'ғ'; });
 
-      // 2. Qo'sh harflar (Sh, Ch, Yo, Yu, Ya, Ye, Ts)
       s = s
         .replace(/SH/g, 'Ш').replace(/Sh/g, 'Ш').replace(/sh/g, 'ш')
         .replace(/CH/g, 'Ч').replace(/Ch/g, 'Ч').replace(/ch/g, 'ч')
@@ -630,13 +703,9 @@
         .replace(/YE/g, 'Е').replace(/Ye/g, 'Е').replace(/ye/g, 'е')
         .replace(/TS/g, 'Ц').replace(/Ts/g, 'Ц').replace(/ts/g, 'ц');
 
-      // 3. So'z boshidagi va unlidan keyingi E/e harfini Э/э ga o'tkazish (e'lon -> эълон, erkin -> эркин)
       s = s.replace(/(^|[^A-Za-zЎҚҒҲўқғҳ])E/g, '$1Э').replace(/(^|[^A-Za-zЎҚҒҲўқғҳ])e/g, '$1э');
-
-      // 4. Tutuq belgisini ъ ga o'tkazish (unli yoki undoshdan keyin)
       s = s.replace(/([A-Za-zЎҚҒҲўқғҳ])[ʼʻ'‘’`]/g, '$1ъ');
 
-      // 5. Qolgan barcha yakka harflarni kirillchaga o'girish
       var map = {
         'A':'А','a':'а','B':'Б','b':'б','D':'Д','d':'д','E':'Е','e':'е',
         'F':'Ф','f':'ф','G':'Г','g':'г','H':'Ҳ','h':'ҳ','I':'И','i':'и',
@@ -654,7 +723,6 @@
       return out;
     }
 
-    // === YANGI O'ZBEK ALIFBOSIDAN ODDIY O'ZBEKCHAGA TARJIMA UCHUN TAYYORLASH ===
     function normalizeForTranslator(text) {
       if (!text) return '';
       return String(text)
@@ -668,7 +736,6 @@
         .replace(/ç/g, 'ch');
     }
 
-    // === O'ZBEKCHADAN QORAQALPOQCHAGA MOSLASHTIRISH ===
     function uzbekToKarakalpak(text) {
       if (!text) return '';
       return normalizeForTranslator(text)
@@ -696,7 +763,6 @@
         .replace(/\bo'zbekiston/g, 'ózbekstan');
     }
 
-    // === REAL-VAQT TARJIMA FUNKSIYASI (RU va EN uchun) ===
     async function translateText(text, targetLang) {
       if (!text || targetLang === 'uz') return text;
       if (targetLang === 'uz_cyrl') return latinToUzbekCyrillic(text);
@@ -786,6 +852,7 @@
       });
 
       applyStaticTranslations();
+      renderCbuTicker();
       updateSubNavLabels();
       renderCurrentView();
     }
@@ -884,8 +951,9 @@
 
     function init() {
       setLanguage(currentLang);
+      loadCbuRates();
 
-      // 1. Asosiy yangiliklarni Google Sheets API dan olish
+      // Asosiy yangiliklarni Google Sheets API dan olish
       fetch(API_URL)
         .then(res => res.json())
         .then(data => {
@@ -898,18 +966,12 @@
           }
         })
         .catch(err => console.error('Yangiliklar API xatosi:', err));
-
-      // 2. Yuqori paneldagi Birja ko'rsatkichlarini yangilash
-      document.getElementById('rate-gold').textContent = 'FXStreet';
-      document.getElementById('rate-silver').textContent = 'Faol';
-      document.getElementById('rate-btc').textContent = '24/7';
     }
 
     function selectMainSection(sec) {
       currentSection = sec;
       currentSubSection = '';
 
-      // Asosiy tugmalar dizaynini yangilash
       document.querySelectorAll('.nav-btn').forEach(btn => {
         if (btn.getAttribute('data-sec') === sec) {
           btn.className = 'nav-btn px-3.5 py-2 rounded-lg bg-[#04122b] text-white shrink-0 transition';
@@ -921,13 +983,10 @@
       var subBar = document.getElementById('sub-nav-bar');
       var subItems = document.getElementById('sub-nav-items');
 
-      // SPORT BO'LIMI: 2 ta sub-bo'limcha (Özbekiston va Jahon)
       if (sec === 'Sport') {
         currentSubSection = 'Özbekiston';
         updateSubNavLabels();
-      }
-      // HUDUDLAR BO'LIMI: 14 ta hudud sub-bo'limchalari
-      else if (sec === 'Hududlar') {
+      } else if (sec === 'Hududlar') {
         currentSubSection = REGIONS_LIST[0].id;
         updateSubNavLabels();
       } else {
@@ -977,7 +1036,7 @@
       var container = document.getElementById('dynamic-content');
       var query = (document.getElementById('search-input').value || '').toLowerCase().trim();
 
-      // 1. BIRJA BO'LIMI (TG kanalga chiqqan Birja yangiliklari)
+      // 1. BIRJA BO'LIMI
       if (currentSection === 'Birja') {
         headingEl.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> ' + t.headings['Birja'];
         var birjaNews = ALL_NEWS.filter(n => n.category === 'Birja');
@@ -1011,7 +1070,7 @@
         return;
       }
 
-      // 2. OB-HAVO BO'LIMI (TG kanalga chiqqan Ob-havo ma'lumotlari)
+      // 2. OB-HAVO BO'LIMI
       if (currentSection === 'Ob-havo') {
         headingEl.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span> ' + t.headings['Ob-havo'];
         var weatherNews = ALL_NEWS.filter(n => n.category === 'Ob-havo');
@@ -1045,7 +1104,7 @@
         return;
       }
 
-      // 3. LOYIHALAR BO'LIMI (Uzum Market, Sog'lom turmush tarzi TG, TG Bot Marketplays)
+      // 3. LOYIHALAR BO'LIMI
       if (currentSection === 'Loyihalar') {
         headingEl.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> ' + t.headings['Loyihalar'];
         counterEl.textContent = MY_PROJECTS.length + t.countProj;
@@ -1070,7 +1129,7 @@
         return;
       }
 
-      // 4. YANGILIKLAR BO'LIMLARI (Barchasi, Özbekiston, Jahon, İqtisodiyot, Jamiyat, Sport, Hududlar)
+      // 4. YANGILIKLAR BO'LIMLARI
       var secTitle = t.headings[currentSection] || currentSection;
       if (currentSection === 'Sport') {
         secTitle = currentSubSection === 'Özbekiston' ? t.headings['SportUz'] : t.headings['SportWorld'];
@@ -1115,7 +1174,6 @@
 
       if (!skipTranslateTrigger) translateVisibleBatch(filtered);
 
-      // KUN.UZ USLUBIDAGI LAYOUT: Chapda Asosiy katta xabar + O'ngda tezkor yangiliklar lentasi + Pastda kartochkalar
       var mainNews = filtered[0];
       var sideNews = filtered.slice(1, 6);
       var gridNews = filtered.slice(6);
