@@ -46,9 +46,10 @@
           <span class="text-cyan-400">₿ BTC: <b id="rate-btc">...</b></span>
         </div>
 
-        <!-- TILLAR REJIMI (O'zbekcha, Qoraqalpoqcha, Ruscha, Inglizcha) -->
+        <!-- TILLAR REJIMI (O'zbekcha lotin, O'zbekcha kirill, Qoraqalpoqcha, Ruscha, Inglizcha) -->
         <div class="flex items-center bg-slate-900/90 border border-slate-700 rounded-lg p-0.5 text-[11px] font-bold">
           <button onclick="setLanguage('uz')" data-lang="uz" class="lang-btn px-2 py-1 rounded bg-[#0077b6] text-white transition">UZ</button>
+          <button onclick="setLanguage('uz_cyrl')" data-lang="uz_cyrl" class="lang-btn px-2 py-1 rounded text-slate-300 hover:text-white transition">ЎЗ</button>
           <button onclick="setLanguage('kaa')" data-lang="kaa" class="lang-btn px-2 py-1 rounded text-slate-300 hover:text-white transition">QQ</button>
           <button onclick="setLanguage('ru')" data-lang="ru" class="lang-btn px-2 py-1 rounded text-slate-300 hover:text-white transition">RU</button>
           <button onclick="setLanguage('en')" data-lang="en" class="lang-btn px-2 py-1 rounded text-slate-300 hover:text-white transition">EN</button>
@@ -194,7 +195,7 @@
     // === GOOGLE APPS SCRIPT API URL ===
     var API_URL = 'https://script.google.com/macros/s/AKfycbzwD_g-ETkkKWn2AQF1QzRwSyscxFa0rfaqRwTDwDYRgIBd4jkLedDJo0kOEIgmABrK2w/exec';
 
-    // === 4 TA TIL LUG'ATI (O'zbekcha, Qoraqalpoqcha, Ruscha, Inglizcha) ===
+    // === 5 TA TIL LUG'ATI (O'zbekcha lotin, O'zbekcha kirill, Qoraqalpoqcha, Ruscha, Inglizcha) ===
     var I18N = {
       uz: {
         days: ['Yakşanba', 'Duşanba', 'Seşanba', 'Çorşanba', 'Payşanba', 'Juma', 'Şanba'],
@@ -263,6 +264,74 @@
         footerProj2: 'Soğlom turmuş tarzi Telegram kanali',
         footerProj3: 'TG Bot Marketplays',
         footerCopy: '© 2026 Umidkhan.uz — Barça huquqlar himoyalangan.'
+      },
+      uz_cyrl: {
+        days: ['Якшанба', 'Душанба', 'Сешанба', 'Чоршанба', 'Пайшанба', 'Жума', 'Шанба'],
+        aiActive: 'AI Муҳаррир 24/7 фаол',
+        theme: '🌓 Мавзу',
+        subtitle: 'Тезкор ахборот-таҳлилий портал',
+        searchPlaceholder: 'Сайт бўйича қидириш...',
+        nav: {
+          'Barchasi': 'Барчаси',
+          'Özbekiston': 'Ўзбекистон',
+          'Jahon': 'Жаҳон',
+          'İqtisodiyot': 'Иқтисодиёт',
+          'Jamiyat': 'Жамият',
+          'Sport': 'Спорт',
+          'Hududlar': 'Ҳудудлар',
+          'Birja': '📈 Биржа',
+          'Ob-havo': '🌤 Об-ҳаво',
+          'Loyihalar': '🚀 Лойиҳалар'
+        },
+        cats: {
+          'Özbekiston': 'Ўзбекистон',
+          'Jahon': 'Жаҳон',
+          'İqtisodiyot': 'Иқтисодиёт',
+          'Jamiyat': 'Жамият',
+          'Texnologiya': 'Технология',
+          'Sport': 'Спорт',
+          'Birja': 'Биржа',
+          'Ob-havo': 'Об-ҳаво'
+        },
+        sportUz: '🇺🇿 Ўзбекистон спорти',
+        sportWorld: '🌍 Жаҳон спорти',
+        headings: {
+          'Barchasi': 'Сўнгги янгиликлар',
+          'Özbekiston': 'Ўзбекистон янгиликлари',
+          'Jahon': 'Жаҳон янгиликлари',
+          'İqtisodiyot': 'Иқтисодиёт янгиликлари',
+          'Jamiyat': 'Жамият янгиликлари',
+          'SportUz': 'Ўзбекистон спорт янгиликлари',
+          'SportWorld': 'Жаҳон спорт янгиликлари',
+          'Birja': 'Биржа янгиликлари (Тилла, Кумуш, Крипто, Валюталар)',
+          'Ob-havo': 'Ўзбекистон ҳудудлари бўйича об-ҳаво маълумотлари (Ўзгидромет)',
+          'Loyihalar': 'Шахсий лойиҳаларимиз',
+          'RegionSuffix': ' янгиликлари'
+        },
+        mainTopic: 'Асосий мавзу',
+        aiAnalysis: '🤖 AI Муҳаррир таҳлили',
+        readMore: 'Батафсил ўқиш →',
+        readShort: 'Ўқиш →',
+        fastFeed: '⚡ Тезкор лента',
+        updated: 'Янгиланган',
+        waitingNews: 'Янги хабарлар кутилмоқда...',
+        noNews: 'Ушбу бўлимда ҳозирча янгиликлар топилмади.',
+        noBirja: 'Биржа бўлимида ҳозирча янгиликлар кутилмоқда.',
+        noWeather: 'Об-ҳаво маълумотлари ҳозирча кутилмоқда.',
+        countNews: ' та янгилик',
+        countMsg: ' та хабар',
+        countInfo: ' та маълумот',
+        countProj: ' та лойиҳа',
+        translating: 'Ўгирилмоқда...',
+        sourceLink: '🔗 Асл манбага ўтиш →',
+        closeBtn: 'Ёпиш',
+        footerDesc: 'Ўзбекистон ва жаҳон янгиликлари, иқтисодий таҳлиллар, биржа хабарлари ҳамда об-ҳаво маълумотларини тақдим этувчи замонавий ахборот портали.',
+        footerSecTitle: 'Бўлимлар',
+        footerProjTitle: 'Шахсий лойиҳалар',
+        footerProj1: 'Uzum Market дўконимиз',
+        footerProj2: 'Соғлом турмуш тарзи Telegram канали',
+        footerProj3: 'TG Бот Маркетплейс',
+        footerCopy: '© 2026 Umidkhan.uz — Барча ҳуқуқлар ҳимояланган.'
       },
       kaa: {
         days: ['Ekshembi', 'Dúyshembi', 'Siyshembi', 'Sárshembi', 'Piyshembi', 'Juma', 'Shembi'],
@@ -472,20 +541,20 @@
 
     // === 14 TA HUDUD RO'YXATI ===
     var REGIONS_LIST = [
-      { id: 'Qoraqalpoğiston', label: 'Qoraqalpoğiston Respublikasi', labels: { uz: 'Qoraqalpoğiston Respublikasi', kaa: 'Qaraqalpaqstan Respublikası', ru: 'Республика Каракалпакстан', en: 'Republic of Karakalpakstan' }, keys: ['qoraqalpoğiston', 'nukus', 'möynoq', 'qönğirot', 'törtköl'] },
-      { id: 'Toşkent şahri', label: 'Toşkent şahar', labels: { uz: 'Toşkent şahar', kaa: 'Tashkent qalası', ru: 'Город Ташкент', en: 'Tashkent City' }, keys: ['toşkent şah', 'toşkentda', 'poytaxt', 'çilonzor', 'yunusobod', 'sergeli'] },
-      { id: 'Andijon', label: 'Andijon viloyati', labels: { uz: 'Andijon viloyati', kaa: 'Ándijan wálayatı', ru: 'Андижанская область', en: 'Andijan Region' }, keys: ['andijon', 'asaka', 'şaxrixon', 'xonobod'] },
-      { id: 'Buxoro', label: 'Buxoro viloyati', labels: { uz: 'Buxoro viloyati', kaa: 'Buxara wálayatı', ru: 'Бухарская область', en: 'Bukhara Region' }, keys: ['buxoro', 'ğijduvon', 'kogon'] },
-      { id: 'Farğona', label: 'Farğona viloyati', labels: { uz: 'Farğona viloyati', kaa: 'Ferǵana wálayatı', ru: 'Ферганская область', en: 'Fergana Region' }, keys: ['farğona', 'qöqon', 'marğilon', 'quva'] },
-      { id: 'Jizzax', label: 'Jizzax viloyati', labels: { uz: 'Jizzax viloyati', kaa: 'Jizzaq wálayatı', ru: 'Джизакская область', en: 'Jizzakh Region' }, keys: ['jizzax', 'zomin', 'ğallaorol'] },
-      { id: 'Xorazm', label: 'Xorazm viloyati', labels: { uz: 'Xorazm viloyati', kaa: 'Xorezm wálayatı', ru: 'Хорезмская область', en: 'Khorezm Region' }, keys: ['xorazm', 'urganç', 'xiva'] },
-      { id: 'Namangan', label: 'Namangan viloyati', labels: { uz: 'Namangan viloyati', kaa: 'Namangan wálayatı', ru: 'Наманганская область', en: 'Namangan Region' }, keys: ['namangan', 'çust', 'pop', 'kosonsoy'] },
-      { id: 'Navoiy', label: 'Navoiy viloyati', labels: { uz: 'Navoiy viloyati', kaa: 'Nawayı wálayatı', ru: 'Навоийская область', en: 'Navoiy Region' }, keys: ['navoiy', 'zarafşon', 'uçquduq'] },
-      { id: 'Qaşqadaryo', label: 'Qaşqadaryo viloyati', labels: { uz: 'Qaşqadaryo viloyati', kaa: 'Qashqadárya wálayatı', ru: 'Кашкадарьинская область', en: 'Kashkadarya Region' }, keys: ['qaşqadaryo', 'qarşi', 'şahrisabz'] },
-      { id: 'Samarqand', label: 'Samarqand viloyati', labels: { uz: 'Samarqand viloyati', kaa: 'Samarqand wálayatı', ru: 'Самаркандская область', en: 'Samarkand Region' }, keys: ['samarqand', 'kattaqörğon', 'urgut'] },
-      { id: 'Sirdaryo', label: 'Sirdaryo viloyati', labels: { uz: 'Sirdaryo viloyati', kaa: 'Sırdárya wálayatı', ru: 'Сырдарьинская область', en: 'Sirdarya Region' }, keys: ['sirdaryo', 'guliston', 'yangiyer'] },
-      { id: 'Surxondaryo', label: 'Surxondaryo viloyati', labels: { uz: 'Surxondaryo viloyati', kaa: 'Surxandárya wálayatı', ru: 'Сурхандарьинская область', en: 'Surkhandarya Region' }, keys: ['surxondaryo', 'termiz', 'denov'] },
-      { id: 'Toşkent viloyati', label: 'Toşkent viloyati', labels: { uz: 'Toşkent viloyati', kaa: 'Tashkent wálayatı', ru: 'Ташкентская область', en: 'Tashkent Region' }, keys: ['toşkent viloyati', 'nurafşon', 'olmaliq', 'angren', 'çirçiq'] }
+      { id: 'Qoraqalpoğiston', label: 'Qoraqalpoğiston Respublikasi', labels: { uz: 'Qoraqalpoğiston Respublikasi', uz_cyrl: 'Қорақалпоғистон Республикаси', kaa: 'Qaraqalpaqstan Respublikası', ru: 'Республика Каракалпакстан', en: 'Republic of Karakalpakstan' }, keys: ['qoraqalpoğiston', 'nukus', 'möynoq', 'qönğirot', 'törtköl'] },
+      { id: 'Toşkent şahri', label: 'Toşkent şahar', labels: { uz: 'Toşkent şahar', uz_cyrl: 'Тошкент шаҳар', kaa: 'Tashkent qalası', ru: 'Город Ташкент', en: 'Tashkent City' }, keys: ['toşkent şah', 'toşkentda', 'poytaxt', 'çilonzor', 'yunusobod', 'sergeli'] },
+      { id: 'Andijon', label: 'Andijon viloyati', labels: { uz: 'Andijon viloyati', uz_cyrl: 'Андижон вилояти', kaa: 'Ándijan wálayatı', ru: 'Андижанская область', en: 'Andijan Region' }, keys: ['andijon', 'asaka', 'şaxrixon', 'xonobod'] },
+      { id: 'Buxoro', label: 'Buxoro viloyati', labels: { uz: 'Buxoro viloyati', uz_cyrl: 'Бухоро вилояти', kaa: 'Buxara wálayatı', ru: 'Бухарская область', en: 'Bukhara Region' }, keys: ['buxoro', 'ğijduvon', 'kogon'] },
+      { id: 'Farğona', label: 'Farğona viloyati', labels: { uz: 'Farğona viloyati', uz_cyrl: 'Фарғона вилояти', kaa: 'Ferǵana wálayatı', ru: 'Ферганская область', en: 'Fergana Region' }, keys: ['farğona', 'qöqon', 'marğilon', 'quva'] },
+      { id: 'Jizzax', label: 'Jizzax viloyati', labels: { uz: 'Jizzax viloyati', uz_cyrl: 'Жиззах вилояти', kaa: 'Jizzaq wálayatı', ru: 'Джизакская область', en: 'Jizzakh Region' }, keys: ['jizzax', 'zomin', 'ğallaorol'] },
+      { id: 'Xorazm', label: 'Xorazm viloyati', labels: { uz: 'Xorazm viloyati', uz_cyrl: 'Хоразм вилояти', kaa: 'Xorezm wálayatı', ru: 'Хорезмская область', en: 'Khorezm Region' }, keys: ['xorazm', 'urganç', 'xiva'] },
+      { id: 'Namangan', label: 'Namangan viloyati', labels: { uz: 'Namangan viloyati', uz_cyrl: 'Наманган вилояти', kaa: 'Namangan wálayatı', ru: 'Наманганская область', en: 'Namangan Region' }, keys: ['namangan', 'çust', 'pop', 'kosonsoy'] },
+      { id: 'Navoiy', label: 'Navoiy viloyati', labels: { uz: 'Navoiy viloyati', uz_cyrl: 'Навоий вилояти', kaa: 'Nawayı wálayatı', ru: 'Навоийская область', en: 'Navoiy Region' }, keys: ['navoiy', 'zarafşon', 'uçquduq'] },
+      { id: 'Qaşqadaryo', label: 'Qaşqadaryo viloyati', labels: { uz: 'Qaşqadaryo viloyati', uz_cyrl: 'Қашқадарё вилояти', kaa: 'Qashqadárya wálayatı', ru: 'Кашкадарьинская область', en: 'Kashkadarya Region' }, keys: ['qaşqadaryo', 'qarşi', 'şahrisabz'] },
+      { id: 'Samarqand', label: 'Samarqand viloyati', labels: { uz: 'Samarqand viloyati', uz_cyrl: 'Самарқанд вилояти', kaa: 'Samarqand wálayatı', ru: 'Самаркандская область', en: 'Samarkand Region' }, keys: ['samarqand', 'kattaqörğon', 'urgut'] },
+      { id: 'Sirdaryo', label: 'Sirdaryo viloyati', labels: { uz: 'Sirdaryo viloyati', uz_cyrl: 'Сирдарё вилояти', kaa: 'Sırdárya wálayatı', ru: 'Сырдарьинская область', en: 'Sirdarya Region' }, keys: ['sirdaryo', 'guliston', 'yangiyer'] },
+      { id: 'Surxondaryo', label: 'Surxondaryo viloyati', labels: { uz: 'Surxondaryo viloyati', uz_cyrl: 'Сурхондарё вилояти', kaa: 'Surxandárya wálayatı', ru: 'Сурхандарьинская область', en: 'Surkhandarya Region' }, keys: ['surxondaryo', 'termiz', 'denov'] },
+      { id: 'Toşkent viloyati', label: 'Toşkent viloyati', labels: { uz: 'Toşkent viloyati', uz_cyrl: 'Тошкент вилояти', kaa: 'Tashkent wálayatı', ru: 'Ташкентская область', en: 'Tashkent Region' }, keys: ['toşkent viloyati', 'nurafşon', 'olmaliq', 'angren', 'çirçiq'] }
     ];
 
     // === SHAXSIY LOYIHALAR RO'YXATI (Havolalarni o'zingiznikiga almashtirasiz) ===
@@ -497,6 +566,7 @@
         desc: 'UMIDKHAN ONLINE BOZOR - Sifatli va hamyonbop mahsulotlar, tezkor yetkazib beriş hamda doimiy çegirmalar jamlangan şaxsiy onlayn dökonimiz.',
         url: 'https://uzum.uz/uz/shop/umidkhanonlinebozor', // <-- Uzum Market do'koningiz aniq havolasini shu yerga qo'ying
         btnText: 'Dökonga ötiş →',
+        uz_cyrl: { title: 'Uzum Market Расмий Дўконимиз', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR - Сифатли ва ҳамёнбоп маҳсулотлар, тезкор етказиб бериш ҳамда доимий чегирмалар жамланган шахсий онлайн дўконимиз.', btnText: 'Дўконга ўтиш →' },
         kaa: { title: 'Uzum Market Rásmiy Dúkanımız', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR - Sapalı hám qolaylı bahadaǵı ónimler, jedel jetkerip beriw hám turaqlı shegirmeler jıynalǵan jeke onlayn dúkanımız.', btnText: 'Dúkanǵa ótiw →' },
         ru: { title: 'Официальный магазин на Uzum Market', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR — качественные и доступные товары, быстрая доставка и регулярные скидки в нашем личном онлайн-магазине.', btnText: 'Перейти в магазин →' },
         en: { title: 'Official Uzum Market Store', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR — quality and affordable products, fast delivery, and regular discounts in our personal online store.', btnText: 'Visit Store →' }
@@ -508,6 +578,7 @@
         desc: 'Kundalik foydali tibbiy tavsiyalar, töğri ovqatlanish, kasalliklarning oldini oliş va soğlom hayot sirlari haqida ishonçli maʼlumotlar.',
         url: 'https://t.me/soglomturmushtarzi_rasmiy', // <-- Sog'lom turmush tarzi TG kanalingiz havolasini shu yerga qo'ying
         btnText: 'Kanalga obuna böliş →',
+        uz_cyrl: { title: 'Соғлом Турмуш Тарзи — Telegram Канал', badge: 'Тиббиёт ва Саломатлик', desc: 'Кундалик фойдали тиббий тавсиялар, тўғри овқатланиш, касалликларнинг олдини олиш ва соғлом ҳаёт сирлари ҳақида ишончли маълумотлар.', btnText: 'Каналга обуна бўлиш →' },
         kaa: { title: 'Salamat Turmıs Tárizı — Telegram Kanal', badge: 'Medicina hám Salawatlıq', desc: 'Kúndelikli paydalı medicinalıq másláhátler, durıs awqatlanıw, keselliklerdiń aldın alıw hám salamat ómir sırları haqqında isenimli maǵlıwmatlar.', btnText: 'Kanalǵa jazılıw →' },
         ru: { title: 'Здоровый образ жизни — Telegram-канал', badge: 'Медицина и здоровье', desc: 'Ежедневные полезные медицинские рекомендации, правильное питание, профилактика заболеваний и секреты здоровой жизни.', btnText: 'Подписаться на канал →' },
         en: { title: 'Healthy Lifestyle — Telegram Channel', badge: 'Health & Medicine', desc: 'Daily useful medical tips, healthy nutrition, disease prevention, and reliable insights for a healthier life.', btnText: 'Subscribe to Channel →' }
@@ -519,6 +590,7 @@
         desc: 'UMIDKHAN ONLINE BOZOR - Sifatli va hamyonbop mahsulotlar, tezkor yetkazib beriş hamda doimiy çegirmalar jamlangan şaxsiy onlayn dökonimiz.',
         url: 'https://t.me/Umidkhan_online_bozorBot', // <-- TG Bot marketplays havolasini shu yerga qo'ying
         btnText: 'Marketplaysni oçiş →',
+        uz_cyrl: { title: 'UMIDKHAN ONLINE BOZOR - Бот Маркетплейс', badge: 'IT ва Автоматлаштиш', desc: 'UMIDKHAN ONLINE BOZOR - Сифатли ва ҳамёнбоп маҳсулотлар, тезкор етказиб бериш ҳамда доимий чегирмалар жамланган шахсий онлайн дўконимиз.', btnText: 'Маркетплейсни очиш →' },
         kaa: { title: 'UMIDKHAN ONLINE BOZOR - Bot Marketpleys', badge: 'IT hám Avtomatlastırıw', desc: 'UMIDKHAN ONLINE BOZOR - Sapalı hám qolaylı bahadaǵı ónimler, jedel jetkerip beriw hám turaqlı shegirmeler jıynalǵan jeke onlayn dúkanımız.', btnText: 'Marketpleysti ashıw →' },
         ru: { title: 'UMIDKHAN ONLINE BOZOR — Бот-маркетплейс', badge: 'IT и автоматизация', desc: 'UMIDKHAN ONLINE BOZOR — удобный Telegram-бот для быстрого заказа качественных и доступных товаров с доставкой.', btnText: 'Открыть маркетплейс →' },
         en: { title: 'UMIDKHAN ONLINE BOZOR — Bot Marketplace', badge: 'IT & Automation', desc: 'UMIDKHAN ONLINE BOZOR — convenient Telegram bot marketplace for fast ordering of quality products with delivery.', btnText: 'Open Marketplace →' }
@@ -533,6 +605,54 @@
     var currentSection = 'Barchasi';
     var currentSubSection = '';
     var TRANSLATION_CACHE = {};
+
+    // === O'ZBEK LOTIN ALIFBOSIDAN KIRILLCHAGA 100% IMLO QOIDALARI ASOSIDA O'GIRISH ===
+    function latinToUzbekCyrillic(text) {
+      if (!text) return '';
+      var s = String(text);
+
+      // 1. Yangi lotin harflarini (ö, ğ, ş, ç) va eski ko'rinishlarini birlashtiramiz
+      s = s
+        .replace(/Ö/g, 'Ў').replace(/ö/g, 'ў')
+        .replace(/Ğ/g, 'Ғ').replace(/ğ/g, 'ғ')
+        .replace(/Ş/g, 'Ш').replace(/ş/g, 'ш')
+        .replace(/Ç/g, 'Ч').replace(/ç/g, 'ч')
+        .replace(/[oO][ʻ'‘’`ʼ]/g, function(m) { return m[0] === 'O' ? 'Ў' : 'ў'; })
+        .replace(/[gG][ʻ'‘’`ʼ]/g, function(m) { return m[0] === 'G' ? 'Ғ' : 'ғ'; });
+
+      // 2. Qo'sh harflar (Sh, Ch, Yo, Yu, Ya, Ye, Ts)
+      s = s
+        .replace(/SH/g, 'Ш').replace(/Sh/g, 'Ш').replace(/sh/g, 'ш')
+        .replace(/CH/g, 'Ч').replace(/Ch/g, 'Ч').replace(/ch/g, 'ч')
+        .replace(/YO/g, 'Ё').replace(/Yo/g, 'Ё').replace(/yo/g, 'ё')
+        .replace(/YU/g, 'Ю').replace(/Yu/g, 'Ю').replace(/yu/g, 'ю')
+        .replace(/YA/g, 'Я').replace(/Ya/g, 'Я').replace(/ya/g, 'я')
+        .replace(/YE/g, 'Е').replace(/Ye/g, 'Е').replace(/ye/g, 'е')
+        .replace(/TS/g, 'Ц').replace(/Ts/g, 'Ц').replace(/ts/g, 'ц');
+
+      // 3. So'z boshidagi va unlidan keyingi E/e harfini Э/э ga o'tkazish (e'lon -> эълон, erkin -> эркин)
+      s = s.replace(/(^|[^A-Za-zЎҚҒҲўқғҳ])E/g, '$1Э').replace(/(^|[^A-Za-zЎҚҒҲўқғҳ])e/g, '$1э');
+
+      // 4. Tutuq belgisini ъ ga o'tkazish (unli yoki undoshdan keyin)
+      s = s.replace(/([A-Za-zЎҚҒҲўқғҳ])[ʼʻ'‘’`]/g, '$1ъ');
+
+      // 5. Qolgan barcha yakka harflarni kirillchaga o'girish
+      var map = {
+        'A':'А','a':'а','B':'Б','b':'б','D':'Д','d':'д','E':'Е','e':'е',
+        'F':'Ф','f':'ф','G':'Г','g':'г','H':'Ҳ','h':'ҳ','I':'И','i':'и',
+        'İ':'И','ı':'и','J':'Ж','j':'ж','K':'К','k':'к','L':'Л','l':'л',
+        'M':'М','m':'м','N':'Н','n':'н','O':'О','o':'о','P':'П','p':'п',
+        'Q':'Қ','q':'қ','R':'Р','r':'р','S':'С','s':'с','T':'Т','t':'т',
+        'U':'У','u':'у','V':'В','v':'в','X':'Х','x':'х','Y':'Й','y':'й',
+        'Z':'З','z':'з'
+      };
+      var out = '';
+      for (var i = 0; i < s.length; i++) {
+        var c = s[i];
+        out += (map[c] !== undefined) ? map[c] : c;
+      }
+      return out;
+    }
 
     // === YANGI O'ZBEK ALIFBOSIDAN ODDIY O'ZBEKCHAGA TARJIMA UCHUN TAYYORLASH ===
     function normalizeForTranslator(text) {
@@ -579,6 +699,7 @@
     // === REAL-VAQT TARJIMA FUNKSIYASI (RU va EN uchun) ===
     async function translateText(text, targetLang) {
       if (!text || targetLang === 'uz') return text;
+      if (targetLang === 'uz_cyrl') return latinToUzbekCyrillic(text);
       if (targetLang === 'kaa') return uzbekToKarakalpak(text);
 
       var cacheKey = targetLang + ':' + text;
@@ -602,6 +723,15 @@
       if (!item || lang === 'uz') return item;
       if (!item.trans) item.trans = {};
       if (item.trans[lang]) return item;
+
+      if (lang === 'uz_cyrl') {
+        item.trans.uz_cyrl = {
+          title: latinToUzbekCyrillic(item.title),
+          summary: latinToUzbekCyrillic(item.summary),
+          content: latinToUzbekCyrillic(item.content)
+        };
+        return item;
+      }
 
       if (lang === 'kaa') {
         item.trans.kaa = {
@@ -629,6 +759,7 @@
       if (item.trans && item.trans[currentLang] && item.trans[currentLang][field]) {
         return item.trans[currentLang][field];
       }
+      if (currentLang === 'uz_cyrl') return latinToUzbekCyrillic(item[field] || '');
       if (currentLang === 'kaa') return uzbekToKarakalpak(item[field] || '');
       return item[field] || '';
     }
@@ -638,13 +769,13 @@
       if (dict.cats[cat]) return dict.cats[cat];
       var reg = REGIONS_LIST.find(function(r) { return r.id === cat; });
       if (reg) return reg.labels[currentLang] || reg.label;
-      return cat;
+      return currentLang === 'uz_cyrl' ? latinToUzbekCyrillic(cat) : cat;
     }
 
     function setLanguage(lang) {
       currentLang = lang;
       localStorage.setItem('umidkhan_lang', lang);
-      document.documentElement.lang = lang;
+      document.documentElement.lang = lang === 'uz_cyrl' ? 'uz-Cyrl' : lang;
 
       document.querySelectorAll('.lang-btn').forEach(function(btn) {
         if (btn.getAttribute('data-lang') === lang) {
@@ -815,7 +946,7 @@
     }
 
     async function translateVisibleBatch(items) {
-      if (currentLang === 'uz' || !items || items.length === 0) return;
+      if (currentLang === 'uz' || currentLang === 'uz_cyrl' || currentLang === 'kaa' || !items || items.length === 0) return;
       var toTranslate = items.slice(0, 15).filter(function(it) {
         return !it.trans || !it.trans[currentLang];
       });
@@ -1085,14 +1216,12 @@
       document.getElementById('article-modal').classList.remove('hidden');
       document.body.style.overflow = 'hidden';
 
-      if (currentLang !== 'uz') {
+      if (currentLang !== 'uz' && currentLang !== 'uz_cyrl' && currentLang !== 'kaa') {
         await ensureItemTranslated(item, currentLang);
-        if (currentLang === 'ru' || currentLang === 'en') {
-          if (!item.trans[currentLang].content) {
-            var paragraphs = (item.content || item.summary).split('\n\n');
-            var translatedParas = await Promise.all(paragraphs.map(p => translateText(p, currentLang)));
-            item.trans[currentLang].content = translatedParas.join('\n\n');
-          }
+        if (!item.trans[currentLang].content) {
+          var paragraphs = (item.content || item.summary).split('\n\n');
+          var translatedParas = await Promise.all(paragraphs.map(p => translateText(p, currentLang)));
+          item.trans[currentLang].content = translatedParas.join('\n\n');
         }
         document.getElementById('modal-title').textContent = getItemField(item, 'title');
         var updatedBody = getItemField(item, 'content') || getItemField(item, 'summary');
