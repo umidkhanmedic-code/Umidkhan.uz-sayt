@@ -40,16 +40,16 @@
 </head>
 <body class="bg-[#f4f6f9] dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
 
-  <!-- YUQORI AXBOROT PANELI (Sana, CBU Valyuta kurslari, Tillar, Dark Mode) -->
+  <!-- YUQORI AXBOROT PANELI (Sana, Lokatsiya ob-havosi, CBU Valyuta kurslari, Tillar, Dark Mode) -->
   <div class="bg-[#04122b] text-slate-300 text-xs border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-2 sm:gap-3">
-      <div class="flex items-center gap-3 shrink-0">
+      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
         <span id="current-date" class="font-medium text-cyan-300"></span>
-        <span class="hidden sm:inline text-slate-600">|</span>
-        <span class="hidden md:inline-flex items-center gap-1.5 text-emerald-400 font-medium">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span id="ai-badge-text">AI Muharrir 24/7 faol</span>
-        </span>
+        <span class="text-slate-600">|</span>
+        <button onclick="requestLocationWeather()" id="local-weather-box" class="inline-flex items-center gap-1.5 text-amber-300 hover:text-amber-200 font-semibold transition cursor-pointer">
+          <span id="local-weather-icon">📍</span>
+          <span id="local-weather-text">Lokatsiyaga ruxsat bering...</span>
+        </button>
       </div>
 
       <!-- CBU.UZ VALYUTA KURSLARI (O'NGDAN CHAPGA SEKIN YURUVCHI MATN) -->
@@ -213,7 +213,9 @@
     var I18N = {
       uz: {
         days: ['Yakşanba', 'Duşanba', 'Seşanba', 'Çorşanba', 'Payşanba', 'Juma', 'Şanba'],
-        aiActive: 'AI Muharrir 24/7 faol',
+        allowLocation: 'Ob-havo uçun lokatsiyaga ruxsat bering',
+        locating: 'Joylashuv aniqlanmoqda...',
+        weatherCodes: { 0: 'Oçiq havo', 1: 'Asosan oçiq', 2: 'Qisman bulutli', 3: 'Bulutli', 45: 'Tuman', 48: 'Tuman', 51: 'Mayda yomğir', 61: 'Yomğir', 63: 'Yomğir', 65: 'Kuchli yomğir', 71: 'Qor', 73: 'Qor', 75: 'Kuchli qor', 80: 'Qisqa yomğir', 95: 'Momaqaldiroq' },
         cbuTitle: 'MB kurslari:',
         som: 'söm',
         theme: '🌓 Mavzu',
@@ -257,7 +259,6 @@
           'RegionSuffix': ' yangiliklari'
         },
         mainTopic: 'Asosiy mavzu',
-        aiAnalysis: '🤖 AI Muharrir tahlili',
         readMore: 'Batafsil öqiş →',
         readShort: 'Öqiş →',
         fastFeed: '⚡ Tezkor lenta',
@@ -283,7 +284,9 @@
       },
       uz_cyrl: {
         days: ['Якшанба', 'Душанба', 'Сешанба', 'Чоршанба', 'Пайшанба', 'Жума', 'Шанба'],
-        aiActive: 'AI Муҳаррир 24/7 фаол',
+        allowLocation: 'Об-ҳаво учун локацияга рухсат беринг',
+        locating: 'Жойлашув аниқланмоқда...',
+        weatherCodes: { 0: 'Очиқ ҳаво', 1: 'Асосан очиқ', 2: 'Қисман булутли', 3: 'Булутли', 45: 'Туман', 48: 'Туман', 51: 'Майда ёмғир', 61: 'Ёмғир', 63: 'Ёмғир', 65: 'Кучли ёмғир', 71: 'Қор', 73: 'Қор', 75: 'Кучли қор', 80: 'Қисқа ёмғир', 95: 'Момақалдироқ' },
         cbuTitle: 'МБ курслари:',
         som: 'сўм',
         theme: '🌓 Мавзу',
@@ -327,7 +330,6 @@
           'RegionSuffix': ' янгиликлари'
         },
         mainTopic: 'Асосий мавзу',
-        aiAnalysis: '🤖 AI Муҳаррир таҳлили',
         readMore: 'Батафсил ўқиш →',
         readShort: 'Ўқиш →',
         fastFeed: '⚡ Тезкор лента',
@@ -353,7 +355,9 @@
       },
       kaa: {
         days: ['Ekshembi', 'Dúyshembi', 'Siyshembi', 'Sárshembi', 'Piyshembi', 'Juma', 'Shembi'],
-        aiActive: 'AI Redaktor 24/7 belsendi',
+        allowLocation: 'Hawa-rayı ushın lokaciyaǵa ruxsat beriń',
+        locating: 'Jaylasıw anıqlanbaqta...',
+        weatherCodes: { 0: 'Ashıq hawa', 1: 'Tiykarınan ashıq', 2: 'Bólek bulıtlı', 3: 'Bulıtlı', 45: 'Duman', 48: 'Duman', 51: 'Mayda jawın', 61: 'Jawın', 63: 'Jawın', 65: 'Kúshli jawın', 71: 'Qar', 73: 'Qar', 75: 'Kúshli qar', 80: 'Qısqa jawın', 95: 'Gúldirmama' },
         cbuTitle: 'OB kursları:',
         som: 'som',
         theme: '🌓 Tema',
@@ -397,7 +401,6 @@
           'RegionSuffix': ' jańalıqları'
         },
         mainTopic: 'Tiykarǵı tema',
-        aiAnalysis: '🤖 AI Redaktor tallawı',
         readMore: 'Tolıq oqıw →',
         readShort: 'Oqıw →',
         fastFeed: '⚡ Jedel lenta',
@@ -423,7 +426,9 @@
       },
       ru: {
         days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
-        aiActive: 'ИИ-редактор активен 24/7',
+        allowLocation: 'Разрешите геолокацию для погоды',
+        locating: 'Определение локации...',
+        weatherCodes: { 0: 'Ясно', 1: 'Преимущественно ясно', 2: 'Переменная облачность', 3: 'Пасмурно', 45: 'Туман', 48: 'Туман', 51: 'Морось', 61: 'Дождь', 63: 'Дождь', 65: 'Сильный дождь', 71: 'Снег', 73: 'Снег', 75: 'Сильный снег', 80: 'Кратковременный дождь', 95: 'Гроза' },
         cbuTitle: 'Курсы ЦБ:',
         som: 'сум',
         theme: '🌓 Тема',
@@ -467,7 +472,6 @@
           'RegionSuffix': ' — новости региона'
         },
         mainTopic: 'Главная тема',
-        aiAnalysis: '🤖 Аналитика ИИ-редактора',
         readMore: 'Читать полностью →',
         readShort: 'Читать →',
         fastFeed: '⚡ Срочная лента',
@@ -493,7 +497,9 @@
       },
       en: {
         days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        aiActive: 'AI Editor 24/7 Live',
+        allowLocation: 'Allow location for local weather',
+        locating: 'Detecting location...',
+        weatherCodes: { 0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast', 45: 'Fog', 48: 'Fog', 51: 'Drizzle', 61: 'Rain', 63: 'Rain', 65: 'Heavy rain', 71: 'Snow', 73: 'Snow', 75: 'Heavy snow', 80: 'Rain showers', 95: 'Thunderstorm' },
         cbuTitle: 'CBU Rates:',
         som: 'UZS',
         theme: '🌓 Theme',
@@ -537,7 +543,6 @@
           'RegionSuffix': ' News'
         },
         mainTopic: 'Top Story',
-        aiAnalysis: '🤖 AI Editor Analysis',
         readMore: 'Read more →',
         readShort: 'Read →',
         fastFeed: '⚡ Breaking Feed',
@@ -623,11 +628,85 @@
 
     var ALL_NEWS = [];
     var CBU_RATES_LIST = [];
+    var LOCAL_WEATHER_STATE = null;
 
     var currentLang = localStorage.getItem('umidkhan_lang') || 'uz';
     var currentSection = 'Barchasi';
     var currentSubSection = '';
     var TRANSLATION_CACHE = {};
+
+    // === FOYDALANUVCHI LOKATSIYASIGA QARAB KUNLIK OB-HAVONI KO'RSATISH ===
+    function getWeatherEmoji(code, isDay) {
+      if (code === 0) return isDay ? '☀️' : '🌙';
+      if (code === 1 || code === 2) return isDay ? '⛅' : '☁️';
+      if (code === 3) return '☁️';
+      if (code === 45 || code === 48) return '🌫';
+      if (code >= 51 && code <= 67) return '🌧';
+      if (code >= 71 && code <= 77) return '❄️';
+      if (code >= 80 && code <= 82) return '🌦';
+      if (code >= 95) return '⛈';
+      return '🌤';
+    }
+
+    function renderLocalWeather() {
+      var t = I18N[currentLang] || I18N.uz;
+      var iconEl = document.getElementById('local-weather-icon');
+      var textEl = document.getElementById('local-weather-text');
+      if (!iconEl || !textEl) return;
+
+      if (!LOCAL_WEATHER_STATE) {
+        iconEl.textContent = '📍';
+        textEl.textContent = t.allowLocation;
+        return;
+      }
+
+      var st = LOCAL_WEATHER_STATE;
+      var desc = (t.weatherCodes && t.weatherCodes[st.code]) ? t.weatherCodes[st.code] : '';
+      var tempSign = st.temp > 0 ? '+' : '';
+      iconEl.textContent = getWeatherEmoji(st.code, st.isDay);
+      textEl.textContent = `${st.city}: ${tempSign}${st.temp}°C${desc ? ' (' + desc + ')' : ''}`;
+    }
+
+    function requestLocationWeather() {
+      var t = I18N[currentLang] || I18N.uz;
+      var textEl = document.getElementById('local-weather-text');
+      if (!navigator.geolocation) {
+        if (textEl) textEl.textContent = t.allowLocation;
+        return;
+      }
+      if (textEl && !LOCAL_WEATHER_STATE) textEl.textContent = t.locating;
+
+      navigator.geolocation.getCurrentPosition(
+        async function(pos) {
+          var lat = pos.coords.latitude;
+          var lon = pos.coords.longitude;
+          try {
+            var [wRes, gRes] = await Promise.all([
+              fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`),
+              fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=uz`)
+            ]);
+            var wData = await wRes.json();
+            var gData = await gRes.json();
+            var city = gData.city || gData.locality || gData.principalSubdivision || 'Hudud';
+            var cw = wData.current_weather || {};
+            LOCAL_WEATHER_STATE = {
+              city: city,
+              temp: Math.round(cw.temperature),
+              code: cw.weathercode,
+              isDay: cw.is_day === 1
+            };
+            renderLocalWeather();
+          } catch (e) {
+            renderLocalWeather();
+          }
+        },
+        function() {
+          LOCAL_WEATHER_STATE = null;
+          renderLocalWeather();
+        },
+        { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 }
+      );
+    }
 
     // === CBU.UZ VALYUTA KURSLARINI YUKLASH VA YURUVCHI MATNGA CHIQARISH ===
     function loadCbuRates() {
@@ -852,6 +931,7 @@
       });
 
       applyStaticTranslations();
+      renderLocalWeather();
       renderCbuTicker();
       updateSubNavLabels();
       renderCurrentView();
@@ -865,7 +945,6 @@
       var yyyy = now.getFullYear();
       document.getElementById('current-date').textContent = dd + '.' + mm + '.' + yyyy + ', ' + t.days[now.getDay()];
 
-      document.getElementById('ai-badge-text').textContent = t.aiActive;
       document.getElementById('theme-btn').textContent = t.theme;
       document.getElementById('brand-subtitle').textContent = t.subtitle;
       document.getElementById('search-input').placeholder = t.searchPlaceholder;
@@ -951,6 +1030,7 @@
 
     function init() {
       setLanguage(currentLang);
+      requestLocationWeather();
       loadCbuRates();
 
       // Asosiy yangiliklarni Google Sheets API dan olish
@@ -1196,8 +1276,7 @@
                 ${getItemField(mainNews, 'summary')}
               </p>
             </div>
-            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-[#0077b6]">
-              <span>${t.aiAnalysis}</span>
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end text-xs font-bold text-[#0077b6]">
               <span>${t.readMore}</span>
             </div>
           </div>
