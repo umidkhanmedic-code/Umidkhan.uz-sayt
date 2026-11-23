@@ -116,13 +116,14 @@
       </a>
     </div>
 
-    <!-- 1-QATOR: ASOSIY BO'LIMLAR (Özbekiston, Jahon, Iqtisodiyot, Jamiyat, Sport, Audio) -->
+    <!-- 1-QATOR: ASOSIY BO'LIMLAR (Özbekiston, Jahon, Iqtisodiyot, Jamiyat, Hududlar, Sport, Audio) -->
     <nav class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 flex items-center divide-x divide-slate-200/80 dark:divide-slate-800 overflow-x-auto no-scrollbar text-xs sm:text-sm font-extrabold">
         <button onclick="selectMainSection('Özbekiston')" data-sec="Özbekiston" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Özbekiston</button>
         <button onclick="selectMainSection('Jahon')" data-sec="Jahon" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Jahon</button>
         <button onclick="selectMainSection('İqtisodiyot')" data-sec="İqtisodiyot" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Iqtisodiyot</button>
         <button onclick="selectMainSection('Jamiyat')" data-sec="Jamiyat" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Jamiyat</button>
+        <button onclick="selectMainSection('Hududlar')" data-sec="Hududlar" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Hududlar</button>
         <button onclick="selectMainSection('Sport')" data-sec="Sport" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Sport</button>
         <button onclick="selectMainSection('Audio')" data-sec="Audio" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Audio</button>
       </div>
@@ -195,6 +196,7 @@
           <a href="#" onclick="selectMainSection('Jahon'); return false;" data-fsec="Jahon" class="footer-sec-link hover:text-cyan-400">Jahon</a>
           <a href="#" onclick="selectMainSection('İqtisodiyot'); return false;" data-fsec="İqtisodiyot" class="footer-sec-link hover:text-cyan-400">Iqtisodiyot</a>
           <a href="#" onclick="selectMainSection('Jamiyat'); return false;" data-fsec="Jamiyat" class="footer-sec-link hover:text-cyan-400">Jamiyat</a>
+          <a href="#" onclick="selectMainSection('Hududlar'); return false;" data-fsec="Hududlar" class="footer-sec-link hover:text-cyan-400">Hududlar</a>
           <a href="#" onclick="selectMainSection('Sport'); return false;" data-fsec="Sport" class="footer-sec-link hover:text-cyan-400">Sport</a>
           <a href="#" onclick="selectMainSection('Audio'); return false;" data-fsec="Audio" class="footer-sec-link hover:text-cyan-400">Audio</a>
         </div>
@@ -235,6 +237,24 @@
     // === GOOGLE APPS SCRIPT API URL ===
     var API_URL = 'https://script.google.com/macros/s/AKfycbzwD_g-ETkkKWn2AQF1QzRwSyscxFa0rfaqRwTDwDYRgIBd4jkLedDJo0kOEIgmABrK2w/exec';
 
+    // === QORAQALPOG'ISTON, TOSHKENT SHAHRI VA 12 TA VILOYAT RO'YXATI ===
+    var REGIONS_LIST = [
+      { id: 'Qoraqalpoğiston', label: 'Qoraqalpoğiston Respublikasi', labels: { uz: 'Qoraqalpoğiston Respublikasi', uz_cyrl: 'Қорақалпоғистон Республикаси', kaa: 'Qaraqalpaqstan Respublikası', ru: 'Республика Каракалпакстан', en: 'Republic of Karakalpakstan' }, keys: ['qoraqalpoğiston', 'qresministrlerkenesi', 'nukus', 'möynoq', 'qönğirot', 'törtköl'] },
+      { id: 'Toşkent şahri', label: 'Toşkent şahri', labels: { uz: 'Toşkent şahri', uz_cyrl: 'Тошкент шаҳри', kaa: 'Tashkent qalası', ru: 'Город Ташкент', en: 'Tashkent City' }, keys: ['toşkent şah', 'poytaxt_uz', 'çilonzor', 'yunusobod', 'sergeli'] },
+      { id: 'Andijon', label: 'Andijon viloyati', labels: { uz: 'Andijon viloyati', uz_cyrl: 'Андижон вилояти', kaa: 'Ándijan wálayatı', ru: 'Андижанская область', en: 'Andijan Region' }, keys: ['andijon', 'andpress', 'andijan_press', 'asaka', 'şaxrixon', 'xonobod'] },
+      { id: 'Buxoro', label: 'Buxoro viloyati', labels: { uz: 'Buxoro viloyati', uz_cyrl: 'Бухоро вилояти', kaa: 'Buxara wálayatı', ru: 'Бухарская область', en: 'Bukhara Region' }, keys: ['buxoro', 'buxorouz_official', 'ğijduvon', 'kogon'] },
+      { id: 'Farğona', label: 'Farğona viloyati', labels: { uz: 'Farğona viloyati', uz_cyrl: 'Фарғона вилояти', kaa: 'Ferǵana wálayatı', ru: 'Ферганская область', en: 'Fergana Region' }, keys: ['farğona', 'fvhokimligi', 'qöqon', 'marğilon', 'quva'] },
+      { id: 'Jizzax', label: 'Jizzax viloyati', labels: { uz: 'Jizzax viloyati', uz_cyrl: 'Жиззах вилояти', kaa: 'Jizzaq wálayatı', ru: 'Джизакская область', en: 'Jizzakh Region' }, keys: ['jizzax', 'jizzaxviloyathokimligi', 'zomin', 'ğallaorol'] },
+      { id: 'Namangan', label: 'Namangan viloyati', labels: { uz: 'Namangan viloyati', uz_cyrl: 'Наманган вилояти', kaa: 'Namangan wálayatı', ru: 'Наманганская область', en: 'Namangan Region' }, keys: ['namangan', 'namvilhok', 'çust', 'pop', 'kosonsoy'] },
+      { id: 'Navoiy', label: 'Navoiy viloyati', labels: { uz: 'Navoiy viloyati', uz_cyrl: 'Навоий вилояти', kaa: 'Nawayı wálayatı', ru: 'Навоийская область', en: 'Navoiy Region' }, keys: ['navoiy', 'navoiy_hokimligi', 'zarafşon', 'uçquduq'] },
+      { id: 'Qaşqadaryo', label: 'Qaşqadaryo viloyati', labels: { uz: 'Qaşqadaryo viloyati', uz_cyrl: 'Қашқадарё вилояти', kaa: 'Qashqadárya wálayatı', ru: 'Кашкадарьинская область', en: 'Kashkadarya Region' }, keys: ['qaşqadaryo', 'qashvilhokimligi', 'qarşi', 'şahrisabz'] },
+      { id: 'Samarqand', label: 'Samarqand viloyati', labels: { uz: 'Samarqand viloyati', uz_cyrl: 'Самарқанд вилояти', kaa: 'Samarqand wálayatı', ru: 'Самаркандская область', en: 'Samarkand Region' }, keys: ['samarqand', 'samviloyatihokimligi', 'kattaqörğon', 'urgut'] },
+      { id: 'Sirdaryo', label: 'Sirdaryo viloyati', labels: { uz: 'Sirdaryo viloyati', uz_cyrl: 'Сирдарё вилояти', kaa: 'Sırdárya wálayatı', ru: 'Сырдарьинская область', en: 'Sirdarya Region' }, keys: ['sirdaryo', 'sirdaryouz', 'guliston', 'yangiyer'] },
+      { id: 'Surxondaryo', label: 'Surxondaryo viloyati', labels: { uz: 'Surxondaryo viloyati', uz_cyrl: 'Сурхондарё вилояти', kaa: 'Surxandárya wálayatı', ru: 'Сурхандарьинская область', en: 'Surkhandarya Region' }, keys: ['surxondaryo', 'termiz', 'denov'] },
+      { id: 'Toşkent viloyati', label: 'Toşkent viloyati', labels: { uz: 'Toşkent viloyati', uz_cyrl: 'Тошкент вилояти', kaa: 'Tashkent wálayatı', ru: 'Ташкентская область', en: 'Tashkent Region' }, keys: ['toşkent viloyati', 'toshvilpressa', 'angrenhokimligi_7', 'nurafşon', 'olmaliq', 'angren', 'çirçiq'] },
+      { id: 'Xorazm', label: 'Xorazm viloyati', labels: { uz: 'Xorazm viloyati', uz_cyrl: 'Хоразм вилояти', kaa: 'Xorezm wálayatı', ru: 'Хорезмская область', en: 'Khorezm Region' }, keys: ['xorazm', 'xorazm_uz_rasmiy', 'urganç', 'xiva'] }
+    ];
+
     // === BREND LOGOTIPLAR (SVG) ===
     var LOGOS = {
       uzumLarge: `<span class="w-9 h-9 rounded-xl bg-[#7000ff] flex items-center justify-center shadow-md shrink-0">
@@ -254,14 +274,14 @@
       </span>`
     };
 
-    // === UZUM MARKET DO'KONIDAGI BOSHLANG'ICH MAHSULOTLAR (Yangi mahsulotlar Google Sheets bazasidan avtomatik qo'shiladi) ===
+    // === UZUM MARKET DO'KONIDAGI BOSHLANG'ICH MAHSULOTLAR ===
     var DEFAULT_UZUM_PRODUCTS = [
       {
         id: 'uzum-1',
-        title: 'UMIDKHAN ONLINE BOZOR — Top mahsulotlar to‘plami',
-        summary: 'Uzum Market rasmiy do‘konimizdagi eng ommabop va chegirmali mahsulotlar katalogi. O‘zbekiston bo‘ylab 1 kunda bepul yetkazib berish!',
+        title: 'UMIDKHAN ONLINE BOZOR — Top mahsulotlar töplami',
+        summary: 'Uzum Market rasmiy dökonimizdagi eng ommabop va çegirmali mahsulotlar katalogi. Özbekiston böylab 1 kunda bepul yetkazib beriş!',
         price: 'Uzum Market narxida',
-        badge: 'Rasmiy do‘kon',
+        badge: 'Rasmiy dökon',
         image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=900&q=80',
         url: 'https://uzum.uz/uz/shop/umidkhanonlinebozor'
       }
@@ -284,6 +304,7 @@
           'Jahon': 'Jahon',
           'İqtisodiyot': 'Iqtisodiyot',
           'Jamiyat': 'Jamiyat',
+          'Hududlar': 'Hududlar',
           'Sport': 'Sport',
           'Audio': 'Audio',
           'UzumMarket': 'Uzum Market',
@@ -295,6 +316,7 @@
           'Jahon': 'Jahon',
           'İqtisodiyot': 'Iqtisodiyot',
           'Jamiyat': 'Jamiyat',
+          'Hududlar': 'Hududlar',
           'Texnologiya': 'Texnologiya',
           'Sport': 'Sport',
           'Audio': 'Audio',
@@ -309,6 +331,7 @@
           'Jahon': 'Jahon yangiliklari',
           'İqtisodiyot': 'Iqtisodiyot yangiliklari',
           'Jamiyat': 'Jamiyat yangiliklari',
+          'Hududlar': 'Hududlar yangiliklari',
           'Sport': 'Sport yangiliklari',
           'Audio': 'Audio habarlar',
           'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
@@ -316,10 +339,10 @@
           'SoglomTurmush': 'Soğlom turmush tarzi'
         },
         buyBtn: '🛒 Sotib oliş (Uzum Market)',
-        openShopBtn: '🛍 Barcha mahsulotlarni Uzum Marketda köriş →',
+        openShopBtn: '🛍 Barça mahsulotlarni Uzum Marketda köriş →',
         openTgBotBtn: '🤖 Telegram Bot Marketplaysga ötiş →',
         openHealthTgBtn: '✈️ @soglomturmushtarzi_rasmiy kanaliga ötiş →',
-        tgBozorDesc: 'UMIDKHAN ONLINE BOZOR rasmiy Telegram bot marketplaysi orqali barcha mahsulotlarni qulay narxlarda buyurtma qiling va tezkor yetkazib berish xizmatidan foydalaning.',
+        tgBozorDesc: 'UMIDKHAN ONLINE BOZOR rasmiy Telegram bot marketplaysi orqali barça mahsulotlarni qulay narxlarda buyurtma qiling va tezkor yetkazib beriş xizmatidan foydalaning.',
         listenBtn: '🔊 Eshitiş',
         stopBtn: '⏹ Töxtatiş',
         mainTopic: 'Asosiy mavzu',
@@ -358,6 +381,7 @@
           'Jahon': 'Жаҳон',
           'İqtisodiyot': 'Иқтисодиёт',
           'Jamiyat': 'Жамият',
+          'Hududlar': 'Ҳудудлар',
           'Sport': 'Спорт',
           'Audio': 'Аудио',
           'UzumMarket': 'Uzum Market',
@@ -369,6 +393,7 @@
           'Jahon': 'Жаҳон',
           'İqtisodiyot': 'Иқтисодиёт',
           'Jamiyat': 'Жамият',
+          'Hududlar': 'Ҳудудлар',
           'Texnologiya': 'Технология',
           'Sport': 'Спорт',
           'Audio': 'Аудио',
@@ -383,6 +408,7 @@
           'Jahon': 'Жаҳон янгиликлари',
           'İqtisodiyot': 'Иқтисодиёт янгиликлари',
           'Jamiyat': 'Жамият янгиликлари',
+          'Hududlar': 'Ҳудудлар янгиликлари',
           'Sport': 'Спорт янгиликлари',
           'Audio': 'Аудио хабарлар',
           'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
@@ -432,6 +458,7 @@
           'Jahon': 'Jáhán',
           'İqtisodiyot': 'Ekonomika',
           'Jamiyat': 'Jámiyet',
+          'Hududlar': 'Aymaqlar',
           'Sport': 'Sport',
           'Audio': 'Audio',
           'UzumMarket': 'Uzum Market',
@@ -443,6 +470,7 @@
           'Jahon': 'Jáhán',
           'İqtisodiyot': 'Ekonomika',
           'Jamiyat': 'Jámiyet',
+          'Hududlar': 'Aymaqlar',
           'Texnologiya': 'Texnologiya',
           'Sport': 'Sport',
           'Audio': 'Audio',
@@ -457,6 +485,7 @@
           'Jahon': 'Jáhán jańalıqları',
           'İqtisodiyot': 'Ekonomika jańalıqları',
           'Jamiyat': 'Jámiyet jańalıqları',
+          'Hududlar': 'Aymaqlar jańalıqları',
           'Sport': 'Sport jańalıqları',
           'Audio': 'Audio xabarlar',
           'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
@@ -506,6 +535,7 @@
           'Jahon': 'Мир',
           'İqtisodiyot': 'Экономика',
           'Jamiyat': 'Общество',
+          'Hududlar': 'Регионы',
           'Sport': 'Спорт',
           'Audio': 'Аудио',
           'UzumMarket': 'Uzum Market',
@@ -517,6 +547,7 @@
           'Jahon': 'Мир',
           'İqtisodiyot': 'Экономика',
           'Jamiyat': 'Общество',
+          'Hududlar': 'Регионы',
           'Texnologiya': 'Технологии',
           'Sport': 'Спорт',
           'Audio': 'Аудио',
@@ -531,6 +562,7 @@
           'Jahon': 'Мировые новости',
           'İqtisodiyot': 'Новости экономики',
           'Jamiyat': 'Новости общества',
+          'Hududlar': 'Новости регионов',
           'Sport': 'Спортивные новости',
           'Audio': 'Аудио новости',
           'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
@@ -580,6 +612,7 @@
           'Jahon': 'World',
           'İqtisodiyot': 'Economy',
           'Jamiyat': 'Society',
+          'Hududlar': 'Regions',
           'Sport': 'Sports',
           'Audio': 'Audio',
           'UzumMarket': 'Uzum Market',
@@ -591,6 +624,7 @@
           'Jahon': 'World',
           'İqtisodiyot': 'Economy',
           'Jamiyat': 'Society',
+          'Hududlar': 'Regions',
           'Texnologiya': 'Technology',
           'Sport': 'Sports',
           'Audio': 'Audio',
@@ -605,6 +639,7 @@
           'Jahon': 'World News',
           'İqtisodiyot': 'Economy News',
           'Jamiyat': 'Society News',
+          'Hududlar': 'Regional News',
           'Sport': 'Sports News',
           'Audio': 'Audio News',
           'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
@@ -648,9 +683,26 @@
 
     var currentLang = localStorage.getItem('umidkhan_lang') || 'uz';
     var currentSection = 'Barchasi';
+    var currentRegion = 'all';
     var TRANSLATION_CACHE = {};
 
-    // === AUDIO O'QISH (Web Speech API) ===
+    // === POST QAYSI HUDUDGA TEGISHLIGINI ANIQLASH (KANAL YOKI MATN BO'YICHA) ===
+    function detectRegionForItem(item) {
+      if (item.region) {
+        var exact = REGIONS_LIST.find(r => r.id.toLowerCase() === String(item.region).toLowerCase());
+        if (exact) return exact.id;
+      }
+      var hay = ((item.source || '') + ' ' + (item.title || '') + ' ' + (item.summary || '') + ' ' + (item.content || '')).toLowerCase();
+      for (var i = 0; i < REGIONS_LIST.length; i++) {
+        var reg = REGIONS_LIST[i];
+        if (reg.keys.some(k => hay.indexOf(k) !== -1)) {
+          return reg.id;
+        }
+      }
+      return null;
+    }
+
+    // === AUDIO O'QISH ===
     function toggleSpeakNews(id) {
       if (!('speechSynthesis' in window)) return;
       if (CURRENT_SPEAKING_ID === id) {
@@ -768,7 +820,7 @@
         })
         .catch(() => {
           document.getElementById('cbu-ticker-track').innerHTML =
-            '<a href="https://cbu.uz/uz/" target="_blank" class="px-4 text-cyan-300 hover:underline">cbu.uz — O‘zbekiston Respublikasi Markaziy banki rasmiy valyuta kurslari</a>';
+            '<a href="https://cbu.uz/uz/" target="_blank" class="px-4 text-cyan-300 hover:underline">cbu.uz — Özbekiston Respublikasi Markaziy banki rasmiy valyuta kurslari</a>';
         });
     }
 
@@ -951,6 +1003,8 @@
     function getCatLabel(cat) {
       var dict = I18N[currentLang] || I18N.uz;
       if (dict.cats[cat]) return dict.cats[cat];
+      var reg = REGIONS_LIST.find(r => r.id === cat);
+      if (reg) return reg.labels[currentLang] || reg.label;
       return currentLang === 'uz_cyrl' ? latinToUzbekCyrillic(cat) : cat;
     }
 
@@ -1056,6 +1110,7 @@
           if (Array.isArray(data) && data.length > 0) {
             ALL_NEWS = data.map(item => {
               item.date = formatUzDate(item.date);
+              item.detectedRegion = detectRegionForItem(item);
               return item;
             });
             renderCurrentView();
@@ -1066,8 +1121,10 @@
 
     function selectMainSection(sec) {
       currentSection = sec;
+      if (sec === 'Hududlar') {
+        currentRegion = 'all';
+      }
 
-      // Yuqori qator tugmalari holati
       document.querySelectorAll('.nav-btn').forEach(btn => {
         if (btn.getAttribute('data-sec') === sec) {
           btn.className = 'nav-btn px-4 sm:px-5 py-3 text-[#0077b6] dark:text-cyan-400 bg-slate-50 dark:bg-slate-800/70 shrink-0 transition';
@@ -1076,7 +1133,6 @@
         }
       });
 
-      // Quyi qator loyihalar tugmalari holati
       document.querySelectorAll('.sub-nav-project').forEach(btn => {
         if (btn.getAttribute('data-sec') === sec) {
           btn.className = 'sub-nav-project px-3.5 py-1.5 rounded-lg inline-flex items-center gap-2 bg-white dark:bg-slate-800 text-[#0077b6] dark:text-cyan-400 shadow-xs shrink-0 transition';
@@ -1085,6 +1141,11 @@
         }
       });
 
+      renderCurrentView();
+    }
+
+    function selectRegionTab(regId) {
+      currentRegion = regId;
       renderCurrentView();
     }
 
@@ -1115,7 +1176,7 @@
       var container = document.getElementById('dynamic-content');
       var query = (document.getElementById('search-input').value || '').toLowerCase().trim();
 
-      // === 1. UZUM MARKET BO'LIMI (Marketplace ko'rinishida) ===
+      // === 1. UZUM MARKET BO'LIMI ===
       if (currentSection === 'UzumMarket') {
         headingEl.innerHTML = `${LOGOS.uzumLarge} <span>${t.headings['UzumMarket']}</span>`;
         var uzumItems = ALL_NEWS.filter(n => n.category === 'UzumMarket');
@@ -1186,7 +1247,7 @@
         return;
       }
 
-      // === 3. SOG'LOM TURMUSH TARZI BO'LIMI (@soglomturmushtarzi_rasmiy postlari) ===
+      // === 3. SOG'LOM TURMUSH TARZI BO'LIMI ===
       if (currentSection === 'SoglomTurmush') {
         headingEl.innerHTML = `${LOGOS.healthLarge} <span>${t.headings['SoglomTurmush']}</span>`;
         var healthPosts = ALL_NEWS.filter(n => n.category === 'SoglomTurmush');
@@ -1272,7 +1333,74 @@
         return;
       }
 
-      // === 5. ASOSIY YANGILIKLAR BO'LIMLARI (Barchasi, Özbekiston, Jahon, İqtisodiyot, Jamiyat, Sport) ===
+      // === 5. HUDUDLAR BO'LIMI (Qoraqalpog'iston Respublikasi, Toshkent shahri va 12 ta viloyat) ===
+      if (currentSection === 'Hududlar') {
+        var activeRegObj = REGIONS_LIST.find(r => r.id === currentRegion);
+        var regHeadingText = activeRegObj ? (activeRegObj.labels[currentLang] || activeRegObj.label) : t.headings['Hududlar'];
+        headingEl.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> <span>${regHeadingText}</span>`;
+
+        var regionTabsHtml = `
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-800 mb-6 flex flex-wrap gap-2">
+            <button onclick="selectRegionTab('all')" class="px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition ${currentRegion === 'all' ? 'bg-[#04122b] text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">
+              ${t.headings['Hududlar']}
+            </button>
+            ${REGIONS_LIST.map(r => {
+              var rName = r.labels[currentLang] || r.label;
+              var isSel = currentRegion === r.id;
+              return `<button onclick="selectRegionTab('${r.id}')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${isSel ? 'bg-[#0077b6] text-white shadow-xs' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}">${rName}</button>`;
+            }).join('')}
+          </div>
+        `;
+
+        var regFiltered = ALL_NEWS.filter(item => {
+          if (item.category === 'UzumMarket' || item.category === 'SoglomTurmush') return false;
+          var itemReg = item.detectedRegion || detectRegionForItem(item);
+          if (!itemReg) return false;
+          if (currentRegion !== 'all' && itemReg !== currentRegion) return false;
+
+          var textAll = (item.title + ' ' + item.summary + ' ' + item.content + ' ' + getItemField(item, 'title')).toLowerCase();
+          if (query && textAll.indexOf(query) === -1) return false;
+          return true;
+        });
+
+        counterEl.textContent = regFiltered.length + t.countMsg;
+        if (!skipTranslateTrigger && regFiltered.length > 0) translateVisibleBatch(regFiltered);
+
+        if (regFiltered.length === 0) {
+          container.innerHTML = regionTabsHtml + `<div class="bg-white dark:bg-slate-900 rounded-xl p-12 text-center text-slate-500 border border-slate-200 dark:border-slate-800">${t.noNews}</div>`;
+          return;
+        }
+
+        container.innerHTML = regionTabsHtml + `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">` + regFiltered.map(item => {
+          var rId = item.detectedRegion || detectRegionForItem(item);
+          var rObj = REGIONS_LIST.find(x => x.id === rId);
+          var badgeText = rObj ? (rObj.labels[currentLang] || rObj.label) : getCatLabel(item.category);
+          return `
+            <article onclick="openArticle(${item.id})" class="cursor-pointer group bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 hover:border-[#0077b6] hover:shadow-md transition flex flex-col justify-between">
+              <div>
+                ${item.images && item.images.length > 0 ? `<div class="mb-3.5">${renderWatermarkedImage(item.images[0], 'h-44 w-full', item.images.length)}</div>` : ''}
+                <div class="flex items-center justify-between gap-2 mb-2.5">
+                  <span class="px-2.5 py-0.5 text-[11px] font-bold rounded bg-blue-50 text-[#0077b6] dark:bg-slate-800 dark:text-cyan-400">📍 ${badgeText}</span>
+                  <span class="text-[11px] text-slate-400">${item.date}</span>
+                </div>
+                <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0077b6] transition leading-snug mb-2.5">
+                  ${getItemField(item, 'title')}
+                </h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
+                  ${getItemField(item, 'summary')}
+                </p>
+              </div>
+              <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-semibold">
+                <span class="text-slate-400">Umidkhan.uz</span>
+                <span class="text-[#0077b6]">${t.readShort}</span>
+              </div>
+            </article>
+          `;
+        }).join('') + `</div>`;
+        return;
+      }
+
+      // === 6. ASOSIY YANGILIKLAR BO'LIMLARI (Özbekiston, Jahon, İqtisodiyot, Jamiyat, Sport) ===
       var secTitle = t.headings[currentSection] || currentSection;
       headingEl.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> <span>${secTitle}</span>`;
 
