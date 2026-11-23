@@ -60,7 +60,7 @@
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
-        <!-- TILLAR REJIMI (O'zbekcha lotin, O'zbekcha kirill, Qoraqalpoqcha, Ruscha, Inglizcha) -->
+        <!-- TILLAR REJIMI -->
         <div class="flex items-center bg-slate-900/90 border border-slate-700 rounded-lg p-0.5 text-[11px] font-bold">
           <button onclick="setLanguage('uz')" data-lang="uz" class="lang-btn px-2 py-1 rounded bg-[#0077b6] text-white transition">UZ</button>
           <button onclick="setLanguage('uz_cyrl')" data-lang="uz_cyrl" class="lang-btn px-2 py-1 rounded text-slate-300 hover:text-white transition">ЎЗ</button>
@@ -76,10 +76,10 @@
     </div>
   </div>
 
-  <!-- ASOSIY HEADER VA LOGO (Kun.uz uslubida) -->
+  <!-- ASOSIY HEADER VA IKKI QATORLI BO'LIMLAR PANELI -->
   <header class="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-      <!-- BREND LOGO (Siz yuborgan rasm asosida vektor SVG + matn) -->
+      <!-- BREND LOGO -->
       <a href="#" onclick="selectMainSection('Barchasi'); return false;" class="flex items-center gap-3 group shrink-0">
         <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#04122b] via-[#072554] to-[#0077b6] flex items-center justify-center shadow-md group-hover:scale-105 transition">
           <svg width="26" height="26" viewBox="0 0 100 100" fill="none">
@@ -116,35 +116,61 @@
       </a>
     </div>
 
-    <!-- ASOSIY NAVIGATSIYA MENYUSI -->
-    <nav class="bg-slate-50 dark:bg-slate-950/60 border-t border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto px-4 flex items-center gap-1 overflow-x-auto no-scrollbar py-2 text-xs sm:text-sm font-bold">
-        <button onclick="selectMainSection('Barchasi')" data-sec="Barchasi" class="nav-btn px-3.5 py-2 rounded-lg bg-[#04122b] text-white shrink-0 transition">Barchasi</button>
-        <button onclick="selectMainSection('Özbekiston')" data-sec="Özbekiston" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Özbekiston</button>
-        <button onclick="selectMainSection('Jahon')" data-sec="Jahon" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Jahon</button>
-        <button onclick="selectMainSection('İqtisodiyot')" data-sec="İqtisodiyot" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Iqtisodiyot</button>
-        <button onclick="selectMainSection('Jamiyat')" data-sec="Jamiyat" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Jamiyat</button>
-        <button onclick="selectMainSection('Sport')" data-sec="Sport" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Sport</button>
-        <button onclick="selectMainSection('Hududlar')" data-sec="Hududlar" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">Hududlar</button>
-        <button onclick="selectMainSection('Birja')" data-sec="Birja" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">📈 Birja</button>
-        <button onclick="selectMainSection('Ob-havo')" data-sec="Ob-havo" class="nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition">🌤 Ob-havo</button>
-        <button onclick="selectMainSection('Loyihalar')" data-sec="Loyihalar" class="nav-btn px-3.5 py-2 rounded-lg text-[#0077b6] dark:text-cyan-400 hover:bg-blue-50 dark:hover:bg-slate-800 shrink-0 transition">🚀 Loyihalar</button>
+    <!-- 1-QATOR: ASOSIY BO'LIMLAR (Özbekiston, Jahon, Iqtisodiyot, Jamiyat, Sport, Audio) -->
+    <nav class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 flex items-center divide-x divide-slate-200/80 dark:divide-slate-800 overflow-x-auto no-scrollbar text-xs sm:text-sm font-extrabold">
+        <button onclick="selectMainSection('Özbekiston')" data-sec="Özbekiston" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Özbekiston</button>
+        <button onclick="selectMainSection('Jahon')" data-sec="Jahon" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Jahon</button>
+        <button onclick="selectMainSection('İqtisodiyot')" data-sec="İqtisodiyot" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Iqtisodiyot</button>
+        <button onclick="selectMainSection('Jamiyat')" data-sec="Jamiyat" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Jamiyat</button>
+        <button onclick="selectMainSection('Sport')" data-sec="Sport" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Sport</button>
+        <button onclick="selectMainSection('Audio')" data-sec="Audio" class="nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition">Audio</button>
       </div>
     </nav>
 
-    <!-- SUB-BO'LIMLAR PANELI (Sport va Hududlar uchun dinamik ochiladi) -->
-    <div id="sub-nav-bar" class="hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-      <div id="sub-nav-items" class="max-w-7xl mx-auto px-4 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar text-xs font-semibold"></div>
-    </div>
+    <!-- 2-QATOR (QUYI QATOR): UZUM MARKET, TELEGRAM BOZOR, SOG'LOM TURMUSH TARZI -->
+    <nav class="bg-[#eceef2] dark:bg-slate-950/90 border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-2 sm:gap-4 overflow-x-auto no-scrollbar text-xs sm:text-[13px] font-bold">
+        <!-- 1. Uzum Market -->
+        <button onclick="selectMainSection('UzumMarket')" data-sec="UzumMarket" class="sub-nav-project px-3.5 py-1.5 rounded-lg inline-flex items-center gap-2 text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 shrink-0 transition">
+          <span class="w-5 h-5 rounded-md bg-[#7000ff] flex items-center justify-center shadow-xs shrink-0">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+              <path d="M5 4V13C5 16.866 8.134 20 12 20C15.866 20 19 16.866 19 13V4H15.5V13C15.5 14.933 13.933 16.5 12 16.5C10.067 16.5 8.5 14.933 8.5 13V4H5Z" fill="#ffffff"/>
+            </svg>
+          </span>
+          <span id="sub-uzum-label">Uzum Market</span>
+        </button>
+
+        <!-- 2. Telegram bozor -->
+        <button onclick="selectMainSection('TelegramBozor')" data-sec="TelegramBozor" class="sub-nav-project px-3.5 py-1.5 rounded-lg inline-flex items-center gap-2 text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 shrink-0 transition">
+          <span class="w-5 h-5 rounded-md bg-gradient-to-br from-[#2aabee] to-[#229ed9] flex items-center justify-center shadow-xs shrink-0">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+              <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" fill="#ffffff"/>
+            </svg>
+          </span>
+          <span id="sub-tgbozor-label">Telegram bozor</span>
+        </button>
+
+        <!-- 3. Soğlom turmush tarzi -->
+        <button onclick="selectMainSection('SoglomTurmush')" data-sec="SoglomTurmush" class="sub-nav-project px-3.5 py-1.5 rounded-lg inline-flex items-center gap-2 text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 shrink-0 transition">
+          <span class="w-5 h-5 rounded-md bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-xs shrink-0">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ffffff"/>
+            </svg>
+          </span>
+          <span id="sub-health-label">Soğlom turmush tarzi</span>
+        </button>
+      </div>
+    </nav>
   </header>
 
   <!-- ASOSIY KONTENT -->
   <main class="max-w-7xl mx-auto px-4 py-6">
     <!-- BO'LIM SARLAVHASI -->
-    <div class="flex items-center justify-between border-b-2 border-[#04122b] dark:border-cyan-500 pb-2.5 mb-6">
-      <h1 id="section-heading" class="text-xl sm:text-2xl font-black uppercase tracking-tight flex items-center gap-2.5 text-[#04122b] dark:text-white">
+    <div class="flex items-center justify-between border-b-2 border-[#04122b] dark:border-cyan-500 pb-3 mb-6">
+      <div id="section-heading" class="text-xl sm:text-2xl font-black uppercase tracking-tight flex items-center gap-3 text-[#04122b] dark:text-white">
         <span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> Sönggi yangiliklar
-      </h1>
+      </div>
       <div class="flex items-center gap-3">
         <span id="translating-badge" class="hidden text-xs font-bold text-[#0077b6] animate-pulse"></span>
         <span id="items-counter" class="text-xs font-semibold text-slate-500"></span>
@@ -170,7 +196,7 @@
           <a href="#" onclick="selectMainSection('İqtisodiyot'); return false;" data-fsec="İqtisodiyot" class="footer-sec-link hover:text-cyan-400">Iqtisodiyot</a>
           <a href="#" onclick="selectMainSection('Jamiyat'); return false;" data-fsec="Jamiyat" class="footer-sec-link hover:text-cyan-400">Jamiyat</a>
           <a href="#" onclick="selectMainSection('Sport'); return false;" data-fsec="Sport" class="footer-sec-link hover:text-cyan-400">Sport</a>
-          <a href="#" onclick="selectMainSection('Hududlar'); return false;" data-fsec="Hududlar" class="footer-sec-link hover:text-cyan-400">Hududlar</a>
+          <a href="#" onclick="selectMainSection('Audio'); return false;" data-fsec="Audio" class="footer-sec-link hover:text-cyan-400">Audio</a>
         </div>
       </div>
       <div>
@@ -209,7 +235,39 @@
     // === GOOGLE APPS SCRIPT API URL ===
     var API_URL = 'https://script.google.com/macros/s/AKfycbzwD_g-ETkkKWn2AQF1QzRwSyscxFa0rfaqRwTDwDYRgIBd4jkLedDJo0kOEIgmABrK2w/exec';
 
-    // === 5 TA TIL LUG'ATI (O'zbekcha lotin, O'zbekcha kirill, Qoraqalpoqcha, Ruscha, Inglizcha) ===
+    // === BREND LOGOTIPLAR (SVG) ===
+    var LOGOS = {
+      uzumLarge: `<span class="w-9 h-9 rounded-xl bg-[#7000ff] flex items-center justify-center shadow-md shrink-0">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M5 4V13C5 16.866 8.134 20 12 20C15.866 20 19 16.866 19 13V4H15.5V13C15.5 14.933 13.933 16.5 12 16.5C10.067 16.5 8.5 14.933 8.5 13V4H5Z" fill="#ffffff"/>
+        </svg>
+      </span>`,
+      tgLarge: `<span class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2aabee] to-[#229ed9] flex items-center justify-center shadow-md shrink-0">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+          <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" fill="#ffffff"/>
+        </svg>
+      </span>`,
+      healthLarge: `<span class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-md shrink-0">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ffffff"/>
+        </svg>
+      </span>`
+    };
+
+    // === UZUM MARKET DO'KONIDAGI BOSHLANG'ICH MAHSULOTLAR (Yangi mahsulotlar Google Sheets bazasidan avtomatik qo'shiladi) ===
+    var DEFAULT_UZUM_PRODUCTS = [
+      {
+        id: 'uzum-1',
+        title: 'UMIDKHAN ONLINE BOZOR — Top mahsulotlar to‘plami',
+        summary: 'Uzum Market rasmiy do‘konimizdagi eng ommabop va chegirmali mahsulotlar katalogi. O‘zbekiston bo‘ylab 1 kunda bepul yetkazib berish!',
+        price: 'Uzum Market narxida',
+        badge: 'Rasmiy do‘kon',
+        image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=900&q=80',
+        url: 'https://uzum.uz/uz/shop/umidkhanonlinebozor'
+      }
+    ];
+
+    // === 5 TA TIL LUG'ATI ===
     var I18N = {
       uz: {
         days: ['Yakşanba', 'Duşanba', 'Seşanba', 'Çorşanba', 'Payşanba', 'Juma', 'Şanba'],
@@ -222,16 +280,15 @@
         subtitle: 'Tezkor axborot-tahliliy portal',
         searchPlaceholder: 'Sayt böyiça qidiriş...',
         nav: {
-          'Barchasi': 'Barchasi',
           'Özbekiston': 'Özbekiston',
           'Jahon': 'Jahon',
           'İqtisodiyot': 'Iqtisodiyot',
           'Jamiyat': 'Jamiyat',
           'Sport': 'Sport',
-          'Hududlar': 'Hududlar',
-          'Birja': '📈 Birja',
-          'Ob-havo': '🌤 Ob-havo',
-          'Loyihalar': '🚀 Loyihalar'
+          'Audio': 'Audio',
+          'UzumMarket': 'Uzum Market',
+          'TelegramBozor': 'Telegram bozor',
+          'SoglomTurmush': 'Soğlom turmush tarzi'
         },
         cats: {
           'Özbekiston': 'Özbekiston',
@@ -240,37 +297,41 @@
           'Jamiyat': 'Jamiyat',
           'Texnologiya': 'Texnologiya',
           'Sport': 'Sport',
+          'Audio': 'Audio',
+          'UzumMarket': 'Uzum Market',
+          'SoglomTurmush': 'Soğlom turmush tarzi',
           'Birja': 'Birja',
           'Ob-havo': 'Ob-havo'
         },
-        sportUz: '🇺🇿 Özbekiston sporti',
-        sportWorld: '🌍 Jahon sporti',
         headings: {
           'Barchasi': 'Sönggi yangiliklar',
           'Özbekiston': 'Özbekiston yangiliklari',
           'Jahon': 'Jahon yangiliklari',
           'İqtisodiyot': 'Iqtisodiyot yangiliklari',
           'Jamiyat': 'Jamiyat yangiliklari',
-          'SportUz': 'Özbekiston sport yangiliklari',
-          'SportWorld': 'Jahon sport yangiliklari',
-          'Birja': 'Birja yangiliklari (Tilla, Kumuş, Kripto, Valyutalar)',
-          'Ob-havo': 'Özbekiston hududlari böyiça ob-havo maʼlumotlari (Özgidromet)',
-          'Loyihalar': 'Şaxsiy loyihalarimiz',
-          'RegionSuffix': ' yangiliklari'
+          'Sport': 'Sport yangiliklari',
+          'Audio': 'Audio habarlar',
+          'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
+          'TelegramBozor': 'UMIDKHAN ONLINE BOZOR',
+          'SoglomTurmush': 'Soğlom turmush tarzi'
         },
+        buyBtn: '🛒 Sotib oliş (Uzum Market)',
+        openShopBtn: '🛍 Barcha mahsulotlarni Uzum Marketda köriş →',
+        openTgBotBtn: '🤖 Telegram Bot Marketplaysga ötiş →',
+        openHealthTgBtn: '✈️ @soglomturmushtarzi_rasmiy kanaliga ötiş →',
+        tgBozorDesc: 'UMIDKHAN ONLINE BOZOR rasmiy Telegram bot marketplaysi orqali barcha mahsulotlarni qulay narxlarda buyurtma qiling va tezkor yetkazib berish xizmatidan foydalaning.',
+        listenBtn: '🔊 Eshitiş',
+        stopBtn: '⏹ Töxtatiş',
         mainTopic: 'Asosiy mavzu',
         readMore: 'Batafsil öqiş →',
         readShort: 'Öqiş →',
         fastFeed: '⚡ Tezkor lenta',
         updated: 'Yangilangan',
         waitingNews: 'Yangi xabarlar kutilmoqda...',
-        noNews: 'Uşbu bölimda hozirça yangiliklar topilmadi.',
-        noBirja: 'Birja bölimida hozirça yangiliklar kutilmoqda.',
-        noWeather: 'Ob-havo maʼlumotlari hozirça kutilmoqda.',
+        noNews: 'Uşbu bölimda hozirça maʼlumotlar topilmadi.',
         countNews: ' ta yangilik',
         countMsg: ' ta xabar',
-        countInfo: ' ta maʼlumot',
-        countProj: ' ta loyiha',
+        countProd: ' ta mahsulot',
         translating: 'Tarjima qilinmoqda...',
         sourceLink: '🔗 Asl manbaga ötiş →',
         closeBtn: 'Yopiş',
@@ -293,16 +354,15 @@
         subtitle: 'Тезкор ахборот-таҳлилий портал',
         searchPlaceholder: 'Сайт бўйича қидириш...',
         nav: {
-          'Barchasi': 'Барчаси',
           'Özbekiston': 'Ўзбекистон',
           'Jahon': 'Жаҳон',
           'İqtisodiyot': 'Иқтисодиёт',
           'Jamiyat': 'Жамият',
           'Sport': 'Спорт',
-          'Hududlar': 'Ҳудудлар',
-          'Birja': '📈 Биржа',
-          'Ob-havo': '🌤 Об-ҳаво',
-          'Loyihalar': '🚀 Лойиҳалар'
+          'Audio': 'Аудио',
+          'UzumMarket': 'Uzum Market',
+          'TelegramBozor': 'Telegram бозор',
+          'SoglomTurmush': 'Соғлом турмуш тарзи'
         },
         cats: {
           'Özbekiston': 'Ўзбекистон',
@@ -311,37 +371,41 @@
           'Jamiyat': 'Жамият',
           'Texnologiya': 'Технология',
           'Sport': 'Спорт',
+          'Audio': 'Аудио',
+          'UzumMarket': 'Uzum Market',
+          'SoglomTurmush': 'Соғлом турмуш тарзи',
           'Birja': 'Биржа',
           'Ob-havo': 'Об-ҳаво'
         },
-        sportUz: '🇺🇿 Ўзбекистон спорти',
-        sportWorld: '🌍 Жаҳон спорти',
         headings: {
           'Barchasi': 'Сўнгги янгиликлар',
           'Özbekiston': 'Ўзбекистон янгиликлари',
           'Jahon': 'Жаҳон янгиликлари',
           'İqtisodiyot': 'Иқтисодиёт янгиликлари',
           'Jamiyat': 'Жамият янгиликлари',
-          'SportUz': 'Ўзбекистон спорт янгиликлари',
-          'SportWorld': 'Жаҳон спорт янгиликлари',
-          'Birja': 'Биржа янгиликлари (Тилла, Кумуш, Крипто, Валюталар)',
-          'Ob-havo': 'Ўзбекистон ҳудудлари бўйича об-ҳаво маълумотлари (Ўзгидромет)',
-          'Loyihalar': 'Шахсий лойиҳаларимиз',
-          'RegionSuffix': ' янгиликлари'
+          'Sport': 'Спорт янгиликлари',
+          'Audio': 'Аудио хабарлар',
+          'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
+          'TelegramBozor': 'UMIDKHAN ONLINE BOZOR',
+          'SoglomTurmush': 'Соғлом турмуш тарзи'
         },
+        buyBtn: '🛒 Сотиб олиш (Uzum Market)',
+        openShopBtn: '🛍 Барча маҳсулотларни Uzum Marketда кўриш →',
+        openTgBotBtn: '🤖 Telegram Бот Маркетплейсга ўтиш →',
+        openHealthTgBtn: '✈️ @soglomturmushtarzi_rasmiy каналига ўтиш →',
+        tgBozorDesc: 'UMIDKHAN ONLINE BOZOR расмий Telegram бот маркетплейси орқали барча маҳсулотларни қулай нархларда буюртма қилинг ва тезкор етказиб бериш хизматидан фойдаланинг.',
+        listenBtn: '🔊 Эшитиш',
+        stopBtn: '⏹ Тўхтатиш',
         mainTopic: 'Асосий мавзу',
         readMore: 'Батафсил ўқиш →',
         readShort: 'Ўқиш →',
         fastFeed: '⚡ Тезкор лента',
         updated: 'Янгиланган',
         waitingNews: 'Янги хабарлар кутилмоқда...',
-        noNews: 'Ушбу бўлимда ҳозирча янгиликлар топилмади.',
-        noBirja: 'Биржа бўлимида ҳозирча янгиликлар кутилмоқда.',
-        noWeather: 'Об-ҳаво маълумотлари ҳозирча кутилмоқда.',
+        noNews: 'Ушбу бўлимда ҳозирча маълумотлар топилмади.',
         countNews: ' та янгилик',
         countMsg: ' та хабар',
-        countInfo: ' та маълумот',
-        countProj: ' та лойиҳа',
+        countProd: ' та маҳсулот',
         translating: 'Ўгирилмоқда...',
         sourceLink: '🔗 Асл манбага ўтиш →',
         closeBtn: 'Ёпиш',
@@ -364,16 +428,15 @@
         subtitle: 'Jedel málimleme-tallaw portalı',
         searchPlaceholder: 'Sayt boyınsha izlew...',
         nav: {
-          'Barchasi': 'Barlıǵı',
           'Özbekiston': 'Ózbekstan',
           'Jahon': 'Jáhán',
           'İqtisodiyot': 'Ekonomika',
           'Jamiyat': 'Jámiyet',
           'Sport': 'Sport',
-          'Hududlar': 'Aymaqlar',
-          'Birja': '📈 Birja',
-          'Ob-havo': '🌤 Hawa-rayı',
-          'Loyihalar': '🚀 Joybarlar'
+          'Audio': 'Audio',
+          'UzumMarket': 'Uzum Market',
+          'TelegramBozor': 'Telegram bazar',
+          'SoglomTurmush': 'Salamat turmıs tárizı'
         },
         cats: {
           'Özbekiston': 'Ózbekstan',
@@ -382,37 +445,41 @@
           'Jamiyat': 'Jámiyet',
           'Texnologiya': 'Texnologiya',
           'Sport': 'Sport',
+          'Audio': 'Audio',
+          'UzumMarket': 'Uzum Market',
+          'SoglomTurmush': 'Salamat turmıs tárizı',
           'Birja': 'Birja',
           'Ob-havo': 'Hawa-rayı'
         },
-        sportUz: '🇺🇿 Ózbekstan sportı',
-        sportWorld: '🌍 Jáhán sportı',
         headings: {
           'Barchasi': 'Sońǵı jańalıqlar',
           'Özbekiston': 'Ózbekstan jańalıqları',
           'Jahon': 'Jáhán jańalıqları',
           'İqtisodiyot': 'Ekonomika jańalıqları',
           'Jamiyat': 'Jámiyet jańalıqları',
-          'SportUz': 'Ózbekstan sport jańalıqları',
-          'SportWorld': 'Jáhán sport jańalıqları',
-          'Birja': 'Birja jańalıqları (Altın, Gúmis, Kripto, Valyutalar)',
-          'Ob-havo': 'Ózbekstan aymaqları boyınsha hawa-rayı maǵlıwmatları (Ózgidromet)',
-          'Loyihalar': 'Jeke joybarlarımız',
-          'RegionSuffix': ' jańalıqları'
+          'Sport': 'Sport jańalıqları',
+          'Audio': 'Audio xabarlar',
+          'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
+          'TelegramBozor': 'UMIDKHAN ONLINE BOZOR',
+          'SoglomTurmush': 'Salamat turmıs tárizı'
         },
+        buyBtn: '🛒 Satıp alıw (Uzum Market)',
+        openShopBtn: '🛍 Barlıq ónimlerdi Uzum Markette kóriw →',
+        openTgBotBtn: '🤖 Telegram Bot Marketpleyske ótiw →',
+        openHealthTgBtn: '✈️ @soglomturmushtarzi_rasmiy kanalına ótiw →',
+        tgBozorDesc: 'UMIDKHAN ONLINE BOZOR rásmiy Telegram bot marketpleysi arqalı barlıq ónimlerdi qolaylı bahalarda buyırtpa beriń.',
+        listenBtn: '🔊 Tıńlaw',
+        stopBtn: '⏹ Toqtatıw',
         mainTopic: 'Tiykarǵı tema',
         readMore: 'Tolıq oqıw →',
         readShort: 'Oqıw →',
         fastFeed: '⚡ Jedel lenta',
         updated: 'Jańalanǵan',
         waitingNews: 'Jańa xabarlar kútilmekte...',
-        noNews: 'Bul bólimde házirshe jańalıqlar tabılmadı.',
-        noBirja: 'Birja bóliminde házirshe jańalıqlar kútilmekte.',
-        noWeather: 'Hawa-rayı maǵlıwmatları házirshe kútilmekte.',
+        noNews: 'Bul bólimde házirshe maǵlıwmatlar tabılmadı.',
         countNews: ' jańalıq',
         countMsg: ' xabar',
-        countInfo: ' maǵlıwmat',
-        countProj: ' joybar',
+        countProd: ' ónim',
         translating: 'Awdarılmaqta...',
         sourceLink: '🔗 Tiykarǵı derekke ótiw →',
         closeBtn: 'Jabıw',
@@ -435,16 +502,15 @@
         subtitle: 'Оперативный информационно-аналитический портал',
         searchPlaceholder: 'Поиск по сайту...',
         nav: {
-          'Barchasi': 'Все',
           'Özbekiston': 'Узбекистан',
           'Jahon': 'Мир',
           'İqtisodiyot': 'Экономика',
           'Jamiyat': 'Общество',
           'Sport': 'Спорт',
-          'Hududlar': 'Регионы',
-          'Birja': '📈 Биржа',
-          'Ob-havo': '🌤 Погода',
-          'Loyihalar': '🚀 Проекты'
+          'Audio': 'Аудио',
+          'UzumMarket': 'Uzum Market',
+          'TelegramBozor': 'Telegram маркет',
+          'SoglomTurmush': 'Здоровый образ жизни'
         },
         cats: {
           'Özbekiston': 'Узбекистан',
@@ -453,37 +519,41 @@
           'Jamiyat': 'Общество',
           'Texnologiya': 'Технологии',
           'Sport': 'Спорт',
+          'Audio': 'Аудио',
+          'UzumMarket': 'Uzum Market',
+          'SoglomTurmush': 'Здоровый образ жизни',
           'Birja': 'Биржа',
           'Ob-havo': 'Погода'
         },
-        sportUz: '🇺🇿 Спорт Узбекистана',
-        sportWorld: '🌍 Мировой спорт',
         headings: {
           'Barchasi': 'Последние новости',
           'Özbekiston': 'Новости Узбекистана',
           'Jahon': 'Мировые новости',
           'İqtisodiyot': 'Новости экономики',
           'Jamiyat': 'Новости общества',
-          'SportUz': 'Спортивные новости Узбекистана',
-          'SportWorld': 'Мировые спортивные новости',
-          'Birja': 'Биржевые новости (Золото, Серебро, Крипто, Валюты)',
-          'Ob-havo': 'Прогноз погоды по регионам Узбекистана (Узгидромет)',
-          'Loyihalar': 'Наши личные проекты',
-          'RegionSuffix': ' — новости региона'
+          'Sport': 'Спортивные новости',
+          'Audio': 'Аудио новости',
+          'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
+          'TelegramBozor': 'UMIDKHAN ONLINE BOZOR',
+          'SoglomTurmush': 'Здоровый образ жизни'
         },
+        buyBtn: '🛒 Купить (Uzum Market)',
+        openShopBtn: '🛍 Смотреть все товары на Uzum Market →',
+        openTgBotBtn: '🤖 Перейти в Telegram Бот Маркетплейс →',
+        openHealthTgBtn: '✈️ Перейти в канал @soglomturmushtarzi_rasmiy →',
+        tgBozorDesc: 'Заказывайте качественные товары по выгодным ценам с быстрой доставкой через официальный Telegram-бот маркетплейс UMIDKHAN ONLINE BOZOR.',
+        listenBtn: '🔊 Слушать',
+        stopBtn: '⏹ Стоп',
         mainTopic: 'Главная тема',
         readMore: 'Читать полностью →',
         readShort: 'Читать →',
         fastFeed: '⚡ Срочная лента',
         updated: 'Обновлено',
         waitingNews: 'Ожидаются новые сообщения...',
-        noNews: 'В данном разделе новостей пока не найдено.',
-        noBirja: 'В разделе биржи новостей пока нет.',
-        noWeather: 'Данные о погоде ожидаются.',
+        noNews: 'В данном разделе материалов пока не найдено.',
         countNews: ' новостей',
         countMsg: ' сообщений',
-        countInfo: ' сводок',
-        countProj: ' проекта',
+        countProd: ' товаров',
         translating: 'Перевод...',
         sourceLink: '🔗 Перейти к источнику →',
         closeBtn: 'Закрыть',
@@ -506,16 +576,15 @@
         subtitle: 'Breaking News & Analytical Portal',
         searchPlaceholder: 'Search across the site...',
         nav: {
-          'Barchasi': 'All News',
           'Özbekiston': 'Uzbekistan',
           'Jahon': 'World',
           'İqtisodiyot': 'Economy',
           'Jamiyat': 'Society',
           'Sport': 'Sports',
-          'Hududlar': 'Regions',
-          'Birja': '📈 Markets',
-          'Ob-havo': '🌤 Weather',
-          'Loyihalar': '🚀 Projects'
+          'Audio': 'Audio',
+          'UzumMarket': 'Uzum Market',
+          'TelegramBozor': 'Telegram Market',
+          'SoglomTurmush': 'Healthy Lifestyle'
         },
         cats: {
           'Özbekiston': 'Uzbekistan',
@@ -524,37 +593,41 @@
           'Jamiyat': 'Society',
           'Texnologiya': 'Technology',
           'Sport': 'Sports',
+          'Audio': 'Audio',
+          'UzumMarket': 'Uzum Market',
+          'SoglomTurmush': 'Healthy Lifestyle',
           'Birja': 'Markets',
           'Ob-havo': 'Weather'
         },
-        sportUz: '🇺🇿 Uzbekistan Sports',
-        sportWorld: '🌍 World Sports',
         headings: {
           'Barchasi': 'Latest News',
           'Özbekiston': 'Uzbekistan News',
           'Jahon': 'World News',
           'İqtisodiyot': 'Economy News',
           'Jamiyat': 'Society News',
-          'SportUz': 'Uzbekistan Sports News',
-          'SportWorld': 'World Sports News',
-          'Birja': 'Market News (Gold, Silver, Crypto, Forex)',
-          'Ob-havo': 'Weather Forecast Across Uzbekistan Regions (Uzhydromet)',
-          'Loyihalar': 'Our Personal Projects',
-          'RegionSuffix': ' News'
+          'Sport': 'Sports News',
+          'Audio': 'Audio News',
+          'UzumMarket': 'UMIDKHAN ONLINE BOZOR',
+          'TelegramBozor': 'UMIDKHAN ONLINE BOZOR',
+          'SoglomTurmush': 'Healthy Lifestyle'
         },
+        buyBtn: '🛒 Buy Now (Uzum Market)',
+        openShopBtn: '🛍 View All Products on Uzum Market →',
+        openTgBotBtn: '🤖 Open Telegram Bot Marketplace →',
+        openHealthTgBtn: '✈️ Open @soglomturmushtarzi_rasmiy Channel →',
+        tgBozorDesc: 'Order quality products at affordable prices with fast delivery through our official UMIDKHAN ONLINE BOZOR Telegram bot marketplace.',
+        listenBtn: '🔊 Listen',
+        stopBtn: '⏹ Stop',
         mainTopic: 'Top Story',
         readMore: 'Read more →',
         readShort: 'Read →',
         fastFeed: '⚡ Breaking Feed',
         updated: 'Updated',
         waitingNews: 'Waiting for new stories...',
-        noNews: 'No news found in this section yet.',
-        noBirja: 'No market news available yet.',
-        noWeather: 'Weather updates are coming soon.',
+        noNews: 'No items found in this section yet.',
         countNews: ' articles',
         countMsg: ' posts',
-        countInfo: ' reports',
-        countProj: ' projects',
+        countProd: ' products',
         translating: 'Translating...',
         sourceLink: '🔗 Go to original source →',
         closeBtn: 'Close',
@@ -568,72 +641,38 @@
       }
     };
 
-    // === 14 TA HUDUD RO'YXATI ===
-    var REGIONS_LIST = [
-      { id: 'Qoraqalpoğiston', label: 'Qoraqalpoğiston Respublikasi', labels: { uz: 'Qoraqalpoğiston Respublikasi', uz_cyrl: 'Қорақалпоғистон Республикаси', kaa: 'Qaraqalpaqstan Respublikası', ru: 'Республика Каракалпакстан', en: 'Republic of Karakalpakstan' }, keys: ['qoraqalpoğiston', 'nukus', 'möynoq', 'qönğirot', 'törtköl'] },
-      { id: 'Toşkent şahri', label: 'Toşkent şahar', labels: { uz: 'Toşkent şahar', uz_cyrl: 'Тошкент шаҳар', kaa: 'Tashkent qalası', ru: 'Город Ташкент', en: 'Tashkent City' }, keys: ['toşkent şah', 'toşkentda', 'poytaxt', 'çilonzor', 'yunusobod', 'sergeli'] },
-      { id: 'Andijon', label: 'Andijon viloyati', labels: { uz: 'Andijon viloyati', uz_cyrl: 'Андижон вилояти', kaa: 'Ándijan wálayatı', ru: 'Андижанская область', en: 'Andijan Region' }, keys: ['andijon', 'asaka', 'şaxrixon', 'xonobod'] },
-      { id: 'Buxoro', label: 'Buxoro viloyati', labels: { uz: 'Buxoro viloyati', uz_cyrl: 'Бухоро вилояти', kaa: 'Buxara wálayatı', ru: 'Бухарская область', en: 'Bukhara Region' }, keys: ['buxoro', 'ğijduvon', 'kogon'] },
-      { id: 'Farğona', label: 'Farğona viloyati', labels: { uz: 'Farğona viloyati', uz_cyrl: 'Фарғона вилояти', kaa: 'Ferǵana wálayatı', ru: 'Ферганская область', en: 'Fergana Region' }, keys: ['farğona', 'qöqon', 'marğilon', 'quva'] },
-      { id: 'Jizzax', label: 'Jizzax viloyati', labels: { uz: 'Jizzax viloyati', uz_cyrl: 'Жиззах вилояти', kaa: 'Jizzaq wálayatı', ru: 'Джизакская область', en: 'Jizzakh Region' }, keys: ['jizzax', 'zomin', 'ğallaorol'] },
-      { id: 'Xorazm', label: 'Xorazm viloyati', labels: { uz: 'Xorazm viloyati', uz_cyrl: 'Хоразм вилояти', kaa: 'Xorezm wálayatı', ru: 'Хорезмская область', en: 'Khorezm Region' }, keys: ['xorazm', 'urganç', 'xiva'] },
-      { id: 'Namangan', label: 'Namangan viloyati', labels: { uz: 'Namangan viloyati', uz_cyrl: 'Наманган вилояти', kaa: 'Namangan wálayatı', ru: 'Наманганская область', en: 'Namangan Region' }, keys: ['namangan', 'çust', 'pop', 'kosonsoy'] },
-      { id: 'Navoiy', label: 'Navoiy viloyati', labels: { uz: 'Navoiy viloyati', uz_cyrl: 'Навоий вилояти', kaa: 'Nawayı wálayatı', ru: 'Навоийская область', en: 'Navoiy Region' }, keys: ['navoiy', 'zarafşon', 'uçquduq'] },
-      { id: 'Qaşqadaryo', label: 'Qaşqadaryo viloyati', labels: { uz: 'Qaşqadaryo viloyati', uz_cyrl: 'Қашқадарё вилояти', kaa: 'Qashqadárya wálayatı', ru: 'Кашкадарьинская область', en: 'Kashkadarya Region' }, keys: ['qaşqadaryo', 'qarşi', 'şahrisabz'] },
-      { id: 'Samarqand', label: 'Samarqand viloyati', labels: { uz: 'Samarqand viloyati', uz_cyrl: 'Самарқанд вилояти', kaa: 'Samarqand wálayatı', ru: 'Самаркандская область', en: 'Samarkand Region' }, keys: ['samarqand', 'kattaqörğon', 'urgut'] },
-      { id: 'Sirdaryo', label: 'Sirdaryo viloyati', labels: { uz: 'Sirdaryo viloyati', uz_cyrl: 'Сирдарё вилояти', kaa: 'Sırdárya wálayatı', ru: 'Сырдарьинская область', en: 'Sirdarya Region' }, keys: ['sirdaryo', 'guliston', 'yangiyer'] },
-      { id: 'Surxondaryo', label: 'Surxondaryo viloyati', labels: { uz: 'Surxondaryo viloyati', uz_cyrl: 'Сурхондарё вилояти', kaa: 'Surxandárya wálayatı', ru: 'Сурхандарьинская область', en: 'Surkhandarya Region' }, keys: ['surxondaryo', 'termiz', 'denov'] },
-      { id: 'Toşkent viloyati', label: 'Toşkent viloyati', labels: { uz: 'Toşkent viloyati', uz_cyrl: 'Тошкент вилояти', kaa: 'Tashkent wálayatı', ru: 'Ташкентская область', en: 'Tashkent Region' }, keys: ['toşkent viloyati', 'nurafşon', 'olmaliq', 'angren', 'çirçiq'] }
-    ];
-
-    // === SHAXSIY LOYIHALAR RO'YXATI (Havolalarni o'zingiznikiga almashtirasiz) ===
-    var MY_PROJECTS = [
-      {
-        title: 'Uzum Market Rasmiy Dökonimiz',
-        badge: 'E-Commerce',
-        icon: '🛍',
-        desc: 'UMIDKHAN ONLINE BOZOR - Sifatli va hamyonbop mahsulotlar, tezkor yetkazib beriş hamda doimiy çegirmalar jamlangan şaxsiy onlayn dökonimiz.',
-        url: 'https://uzum.uz/uz/shop/umidkhanonlinebozor',
-        btnText: 'Dökonga ötiş →',
-        uz_cyrl: { title: 'Uzum Market Расмий Дўконимиз', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR - Сифатли ва ҳамёнбоп маҳсулотлар, тезкор етказиб бериш ҳамда доимий чегирмалар жамланган шахсий онлайн дўконимиз.', btnText: 'Дўконга ўтиш →' },
-        kaa: { title: 'Uzum Market Rásmiy Dúkanımız', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR - Sapalı hám qolaylı bahadaǵı ónimler, jedel jetkerip beriw hám turaqlı shegirmeler jıynalǵan jeke onlayn dúkanımız.', btnText: 'Dúkanǵa ótiw →' },
-        ru: { title: 'Официальный магазин на Uzum Market', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR — качественные и доступные товары, быстрая доставка и регулярные скидки в нашем личном онлайн-магазине.', btnText: 'Перейти в магазин →' },
-        en: { title: 'Official Uzum Market Store', badge: 'E-Commerce', desc: 'UMIDKHAN ONLINE BOZOR — quality and affordable products, fast delivery, and regular discounts in our personal online store.', btnText: 'Visit Store →' }
-      },
-      {
-        title: 'Soğlom Turmuş Tarzi — Telegram Kanal',
-        badge: 'Tibbiyot va Salomatlik',
-        icon: '🌿',
-        desc: 'Kundalik foydali tibbiy tavsiyalar, töğri ovqatlanish, kasalliklarning oldini oliş va soğlom hayot sirlari haqida ishonçli maʼlumotlar.',
-        url: 'https://t.me/soglomturmushtarzi_rasmiy',
-        btnText: 'Kanalga obuna böliş →',
-        uz_cyrl: { title: 'Соғлом Турмуш Тарзи — Telegram Канал', badge: 'Тиббиёт ва Саломатлик', desc: 'Кундалик фойдали тиббий тавсиялар, тўғри овқатланиш, касалликларнинг олдини олиш ва соғлом ҳаёт сирлари ҳақида ишончли маълумотлар.', btnText: 'Каналга обуна бўлиш →' },
-        kaa: { title: 'Salamat Turmıs Tárizı — Telegram Kanal', badge: 'Medicina hám Salawatlıq', desc: 'Kúndelikli paydalı medicinalıq másláhátler, durıs awqatlanıw, keselliklerdiń aldın alıw hám salamat ómir sırları haqqında isenimli maǵlıwmatlar.', btnText: 'Kanalǵa jazılıw →' },
-        ru: { title: 'Здоровый образ жизни — Telegram-канал', badge: 'Медицина и здоровье', desc: 'Ежедневные полезные медицинские рекомендации, правильное питание, профилактика заболеваний и секреты здоровой жизни.', btnText: 'Подписаться на канал →' },
-        en: { title: 'Healthy Lifestyle — Telegram Channel', badge: 'Health & Medicine', desc: 'Daily useful medical tips, healthy nutrition, disease prevention, and reliable insights for a healthier life.', btnText: 'Subscribe to Channel →' }
-      },
-      {
-        title: 'UMIDKHAN ONLINE BOZOR - Bot Marketplays',
-        badge: 'IT va Avtomatlaştiş',
-        icon: '🤖',
-        desc: 'UMIDKHAN ONLINE BOZOR - Sifatli va hamyonbop mahsulotlar, tezkor yetkazib beriş hamda doimiy çegirmalar jamlangan şaxsiy onlayn dökonimiz.',
-        url: 'https://t.me/Umidkhan_online_bozorBot',
-        btnText: 'Marketplaysni oçiş →',
-        uz_cyrl: { title: 'UMIDKHAN ONLINE BOZOR - Бот Маркетплейс', badge: 'IT ва Автоматлаштиш', desc: 'UMIDKHAN ONLINE BOZOR - Сифатли ва ҳамёнбоп маҳсулотлар, тезкор етказиб бериш ҳамда доимий чегирмалар жамланган шахсий онлайн дўконимиз.', btnText: 'Маркетплейсни очиш →' },
-        kaa: { title: 'UMIDKHAN ONLINE BOZOR - Bot Marketpleys', badge: 'IT hám Avtomatlastırıw', desc: 'UMIDKHAN ONLINE BOZOR - Sapalı hám qolaylı bahadaǵı ónimler, jedel jetkerip beriw hám turaqlı shegirmeler jıynalǵan jeke onlayn dúkanımız.', btnText: 'Marketpleysti ashıw →' },
-        ru: { title: 'UMIDKHAN ONLINE BOZOR — Бот-маркетплейс', badge: 'IT и автоматизация', desc: 'UMIDKHAN ONLINE BOZOR — удобный Telegram-бот для быстрого заказа качественных и доступных товаров с доставкой.', btnText: 'Открыть маркетплейс →' },
-        en: { title: 'UMIDKHAN ONLINE BOZOR — Bot Marketplace', badge: 'IT & Automation', desc: 'UMIDKHAN ONLINE BOZOR — convenient Telegram bot marketplace for fast ordering of quality products with delivery.', btnText: 'Open Marketplace →' }
-      }
-    ];
-
     var ALL_NEWS = [];
     var CBU_RATES_LIST = [];
     var LOCAL_WEATHER_STATE = null;
+    var CURRENT_SPEAKING_ID = null;
 
     var currentLang = localStorage.getItem('umidkhan_lang') || 'uz';
     var currentSection = 'Barchasi';
-    var currentSubSection = '';
     var TRANSLATION_CACHE = {};
+
+    // === AUDIO O'QISH (Web Speech API) ===
+    function toggleSpeakNews(id) {
+      if (!('speechSynthesis' in window)) return;
+      if (CURRENT_SPEAKING_ID === id) {
+        window.speechSynthesis.cancel();
+        CURRENT_SPEAKING_ID = null;
+        renderCurrentView(true);
+        return;
+      }
+      var item = ALL_NEWS.find(n => n.id == id);
+      if (!item) return;
+      window.speechSynthesis.cancel();
+      var textToRead = getItemField(item, 'title') + '. ' + (getItemField(item, 'content') || getItemField(item, 'summary'));
+      var utter = new SpeechSynthesisUtterance(normalizeForTranslator(textToRead));
+      utter.lang = currentLang === 'ru' ? 'ru-RU' : (currentLang === 'en' ? 'en-US' : 'uz-UZ');
+      utter.onend = function() {
+        CURRENT_SPEAKING_ID = null;
+        renderCurrentView(true);
+      };
+      CURRENT_SPEAKING_ID = id;
+      renderCurrentView(true);
+      window.speechSynthesis.speak(utter);
+    }
 
     // === FOYDALANUVCHI LOKATSIYASIGA QARAB KUNLIK OB-HAVONI KO'RSATISH ===
     function getWeatherEmoji(code, isDay) {
@@ -708,7 +747,7 @@
       );
     }
 
-    // === CBU.UZ VALYUTA KURSLARINI YUKLASH VA YURUVCHI MATNGA CHIQARISH ===
+    // === CBU.UZ VALYUTA KURSLARINI YUKLASH ===
     function loadCbuRates() {
       fetch('https://cbu.uz/uz/arkhiv-kursov-valyut/json/')
         .then(res => res.json())
@@ -760,7 +799,7 @@
       track.innerHTML = prefix + itemsHtml + prefix + itemsHtml;
     }
 
-    // === O'ZBEK LOTIN ALIFBOSIDAN KIRILLCHAGA 100% IMLO QOIDALARI ASOSIDA O'GIRISH ===
+    // === O'ZBEK LOTIN ALIFBOSIDAN KIRILLCHAGA 100% O'GIRISH ===
     function latinToUzbekCyrillic(text) {
       if (!text) return '';
       var s = String(text);
@@ -912,8 +951,6 @@
     function getCatLabel(cat) {
       var dict = I18N[currentLang] || I18N.uz;
       if (dict.cats[cat]) return dict.cats[cat];
-      var reg = REGIONS_LIST.find(function(r) { return r.id === cat; });
-      if (reg) return reg.labels[currentLang] || reg.label;
       return currentLang === 'uz_cyrl' ? latinToUzbekCyrillic(cat) : cat;
     }
 
@@ -933,7 +970,6 @@
       applyStaticTranslations();
       renderLocalWeather();
       renderCbuTicker();
-      updateSubNavLabels();
       renderCurrentView();
     }
 
@@ -954,6 +990,10 @@
         if (t.nav[sec]) btn.textContent = t.nav[sec];
       });
 
+      document.getElementById('sub-uzum-label').textContent = t.nav['UzumMarket'];
+      document.getElementById('sub-tgbozor-label').textContent = t.nav['TelegramBozor'];
+      document.getElementById('sub-health-label').textContent = t.nav['SoglomTurmush'];
+
       document.getElementById('footer-desc').textContent = t.footerDesc;
       document.getElementById('footer-sec-title').textContent = t.footerSecTitle;
       document.querySelectorAll('.footer-sec-link').forEach(function(a) {
@@ -967,28 +1007,6 @@
       document.getElementById('footer-copy').textContent = t.footerCopy;
       document.getElementById('modal-source').textContent = t.sourceLink;
       document.getElementById('modal-close-btn').textContent = t.closeBtn;
-    }
-
-    function updateSubNavLabels() {
-      var t = I18N[currentLang] || I18N.uz;
-      var subBar = document.getElementById('sub-nav-bar');
-      var subItems = document.getElementById('sub-nav-items');
-
-      if (currentSection === 'Sport') {
-        subBar.classList.remove('hidden');
-        subItems.innerHTML = ['Özbekiston', 'Jahon'].map(sub => `
-          <button onclick="selectSubSection('${sub}')" data-sub="${sub}" class="sub-btn px-3.5 py-1.5 rounded-full ${sub === currentSubSection ? 'bg-[#0077b6] text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'} shrink-0 transition">
-            ${sub === 'Özbekiston' ? t.sportUz : t.sportWorld}
-          </button>
-        `).join('');
-      } else if (currentSection === 'Hududlar') {
-        subBar.classList.remove('hidden');
-        subItems.innerHTML = REGIONS_LIST.map(r => `
-          <button onclick="selectSubSection('${r.id}')" data-sub="${r.id}" class="sub-btn px-3.5 py-1.5 rounded-full ${r.id === currentSubSection ? 'bg-[#0077b6] text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'} shrink-0 transition">
-            ${r.labels[currentLang] || r.label}
-          </button>
-        `).join('');
-      }
     }
 
     // === RASM YOKI VIDEO YUQORI O'NG BURCHAGIDA UMIDKHAN.UZ LOGOSI BILAN KO'RSATISH ===
@@ -1013,7 +1031,6 @@
       `;
     }
 
-    // === VAQT VA SANANI ODDIY VA CHIROYLI FORMATLASH ===
     function formatUzDate(rawDate) {
       if (!rawDate) return '';
       var s = String(rawDate).trim();
@@ -1033,7 +1050,6 @@
       requestLocationWeather();
       loadCbuRates();
 
-      // Asosiy yangiliklarni Google Sheets API dan olish
       fetch(API_URL)
         .then(res => res.json())
         .then(data => {
@@ -1050,42 +1066,25 @@
 
     function selectMainSection(sec) {
       currentSection = sec;
-      currentSubSection = '';
 
+      // Yuqori qator tugmalari holati
       document.querySelectorAll('.nav-btn').forEach(btn => {
         if (btn.getAttribute('data-sec') === sec) {
-          btn.className = 'nav-btn px-3.5 py-2 rounded-lg bg-[#04122b] text-white shrink-0 transition';
+          btn.className = 'nav-btn px-4 sm:px-5 py-3 text-[#0077b6] dark:text-cyan-400 bg-slate-50 dark:bg-slate-800/70 shrink-0 transition';
         } else {
-          btn.className = 'nav-btn px-3.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 shrink-0 transition';
+          btn.className = 'nav-btn px-4 sm:px-5 py-3 text-slate-900 dark:text-slate-100 hover:text-[#0077b6] shrink-0 transition';
         }
       });
 
-      var subBar = document.getElementById('sub-nav-bar');
-      var subItems = document.getElementById('sub-nav-items');
-
-      if (sec === 'Sport') {
-        currentSubSection = 'Özbekiston';
-        updateSubNavLabels();
-      } else if (sec === 'Hududlar') {
-        currentSubSection = REGIONS_LIST[0].id;
-        updateSubNavLabels();
-      } else {
-        subBar.classList.add('hidden');
-        subItems.innerHTML = '';
-      }
-
-      renderCurrentView();
-    }
-
-    function selectSubSection(sub) {
-      currentSubSection = sub;
-      document.querySelectorAll('.sub-btn').forEach(btn => {
-        if (btn.getAttribute('data-sub') === sub) {
-          btn.className = 'sub-btn px-3.5 py-1.5 rounded-full bg-[#0077b6] text-white shrink-0 transition';
+      // Quyi qator loyihalar tugmalari holati
+      document.querySelectorAll('.sub-nav-project').forEach(btn => {
+        if (btn.getAttribute('data-sec') === sec) {
+          btn.className = 'sub-nav-project px-3.5 py-1.5 rounded-lg inline-flex items-center gap-2 bg-white dark:bg-slate-800 text-[#0077b6] dark:text-cyan-400 shadow-xs shrink-0 transition';
         } else {
-          btn.className = 'sub-btn px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 shrink-0 transition';
+          btn.className = 'sub-nav-project px-3.5 py-1.5 rounded-lg inline-flex items-center gap-2 text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 shrink-0 transition';
         }
       });
+
       renderCurrentView();
     }
 
@@ -1116,110 +1115,169 @@
       var container = document.getElementById('dynamic-content');
       var query = (document.getElementById('search-input').value || '').toLowerCase().trim();
 
-      // 1. BIRJA BO'LIMI
-      if (currentSection === 'Birja') {
-        headingEl.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> ' + t.headings['Birja'];
-        var birjaNews = ALL_NEWS.filter(n => n.category === 'Birja');
-        counterEl.textContent = birjaNews.length + t.countNews;
-        if (birjaNews.length === 0) {
-          container.innerHTML = `<div class="bg-white dark:bg-slate-900 rounded-xl p-12 text-center text-slate-500 border border-slate-200 dark:border-slate-800">${t.noBirja}</div>`;
-          return;
-        }
-        if (!skipTranslateTrigger) translateVisibleBatch(birjaNews);
-        container.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">` + birjaNews.map(item => `
-          <article onclick="openArticle(${item.id})" class="cursor-pointer group bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 hover:border-amber-500 hover:shadow-md transition flex flex-col justify-between">
-            <div>
-              ${item.images && item.images.length > 0 ? `<div class="mb-3.5">${renderWatermarkedImage(item.images[0], 'h-44 w-full', item.images.length)}</div>` : ''}
-              <div class="flex items-center justify-between gap-2 mb-2.5">
-                <span class="px-2.5 py-0.5 text-[11px] font-bold rounded bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">📈 ${getCatLabel('Birja')}</span>
-                <span class="text-[11px] text-slate-400">${item.date}</span>
-              </div>
-              <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#0077b6] transition leading-snug mb-2.5">
-                ${getItemField(item, 'title')}
-              </h3>
-              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
-                ${getItemField(item, 'summary')}
-              </p>
-            </div>
-            <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-semibold">
-              <span class="text-slate-400">@umidkhan_uz</span>
-              <span class="text-[#0077b6]">${t.readShort}</span>
-            </div>
-          </article>
-        `).join('') + `</div>`;
-        return;
-      }
+      // === 1. UZUM MARKET BO'LIMI (Marketplace ko'rinishida) ===
+      if (currentSection === 'UzumMarket') {
+        headingEl.innerHTML = `${LOGOS.uzumLarge} <span>${t.headings['UzumMarket']}</span>`;
+        var uzumItems = ALL_NEWS.filter(n => n.category === 'UzumMarket');
+        var allProducts = uzumItems.concat(DEFAULT_UZUM_PRODUCTS);
+        counterEl.textContent = allProducts.length + t.countProd;
+        if (!skipTranslateTrigger && uzumItems.length > 0) translateVisibleBatch(uzumItems);
 
-      // 2. OB-HAVO BO'LIMI
-      if (currentSection === 'Ob-havo') {
-        headingEl.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span> ' + t.headings['Ob-havo'];
-        var weatherNews = ALL_NEWS.filter(n => n.category === 'Ob-havo');
-        counterEl.textContent = weatherNews.length + t.countInfo;
-        if (weatherNews.length === 0) {
-          container.innerHTML = `<div class="bg-white dark:bg-slate-900 rounded-xl p-12 text-center text-slate-500 border border-slate-200 dark:border-slate-800">${t.noWeather}</div>`;
-          return;
-        }
-        if (!skipTranslateTrigger) translateVisibleBatch(weatherNews);
-        container.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 gap-6">` + weatherNews.map(item => `
-          <article onclick="openArticle(${item.id})" class="cursor-pointer group bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 hover:border-cyan-500 hover:shadow-md transition flex flex-col justify-between">
-            <div>
-              ${item.images && item.images.length > 0 ? `<div class="mb-4">${renderWatermarkedImage(item.images[0], 'h-48 w-full', item.images.length)}</div>` : ''}
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="px-2.5 py-0.5 text-[11px] font-bold rounded bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300">🌤 ${getCatLabel('Ob-havo')}</span>
-                <span class="text-[11px] text-slate-400">${item.date}</span>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#0077b6] transition leading-snug mb-3">
-                ${getItemField(item, 'title')}
-              </h3>
-              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-4 leading-relaxed mb-4">
-                ${getItemField(item, 'summary')}
-              </p>
-            </div>
-            <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-semibold">
-              <span class="text-slate-400">@umidkhan_uz</span>
-              <span class="text-[#0077b6]">${t.readMore}</span>
-            </div>
-          </article>
-        `).join('') + `</div>`;
-        return;
-      }
+        var cardsHtml = allProducts.map(prod => {
+          var isSheetItem = Boolean(prod.id && typeof prod.id === 'number');
+          var title = isSheetItem ? getItemField(prod, 'title') : prod.title;
+          var desc = isSheetItem ? getItemField(prod, 'summary') : prod.summary;
+          var imgUrl = isSheetItem ? (prod.images && prod.images[0] ? prod.images[0] : 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=900&q=80') : prod.image;
+          var productUrl = isSheetItem ? (prod.source || 'https://uzum.uz/uz/shop/umidkhanonlinebozor') : prod.url;
+          var priceLabel = prod.price || 'Uzum Market';
 
-      // 3. LOYIHALAR BO'LIMI
-      if (currentSection === 'Loyihalar') {
-        headingEl.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> ' + t.headings['Loyihalar'];
-        counterEl.textContent = MY_PROJECTS.length + t.countProj;
-        container.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-3 gap-6">` + MY_PROJECTS.map(p => {
-          var pLang = (currentLang !== 'uz' && p[currentLang]) ? p[currentLang] : p;
           return `
-            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition flex flex-col justify-between">
+            <div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-[#7000ff] hover:shadow-xl transition flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between mb-4">
-                  <span class="text-3xl">${p.icon}</span>
-                  <span class="px-3 py-1 text-xs font-bold rounded-full bg-blue-50 text-[#0077b6] dark:bg-slate-800 dark:text-cyan-400">${pLang.badge}</span>
+                <div class="relative h-56 w-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                  <img src="${imgUrl}" alt="${title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=900&q=80'" />
+                  <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-[#7000ff] text-white text-[11px] font-extrabold shadow">Uzum Market</span>
+                  ${prod.date ? `<span class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/65 text-white text-[10px]">${prod.date}</span>` : ''}
                 </div>
-                <h3 class="text-xl font-extrabold mb-2">${pLang.title}</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">${pLang.desc}</p>
+                <div class="p-5">
+                  <div class="text-xs font-extrabold text-[#7000ff] dark:text-purple-400 mb-1">${priceLabel}</div>
+                  <h3 class="text-base font-extrabold text-slate-900 dark:text-white leading-snug mb-2 line-clamp-2">${title}</h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">${desc}</p>
+                </div>
               </div>
-              <a href="${p.url}" target="_blank" class="block text-center w-full py-3 rounded-xl bg-[#04122b] hover:bg-[#0077b6] text-white text-sm font-bold transition">
-                ${pLang.btnText}
+              <div class="px-5 pb-5 pt-2">
+                <a href="${productUrl}" target="_blank" class="block text-center w-full py-3 rounded-xl bg-[#7000ff] hover:bg-[#5800c7] text-white text-xs sm:text-sm font-extrabold shadow-sm transition">
+                  ${t.buyBtn}
+                </a>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        container.innerHTML = `
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">${cardsHtml}</div>
+          <div class="text-center">
+            <a href="https://uzum.uz/uz/shop/umidkhanonlinebozor" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#04122b] hover:bg-[#7000ff] text-white text-sm font-extrabold transition">
+              ${t.openShopBtn}
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      // === 2. TELEGRAM BOZOR BO'LIMI ===
+      if (currentSection === 'TelegramBozor') {
+        headingEl.innerHTML = `${LOGOS.tgLarge} <span>${t.headings['TelegramBozor']}</span>`;
+        counterEl.textContent = '@Umidkhan_online_bozorBot';
+        container.innerHTML = `
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-sm max-w-3xl mx-auto text-center">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2aabee] to-[#229ed9] flex items-center justify-center mx-auto mb-5 shadow-lg">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+                <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" fill="#ffffff"/>
+              </svg>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-[#04122b] dark:text-white mb-3">UMIDKHAN ONLINE BOZOR</h2>
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-7">${t.tgBozorDesc}</p>
+            <a href="https://t.me/Umidkhan_online_bozorBot" target="_blank" class="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-[#0077b6] hover:bg-[#023e8a] text-white text-sm font-extrabold shadow-md transition">
+              ${t.openTgBotBtn}
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      // === 3. SOG'LOM TURMUSH TARZI BO'LIMI (@soglomturmushtarzi_rasmiy postlari) ===
+      if (currentSection === 'SoglomTurmush') {
+        headingEl.innerHTML = `${LOGOS.healthLarge} <span>${t.headings['SoglomTurmush']}</span>`;
+        var healthPosts = ALL_NEWS.filter(n => n.category === 'SoglomTurmush');
+        counterEl.textContent = healthPosts.length + t.countMsg;
+        if (!skipTranslateTrigger && healthPosts.length > 0) translateVisibleBatch(healthPosts);
+
+        if (healthPosts.length === 0) {
+          container.innerHTML = `
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-10 text-center border border-slate-200 dark:border-slate-800">
+              <p class="text-slate-500 mb-5">${t.waitingNews}</p>
+              <a href="https://t.me/soglomturmushtarzi_rasmiy" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold transition">
+                ${t.openHealthTgBtn}
               </a>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            ${healthPosts.map(item => `
+              <article onclick="openArticle(${item.id})" class="cursor-pointer group bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 hover:border-emerald-500 hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                  ${item.images && item.images.length > 0 ? `<div class="mb-3.5">${renderWatermarkedImage(item.images[0], 'h-44 w-full', item.images.length)}</div>` : ''}
+                  <div class="flex items-center justify-between gap-2 mb-2.5">
+                    <span class="px-2.5 py-0.5 text-[11px] font-bold rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">🌿 ${getCatLabel('SoglomTurmush')}</span>
+                    <span class="text-[11px] text-slate-400">${item.date}</span>
+                  </div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 transition leading-snug mb-2.5">
+                    ${getItemField(item, 'title')}
+                  </h3>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">
+                    ${getItemField(item, 'summary')}
+                  </p>
+                </div>
+                <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-semibold">
+                  <span class="text-slate-400">@soglomturmushtarzi_rasmiy</span>
+                  <span class="text-emerald-600">${t.readShort}</span>
+                </div>
+              </article>
+            `).join('')}
+          </div>
+          <div class="text-center">
+            <a href="https://t.me/soglomturmushtarzi_rasmiy" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold transition">
+              ${t.openHealthTgBtn}
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      // === 4. AUDIO HABARLAR BO'LIMI ===
+      if (currentSection === 'Audio') {
+        headingEl.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> <span>${t.headings['Audio']}</span>`;
+        var audioList = ALL_NEWS.filter(n => n.category !== 'UzumMarket');
+        counterEl.textContent = audioList.length + t.countMsg;
+        if (!skipTranslateTrigger && audioList.length > 0) translateVisibleBatch(audioList);
+
+        if (audioList.length === 0) {
+          container.innerHTML = `<div class="bg-white dark:bg-slate-900 rounded-xl p-12 text-center text-slate-500 border border-slate-200 dark:border-slate-800">${t.noNews}</div>`;
+          return;
+        }
+
+        container.innerHTML = `<div class="space-y-4">` + audioList.slice(0, 25).map(item => {
+          var isPlaying = CURRENT_SPEAKING_ID === item.id;
+          return `
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex-1 min-w-0 cursor-pointer" onclick="openArticle(${item.id})">
+                <div class="flex items-center gap-2 text-xs text-slate-400 mb-1">
+                  <span class="px-2 py-0.5 rounded bg-blue-50 text-[#0077b6] dark:bg-slate-800 dark:text-cyan-400 font-bold">${getCatLabel(item.category)}</span>
+                  <span>•</span>
+                  <span>${item.date}</span>
+                </div>
+                <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white hover:text-[#0077b6] transition">${getItemField(item, 'title')}</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mt-1">${getItemField(item, 'summary')}</p>
+              </div>
+              <button onclick="toggleSpeakNews(${item.id})" class="px-4 py-2.5 rounded-xl ${isPlaying ? 'bg-rose-600 text-white' : 'bg-[#0077b6] hover:bg-[#023e8a] text-white'} text-xs font-extrabold shrink-0 transition">
+                ${isPlaying ? t.stopBtn : t.listenBtn}
+              </button>
             </div>
           `;
         }).join('') + `</div>`;
         return;
       }
 
-      // 4. YANGILIKLAR BO'LIMLARI
+      // === 5. ASOSIY YANGILIKLAR BO'LIMLARI (Barchasi, Özbekiston, Jahon, İqtisodiyot, Jamiyat, Sport) ===
       var secTitle = t.headings[currentSection] || currentSection;
-      if (currentSection === 'Sport') {
-        secTitle = currentSubSection === 'Özbekiston' ? t.headings['SportUz'] : t.headings['SportWorld'];
-      } else if (currentSection === 'Hududlar') {
-        var regObjTitle = REGIONS_LIST.find(r => r.id === currentSubSection);
-        secTitle = (regObjTitle ? (regObjTitle.labels[currentLang] || regObjTitle.label) : currentSubSection) + t.headings['RegionSuffix'];
-      }
-      headingEl.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> ${secTitle}`;
+      headingEl.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> <span>${secTitle}</span>`;
 
       var filtered = ALL_NEWS.filter(item => {
+        if (item.category === 'UzumMarket' || item.category === 'SoglomTurmush') return false;
         var textAll = (item.title + ' ' + item.summary + ' ' + item.content + ' ' + getItemField(item, 'title')).toLowerCase();
         if (query && textAll.indexOf(query) === -1) return false;
 
@@ -1228,19 +1286,8 @@
         if (currentSection === 'Jahon') return item.category === 'Jahon';
         if (currentSection === 'İqtisodiyot') return item.category === 'İqtisodiyot';
         if (currentSection === 'Jamiyat') return item.category === 'Jamiyat';
-
         if (currentSection === 'Sport') {
-          var isSport = item.category === 'Sport' || /futbol|boks|kurash|olimpiada|çempion|sport|terma jamoa|oyin/.test(textAll);
-          if (!isSport) return false;
-          var isUzSport = /özbekiston|toşkent|paxtakor|nasaf|fayzullayev|husanov|jalolov|döstmatov/.test(textAll);
-          return currentSubSection === 'Özbekiston' ? isUzSport : !isUzSport;
-        }
-
-        if (currentSection === 'Hududlar') {
-          var regObj = REGIONS_LIST.find(r => r.id === currentSubSection);
-          if (!regObj) return false;
-          if (item.category === regObj.id) return true;
-          return regObj.keys.some(k => textAll.indexOf(k) !== -1);
+          return item.category === 'Sport' || /futbol|boks|kurash|olimpiada|çempion|sport|terma jamoa|oyin/.test(textAll);
         }
         return true;
       });
@@ -1281,7 +1328,7 @@
             </div>
           </div>
 
-          <!-- O'NG USTUN: SO'NGGI XABARLAR LENTASI (5 ustun - Kun.uz uslubi) -->
+          <!-- O'NG USTUN: SO'NGGI XABARLAR LENTASI (5 ustun) -->
           <div class="lg:col-span-5 bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
             <div class="text-sm font-black uppercase text-[#04122b] dark:text-white pb-3 mb-3 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <span>${t.fastFeed}</span>
