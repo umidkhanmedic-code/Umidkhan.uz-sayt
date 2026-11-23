@@ -132,31 +132,37 @@
     <!-- 2-QATOR (QUYI QATOR): UZUM MARKET, TELEGRAM BOZOR, SOG'LOM TURMUSH TARZI -->
     <nav class="bg-[#eceef2] dark:bg-slate-950/90 border-t border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-2 sm:gap-4 overflow-x-auto no-scrollbar text-xs sm:text-[13px] font-bold">
-        <!-- 1. Uzum Market -->
+        <!-- 1. Uzum Market (2-rasm logosi) -->
         <button onclick="selectMainSection('UzumMarket')" data-sec="UzumMarket" class="sub-nav-project px-3.5 py-1.5 rounded-lg inline-flex items-center gap-2 text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 shrink-0 transition">
-          <span class="w-5 h-5 rounded-md bg-[#7000ff] flex items-center justify-center shadow-xs shrink-0">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-              <path d="M5 4V13C5 16.866 8.134 20 12 20C15.866 20 19 16.866 19 13V4H15.5V13C15.5 14.933 13.933 16.5 12 16.5C10.067 16.5 8.5 14.933 8.5 13V4H5Z" fill="#ffffff"/>
-            </svg>
+          <span class="w-5 h-5 rounded-full bg-[#e5ff00] flex items-center justify-center shadow-xs shrink-0 p-0.5">
+            <span class="w-full h-full rounded-[4px] bg-[#7000ff] flex items-center justify-center">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2V7M5 5V13C5 16.866 8.134 20 12 20C15.866 20 19 16.866 19 13V5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+              </svg>
+            </span>
           </span>
           <span id="sub-uzum-label">Uzum Market</span>
         </button>
 
-        <!-- 2. Telegram bozor -->
+        <!-- 2. Telegram bozor (3-rasm UMIDKHAN ONLINE BOZOR logosi) -->
         <button onclick="selectMainSection('TelegramBozor')" data-sec="TelegramBozor" class="sub-nav-project px-3.5 py-1.5 rounded-lg inline-flex items-center gap-2 text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 shrink-0 transition">
-          <span class="w-5 h-5 rounded-md bg-gradient-to-br from-[#2aabee] to-[#229ed9] flex items-center justify-center shadow-xs shrink-0">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-              <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" fill="#ffffff"/>
+          <span class="w-5 h-5 rounded-md bg-white flex items-center justify-center shadow-xs shrink-0 overflow-hidden border border-slate-200">
+            <svg width="16" height="16" viewBox="0 0 100 100" fill="none">
+              <path d="M18 14H40V58C40 66 45 71 52 71C59 71 64 66 64 58V14H82V58C82 76 69 88 52 88C35 88 18 76 18 58V14Z" fill="#0f172a"/>
+              <path d="M16 56C38 68 62 66 86 42C66 56 40 58 16 48V56Z" fill="#0ea5e9"/>
+              <path d="M68 28H88L91 52H65L68 28Z" fill="#0284c7"/>
+              <path d="M73 28C73 22 83 22 83 28" stroke="#0284c7" stroke-width="4" fill="none"/>
             </svg>
           </span>
           <span id="sub-tgbozor-label">Telegram bozor</span>
         </button>
 
-        <!-- 3. Soğlom turmush tarzi -->
+        <!-- 3. Soğlom turmush tarzi (5-rasm ST bargli logosi) -->
         <button onclick="selectMainSection('SoglomTurmush')" data-sec="SoglomTurmush" class="sub-nav-project px-3.5 py-1.5 rounded-lg inline-flex items-center gap-2 text-slate-800 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 shrink-0 transition">
-          <span class="w-5 h-5 rounded-md bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-xs shrink-0">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ffffff"/>
+          <span class="w-5 h-5 rounded-full bg-[#1e5631] flex items-center justify-center shadow-xs shrink-0">
+            <svg width="14" height="14" viewBox="0 0 100 100" fill="none">
+              <text x="12" y="68" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="48">ST</text>
+              <path d="M67 62C67 49 78 43 89 43C87 56 79 65 67 62Z" fill="#a3be5b"/>
             </svg>
           </span>
           <span id="sub-health-label">Soğlom turmush tarzi</span>
@@ -255,21 +261,27 @@
       { id: 'Xorazm', label: 'Xorazm viloyati', labels: { uz: 'Xorazm viloyati', uz_cyrl: 'Хоразм вилояти', kaa: 'Xorezm wálayatı', ru: 'Хорезмская область', en: 'Khorezm Region' }, keys: ['xorazm', 'xorazm_uz_rasmiy', 'urganç', 'xiva'] }
     ];
 
-    // === BREND LOGOTIPLAR (SVG) ===
+    // === BREND LOGOTIPLAR (2-RASM, 3-RASM VA 5-RASM ASOSIDA) ===
     var LOGOS = {
-      uzumLarge: `<span class="w-9 h-9 rounded-xl bg-[#7000ff] flex items-center justify-center shadow-md shrink-0">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M5 4V13C5 16.866 8.134 20 12 20C15.866 20 19 16.866 19 13V4H15.5V13C15.5 14.933 13.933 16.5 12 16.5C10.067 16.5 8.5 14.933 8.5 13V4H5Z" fill="#ffffff"/>
+      uzumLarge: `<span class="w-10 h-10 rounded-full bg-[#e5ff00] flex items-center justify-center shadow-md shrink-0 p-1">
+        <span class="w-full h-full rounded-lg bg-[#7000ff] flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2V7M5 5V13C5 16.866 8.134 20 12 20C15.866 20 19 16.866 19 13V5" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </span>`,
+      tgLarge: `<span class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md shrink-0 overflow-hidden border border-slate-200">
+        <svg width="32" height="32" viewBox="0 0 100 100" fill="none">
+          <path d="M18 14H40V58C40 66 45 71 52 71C59 71 64 66 64 58V14H82V58C82 76 69 88 52 88C35 88 18 76 18 58V14Z" fill="#0f172a"/>
+          <path d="M16 56C38 68 62 66 86 42C66 56 40 58 16 48V56Z" fill="#0ea5e9"/>
+          <path d="M68 28H88L91 52H65L68 28Z" fill="#0284c7"/>
+          <path d="M73 28C73 22 83 22 83 28" stroke="#0284c7" stroke-width="4" fill="none"/>
         </svg>
       </span>`,
-      tgLarge: `<span class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2aabee] to-[#229ed9] flex items-center justify-center shadow-md shrink-0">
-        <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
-          <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" fill="#ffffff"/>
-        </svg>
-      </span>`,
-      healthLarge: `<span class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-md shrink-0">
-        <svg width="21" height="21" viewBox="0 0 24 24" fill="none">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ffffff"/>
+      healthLarge: `<span class="w-10 h-10 rounded-full bg-[#1e5631] flex items-center justify-center shadow-md shrink-0">
+        <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+          <text x="12" y="68" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="48">ST</text>
+          <path d="M67 62C67 49 78 43 89 43C87 56 79 65 67 62Z" fill="#a3be5b"/>
         </svg>
       </span>`
     };
@@ -686,7 +698,6 @@
     var currentRegion = 'all';
     var TRANSLATION_CACHE = {};
 
-    // === POST QAYSI HUDUDGA TEGISHLIGINI ANIQLASH (KANAL YOKI MATN BO'YICHA) ===
     function detectRegionForItem(item) {
       if (item.region) {
         var exact = REGIONS_LIST.find(r => r.id.toLowerCase() === String(item.region).toLowerCase());
@@ -702,7 +713,6 @@
       return null;
     }
 
-    // === AUDIO O'QISH ===
     function toggleSpeakNews(id) {
       if (!('speechSynthesis' in window)) return;
       if (CURRENT_SPEAKING_ID === id) {
@@ -726,7 +736,6 @@
       window.speechSynthesis.speak(utter);
     }
 
-    // === FOYDALANUVCHI LOKATSIYASIGA QARAB KUNLIK OB-HAVONI KO'RSATISH ===
     function getWeatherEmoji(code, isDay) {
       if (code === 0) return isDay ? '☀️' : '🌙';
       if (code === 1 || code === 2) return isDay ? '⛅' : '☁️';
@@ -799,7 +808,6 @@
       );
     }
 
-    // === CBU.UZ VALYUTA KURSLARINI YUKLASH ===
     function loadCbuRates() {
       fetch('https://cbu.uz/uz/arkhiv-kursov-valyut/json/')
         .then(res => res.json())
@@ -851,7 +859,6 @@
       track.innerHTML = prefix + itemsHtml + prefix + itemsHtml;
     }
 
-    // === O'ZBEK LOTIN ALIFBOSIDAN KIRILLCHAGA 100% O'GIRISH ===
     function latinToUzbekCyrillic(text) {
       if (!text) return '';
       var s = String(text);
@@ -1063,7 +1070,6 @@
       document.getElementById('modal-close-btn').textContent = t.closeBtn;
     }
 
-    // === RASM YOKI VIDEO YUQORI O'NG BURCHAGIDA UMIDKHAN.UZ LOGOSI BILAN KO'RSATISH ===
     function renderWatermarkedImage(mediaUrl, heightClass, showCount) {
       if (!mediaUrl) return '';
       var isVideo = /\.mp4(\?|$)/i.test(mediaUrl) || (mediaUrl.indexOf('telesco.pe/file') !== -1 && mediaUrl.indexOf('.mp4') !== -1);
@@ -1176,7 +1182,7 @@
       var container = document.getElementById('dynamic-content');
       var query = (document.getElementById('search-input').value || '').toLowerCase().trim();
 
-      // === 1. UZUM MARKET BO'LIMI ===
+      // === 1. UZUM MARKET BO'LIMI (2-rasm logosi + UMIDKHAN ONLINE BOZOR) ===
       if (currentSection === 'UzumMarket') {
         headingEl.innerHTML = `${LOGOS.uzumLarge} <span>${t.headings['UzumMarket']}</span>`;
         var uzumItems = ALL_NEWS.filter(n => n.category === 'UzumMarket');
@@ -1226,15 +1232,18 @@
         return;
       }
 
-      // === 2. TELEGRAM BOZOR BO'LIMI ===
+      // === 2. TELEGRAM BOZOR BO'LIMI (3-rasm logosi + UMIDKHAN ONLINE BOZOR) ===
       if (currentSection === 'TelegramBozor') {
         headingEl.innerHTML = `${LOGOS.tgLarge} <span>${t.headings['TelegramBozor']}</span>`;
         counterEl.textContent = '@Umidkhan_online_bozorBot';
         container.innerHTML = `
           <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-sm max-w-3xl mx-auto text-center">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2aabee] to-[#229ed9] flex items-center justify-center mx-auto mb-5 shadow-lg">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
-                <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" fill="#ffffff"/>
+            <div class="w-24 h-24 rounded-2xl bg-white flex items-center justify-center mx-auto mb-5 shadow-lg border border-slate-200 p-2">
+              <svg width="76" height="76" viewBox="0 0 100 100" fill="none">
+                <path d="M18 14H40V58C40 66 45 71 52 71C59 71 64 66 64 58V14H82V58C82 76 69 88 52 88C35 88 18 76 18 58V14Z" fill="#0f172a"/>
+                <path d="M16 56C38 68 62 66 86 42C66 56 40 58 16 48V56Z" fill="#0ea5e9"/>
+                <path d="M68 28H88L91 52H65L68 28Z" fill="#0284c7"/>
+                <path d="M73 28C73 22 83 22 83 28" stroke="#0284c7" stroke-width="4" fill="none"/>
               </svg>
             </div>
             <h2 class="text-2xl sm:text-3xl font-black text-[#04122b] dark:text-white mb-3">UMIDKHAN ONLINE BOZOR</h2>
@@ -1247,7 +1256,7 @@
         return;
       }
 
-      // === 3. SOG'LOM TURMUSH TARZI BO'LIMI ===
+      // === 3. SOG'LOM TURMUSH TARZI BO'LIMI (5-rasm logosi) ===
       if (currentSection === 'SoglomTurmush') {
         headingEl.innerHTML = `${LOGOS.healthLarge} <span>${t.headings['SoglomTurmush']}</span>`;
         var healthPosts = ALL_NEWS.filter(n => n.category === 'SoglomTurmush');
@@ -1333,7 +1342,7 @@
         return;
       }
 
-      // === 5. HUDUDLAR BO'LIMI (Qoraqalpog'iston Respublikasi, Toshkent shahri va 12 ta viloyat) ===
+      // === 5. HUDUDLAR BO'LIMI ===
       if (currentSection === 'Hududlar') {
         var activeRegObj = REGIONS_LIST.find(r => r.id === currentRegion);
         var regHeadingText = activeRegObj ? (activeRegObj.labels[currentLang] || activeRegObj.label) : t.headings['Hududlar'];
@@ -1400,7 +1409,7 @@
         return;
       }
 
-      // === 6. ASOSIY YANGILIKLAR BO'LIMLARI (Özbekiston, Jahon, İqtisodiyot, Jamiyat, Sport) ===
+      // === 6. ASOSIY YANGILIKLAR BO'LIMLARI ===
       var secTitle = t.headings[currentSection] || currentSection;
       headingEl.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-[#0077b6]"></span> <span>${secTitle}</span>`;
 
@@ -1435,7 +1444,6 @@
 
       var html = `
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
-          <!-- ASOSIY HERO YANGILIK (7 ustun) -->
           <div onclick="openArticle(${mainNews.id})" class="lg:col-span-7 cursor-pointer group bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition flex flex-col justify-between">
             <div>
               ${mainNews.images && mainNews.images.length > 0 ? `<div class="mb-5">${renderWatermarkedImage(mainNews.images[0], 'h-64 sm:h-80 w-full', mainNews.images.length)}</div>` : ''}
@@ -1456,7 +1464,6 @@
             </div>
           </div>
 
-          <!-- O'NG USTUN: SO'NGGI XABARLAR LENTASI (5 ustun) -->
           <div class="lg:col-span-5 bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
             <div class="text-sm font-black uppercase text-[#04122b] dark:text-white pb-3 mb-3 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <span>${t.fastFeed}</span>
